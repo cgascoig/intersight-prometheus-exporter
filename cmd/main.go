@@ -1,10 +1,6 @@
 package main
 
 import (
-	"os"
-	"os/signal"
-	"syscall"
-
 	"github.com/cgascoig/intersight-metrics/pkg/ismetrics"
 	"github.com/sirupsen/logrus"
 )
@@ -24,12 +20,6 @@ func main() {
 	im := ismetrics.NewIntersightMetrics(keyID, keyFile)
 
 	im.Start()
-
-	//
-	//Wait forever
-	exitSignal := make(chan os.Signal)
-	signal.Notify(exitSignal, syscall.SIGINT, syscall.SIGTERM)
-	<-exitSignal
 
 	logrus.Info("Shutting down")
 }

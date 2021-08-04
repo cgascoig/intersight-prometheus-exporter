@@ -1,0 +1,46 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: prom-intersight-metrics
+  labels:
+    name: prom-intersight-metrics
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      name: prom-intersight-metrics
+  template:
+    metadata:
+      labels:
+        name: prom-intersight-metrics
+    spec:
+      containers:
+      - name: main
+        image: cgascoig/prom-intersight-metrics
+        imagePullPolicy: Never
+        ports: 
+        - containerPort: 2112
+        volumeMounts:
+        - name: intersight-api-key
+          mountPath: "/Users/cgascoig/dev/api-keys"
+          readOnly: true
+      volumes:
+      - name: intersight-api-key
+        secret:
+          secretName: intersight-api-key
+          items:
+          - key: intersight.pem
+            path: intersight-cgascoig-20200423.pem
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: prom-intersight-metrics
+  labels: 
+    name: prom-intersight-metrics
+spec:
+  ports:
+    - port: 2112
+      targetPort: 2112
+  selector: 
+    name: prom-intersight-metrics

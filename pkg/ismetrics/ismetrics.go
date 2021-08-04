@@ -4,14 +4,31 @@ import (
 	"context"
 	"fmt"
 	"net/http"
-	"time"
+	"sync"
 
 	"github.com/cgascoig/intersight-metrics/pkg/intersight"
 	"github.com/prometheus/client_golang/prometheus"
-	"github.com/prometheus/client_golang/prometheus/promauto"
 	"github.com/prometheus/client_golang/prometheus/promhttp"
 	"github.com/sirupsen/logrus"
 )
+
+type collectFunc func(*IntersightMetrics, *prometheus.Desc, chan<- prometheus.Metric)
+
+type metricInfo struct {
+	desc    *prometheus.Desc
+	collect collectFunc
+}
+
+var metricInfos = []metricInfo{}
+
+func RegisterMetric(name, help string, labelNames []string, collect collectFunc) {
+	mi := metricInfo{
+		desc:    prometheus.NewDesc(name, help, labelNames, nil),
+		collect: collect,
+	}
+
+	metricInfos = append(metricInfos, mi)
+}
 
 type IntersightMetrics struct {
 
@@ -22,24 +39,15 @@ type IntersightMetrics struct {
 	ctx    context.Context
 	client *intersight.APIClient
 
-	updateInterval int
-
-	// Port Stats metric
-	portStatsMetric *prometheus.GaugeVec
+	mutex sync.RWMutex
 }
 
 const defaultUpdateInterval = 60
 
 func NewIntersightMetrics(keyID string, keyFile string) *IntersightMetrics {
 	im := IntersightMetrics{
-		keyID:          keyID,
-		keyFile:        keyFile,
-		updateInterval: defaultUpdateInterval,
-
-		portStatsMetric: promauto.NewGaugeVec(prometheus.GaugeOpts{
-			Name: "port_stats_tx_rate",
-			Help: "Port TX rate",
-		}, []string{"port"}),
+		keyID:   keyID,
+		keyFile: keyFile,
 	}
 
 	return &im
@@ -80,26 +88,37 @@ func (im *IntersightMetrics) Start() {
 	}
 
 	config := intersight.NewConfiguration()
+	config.Debug = true
 
 	client := intersight.NewAPIClient(config)
 
 	im.ctx = ctx
 	im.client = client
 
-	logrus.Info("Intersight metrics setup complete, starting collector thread")
-	go im.run()
+	prometheus.MustRegister(im)
 
 	logrus.Info("Starting metrics server")
 	http.Handle("/metrics", promhttp.Handler())
-	http.ListenAndServe(":2112", nil)
-
+	if err = http.ListenAndServe(":2112", nil); err != nil {
+		logrus.Fatal("Error starting HTTP server")
+	}
 }
 
-func (im *IntersightMetrics) run() {
-	for {
-		im.collectPortStats()
+func (im *IntersightMetrics) Collect(ch chan<- prometheus.Metric) {
+	im.mutex.Lock()
+	defer im.mutex.Unlock()
 
-		logrus.Infof("Sleeping for %d seconds", im.updateInterval)
-		time.Sleep(time.Duration(im.updateInterval) * time.Second)
+	logrus.Info("Collect called")
+
+	for _, mi := range metricInfos {
+		mi.collect(im, mi.desc, ch)
+	}
+}
+
+func (im *IntersightMetrics) Describe(ch chan<- *prometheus.Desc) {
+	logrus.Info("Describe called")
+
+	for _, mi := range metricInfos {
+		ch <- mi.desc
 	}
 }
