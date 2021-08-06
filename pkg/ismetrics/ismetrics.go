@@ -12,22 +12,10 @@ import (
 	"github.com/sirupsen/logrus"
 )
 
-type collectFunc func(*IntersightMetrics, *prometheus.Desc, chan<- prometheus.Metric)
+var collectors = []IntersightCollector{}
 
-type metricInfo struct {
-	desc    *prometheus.Desc
-	collect collectFunc
-}
-
-var metricInfos = []metricInfo{}
-
-func RegisterMetric(name, help string, labelNames []string, collect collectFunc) {
-	mi := metricInfo{
-		desc:    prometheus.NewDesc(name, help, labelNames, nil),
-		collect: collect,
-	}
-
-	metricInfos = append(metricInfos, mi)
+func RegisterCollector(c IntersightCollector) {
+	collectors = append(collectors, c)
 }
 
 type IntersightMetrics struct {
@@ -110,15 +98,15 @@ func (im *IntersightMetrics) Collect(ch chan<- prometheus.Metric) {
 
 	logrus.Info("Collect called")
 
-	for _, mi := range metricInfos {
-		mi.collect(im, mi.desc, ch)
+	for _, c := range collectors {
+		c.Collect(im, ch)
 	}
 }
 
 func (im *IntersightMetrics) Describe(ch chan<- *prometheus.Desc) {
 	logrus.Info("Describe called")
 
-	for _, mi := range metricInfos {
-		ch <- mi.desc
+	for _, c := range collectors {
+		c.Describe(ch)
 	}
 }
