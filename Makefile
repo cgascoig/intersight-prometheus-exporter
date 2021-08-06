@@ -20,7 +20,7 @@ all: build/prom-intersight-metrics
 .PHONY: all
 
 clean:
-> rm -Rf build
+> rm -Rf build tmp
 .PHONY: clean
 
 # Go unit tests
@@ -39,9 +39,14 @@ build/prom-intersight-metrics-linux_amd64: build/prom-intersight-metrics
 containers: tmp/.prom-intersight-metrics-docker-image.sentinel
 .PHONY: containers
 
+containers-push: tmp/.prom-intersight-metrics-docker-image-push.sentinel
+
 tmp/.prom-intersight-metrics-docker-image.sentinel: build/prom-intersight-metrics-linux_amd64 Dockerfile
 > mkdir -p $(@D)
 > image_id="cgascoig/prom-intersight-metrics:latest"
 > docker build . -t "$${image_id}"
-# > docker push "$${image_id}"
 > touch $@
+
+tmp/.prom-intersight-metrics-docker-image-push.sentinel: tmp/.prom-intersight-metrics-docker-image.sentinel
+> image_id="cgascoig/prom-intersight-metrics:latest"
+> docker push "$${image_id}"
