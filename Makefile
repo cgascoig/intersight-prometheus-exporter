@@ -50,3 +50,4 @@ tmp/.prom-intersight-metrics-docker-image.sentinel: build/prom-intersight-metric
 tmp/.prom-intersight-metrics-docker-image-push.sentinel: tmp/.prom-intersight-metrics-docker-image.sentinel
 > image_id="cgascoig/prom-intersight-metrics:latest"
 > docker push "$${image_id}"
+> touch $@
