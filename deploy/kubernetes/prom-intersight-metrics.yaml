@@ -17,7 +17,7 @@ spec:
       containers:
       - name: main
         image: cgascoig/prom-intersight-metrics
-        imagePullPolicy: Never
+        imagePullPolicy: IfNotPresent
         ports: 
         - containerPort: 2112
         volumeMounts:
