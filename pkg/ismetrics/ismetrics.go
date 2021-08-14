@@ -19,23 +19,24 @@ func RegisterCollector(c IntersightCollector) {
 }
 
 type IntersightMetrics struct {
-
-	// Intersight API Credentials
-	keyID   string
-	keyFile string
+	configFileName string
+	verboseLogging bool
 
 	ctx    context.Context
 	client *intersight.APIClient
+
+	keyID   string
+	keyFile string
 
 	mutex sync.RWMutex
 }
 
 const defaultUpdateInterval = 60
 
-func NewIntersightMetrics(keyID string, keyFile string) *IntersightMetrics {
+func NewIntersightMetrics(configFileName string, verboseLogging bool) *IntersightMetrics {
 	im := IntersightMetrics{
-		keyID:   keyID,
-		keyFile: keyFile,
+		configFileName: configFileName,
+		verboseLogging: verboseLogging,
 	}
 
 	return &im
@@ -76,7 +77,7 @@ func (im *IntersightMetrics) Start() {
 	}
 
 	config := intersight.NewConfiguration()
-	config.Debug = true
+	config.Debug = im.verboseLogging
 
 	client := intersight.NewAPIClient(config)
 

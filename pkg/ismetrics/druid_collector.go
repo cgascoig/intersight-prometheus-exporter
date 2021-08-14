@@ -44,7 +44,7 @@ func (c *DruidCollector) Describe(ch chan<- *prometheus.Desc) {
 }
 
 func (c *DruidCollector) Collect(im *IntersightMetrics, ch chan<- prometheus.Metric) {
-	logrus.Infof("Requesting time series data for ", c.name)
+	logrus.Info("Requesting time series data for ", c.name)
 
 	req := im.client.TelemetryApi.QueryTelemetryTimeSeries(im.ctx)
 

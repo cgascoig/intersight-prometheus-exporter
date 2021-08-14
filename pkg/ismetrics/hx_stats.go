@@ -36,14 +36,14 @@ func init() {
 			Aggregations: &[]intersight.TelemetryDruidAggregator{
 				{
 					TelemetryDruidSumAggregator: &intersight.TelemetryDruidSumAggregator{
-						Type:      "longSum",
+						Type:      "doubleSum",
 						Name:      "sumReadBytes",
 						FieldName: "sumReadBytes",
 					},
 				},
 				{
 					TelemetryDruidSumAggregator: &intersight.TelemetryDruidSumAggregator{
-						Type:      "longSum",
+						Type:      "doubleSum",
 						Name:      "sumWriteBytes",
 						FieldName: "sumWriteBytes",
 					},
