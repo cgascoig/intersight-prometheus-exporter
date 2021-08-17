@@ -53,7 +53,7 @@ tmp/.prom-intersight-metrics-docker-image-push.sentinel: tmp/.prom-intersight-me
 > if [[ -n $$(git status --porcelain) ]]; then echo "repo is dirty"; exit 1; fi
 > image_id="$(DOCKER_IMAGE_ID):$$(git rev-parse HEAD)"
 > echo "Tagging image $${image_id}"
-> docker tag "$(DOCKER_IMAGE_ID):latest" "$(DOCKER_IMAGE_ID):latest"
+> docker tag "$(DOCKER_IMAGE_ID):latest" "$${image_id}"
 > echo "Pushing image $${image_id}"
 > docker push "$${image_id}"
 > touch $@
