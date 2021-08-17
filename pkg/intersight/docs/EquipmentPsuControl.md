@@ -4,10 +4,13 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**ClassId** | **string** | The fully-qualified name of the instantiated, concrete type. This property is used as a discriminator to identify the type of the payload when marshaling and unmarshaling data. | [default to "equipment.PsuControl"]
+**ObjectType** | **string** | The fully-qualified name of the instantiated, concrete type. The value should be the same as the &#39;ClassId&#39; property. | [default to "equipment.PsuControl"]
 **ClusterState** | Pointer to **string** | This field identifies the cluster state of the psu redundancy. | [optional] [readonly] 
 **InputPowerState** | Pointer to **string** | This field identifies the input power state of the psus. | [optional] [readonly] 
 **Name** | Pointer to **string** | This field identifies the name of psu control object. | [optional] [readonly] 
 **OperQualifier** | Pointer to **string** | This field identifies the operational qualifier for the psu redundancy. | [optional] [readonly] 
+**OperReason** | Pointer to **[]string** |  | [optional] 
 **OperState** | Pointer to **string** | This field identifies the operational state of the psu redundancy. | [optional] [readonly] 
 **OutputPowerState** | Pointer to **string** | This field identifies the output power state of the psus. | [optional] [readonly] 
 **Redundancy** | Pointer to **string** | This field identifies the redundancy state of the psus. | [optional] [readonly] 
@@ -19,7 +22,7 @@ Name | Type | Description | Notes
 
 ### NewEquipmentPsuControl
 
-`func NewEquipmentPsuControl() *EquipmentPsuControl`
+`func NewEquipmentPsuControl(classId string, objectType string, ) *EquipmentPsuControl`
 
 NewEquipmentPsuControl instantiates a new EquipmentPsuControl object
 This constructor will assign default values to properties that have it defined,
@@ -33,6 +36,46 @@ will change when the set of required properties is changed
 NewEquipmentPsuControlWithDefaults instantiates a new EquipmentPsuControl object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetClassId
+
+`func (o *EquipmentPsuControl) GetClassId() string`
+
+GetClassId returns the ClassId field if non-nil, zero value otherwise.
+
+### GetClassIdOk
+
+`func (o *EquipmentPsuControl) GetClassIdOk() (*string, bool)`
+
+GetClassIdOk returns a tuple with the ClassId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetClassId
+
+`func (o *EquipmentPsuControl) SetClassId(v string)`
+
+SetClassId sets ClassId field to given value.
+
+
+### GetObjectType
+
+`func (o *EquipmentPsuControl) GetObjectType() string`
+
+GetObjectType returns the ObjectType field if non-nil, zero value otherwise.
+
+### GetObjectTypeOk
+
+`func (o *EquipmentPsuControl) GetObjectTypeOk() (*string, bool)`
+
+GetObjectTypeOk returns a tuple with the ObjectType field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetObjectType
+
+`func (o *EquipmentPsuControl) SetObjectType(v string)`
+
+SetObjectType sets ObjectType field to given value.
+
 
 ### GetClusterState
 
@@ -134,6 +177,41 @@ SetOperQualifier sets OperQualifier field to given value.
 
 HasOperQualifier returns a boolean if a field has been set.
 
+### GetOperReason
+
+`func (o *EquipmentPsuControl) GetOperReason() []string`
+
+GetOperReason returns the OperReason field if non-nil, zero value otherwise.
+
+### GetOperReasonOk
+
+`func (o *EquipmentPsuControl) GetOperReasonOk() (*[]string, bool)`
+
+GetOperReasonOk returns a tuple with the OperReason field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetOperReason
+
+`func (o *EquipmentPsuControl) SetOperReason(v []string)`
+
+SetOperReason sets OperReason field to given value.
+
+### HasOperReason
+
+`func (o *EquipmentPsuControl) HasOperReason() bool`
+
+HasOperReason returns a boolean if a field has been set.
+
+### SetOperReasonNil
+
+`func (o *EquipmentPsuControl) SetOperReasonNil(b bool)`
+
+ SetOperReasonNil sets the value for OperReason to be an explicit nil
+
+### UnsetOperReason
+`func (o *EquipmentPsuControl) UnsetOperReason()`
+
+UnsetOperReason ensures that no value is present for OperReason, not even an explicit nil
 ### GetOperState
 
 `func (o *EquipmentPsuControl) GetOperState() string`

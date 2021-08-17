@@ -4,12 +4,14 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**ClassId** | **string** | The fully-qualified name of the instantiated, concrete type. This property is used as a discriminator to identify the type of the payload when marshaling and unmarshaling data. | [default to "equipment.Tpm"]
+**ObjectType** | **string** | The fully-qualified name of the instantiated, concrete type. The value should be the same as the &#39;ClassId&#39; property. | [default to "equipment.Tpm"]
 **ActivationStatus** | Pointer to **string** | Identifies the activation status of the TPM. | [optional] [readonly] 
 **AdminState** | Pointer to **string** | Identifies the admin configured state of the TPM. | [optional] [readonly] 
+**FirmwareVersion** | Pointer to **string** | Firmware Version of the Trusted Platform Module. | [optional] 
 **Ownership** | Pointer to **string** | Identifies the ownership information of the TPM. | [optional] [readonly] 
-**Presence** | Pointer to **string** | Identifies the presence of the trusted platform module. | [optional] [readonly] 
 **TpmId** | Pointer to **int64** | Enter  the ID of the trusted platform module. | [optional] [readonly] 
-**Version** | Pointer to **string** | Identifies the revision of the Trusted Platform Module. | [optional] [readonly] 
+**Version** | Pointer to **string** | Identifies the version of the Trusted Platform Module. | [optional] [readonly] 
 **ComputeBoard** | Pointer to [**ComputeBoardRelationship**](compute.Board.Relationship.md) |  | [optional] 
 **InventoryDeviceInfo** | Pointer to [**InventoryDeviceInfoRelationship**](inventory.DeviceInfo.Relationship.md) |  | [optional] 
 **RegisteredDevice** | Pointer to [**AssetDeviceRegistrationRelationship**](asset.DeviceRegistration.Relationship.md) |  | [optional] 
@@ -18,7 +20,7 @@ Name | Type | Description | Notes
 
 ### NewEquipmentTpm
 
-`func NewEquipmentTpm() *EquipmentTpm`
+`func NewEquipmentTpm(classId string, objectType string, ) *EquipmentTpm`
 
 NewEquipmentTpm instantiates a new EquipmentTpm object
 This constructor will assign default values to properties that have it defined,
@@ -32,6 +34,46 @@ will change when the set of required properties is changed
 NewEquipmentTpmWithDefaults instantiates a new EquipmentTpm object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetClassId
+
+`func (o *EquipmentTpm) GetClassId() string`
+
+GetClassId returns the ClassId field if non-nil, zero value otherwise.
+
+### GetClassIdOk
+
+`func (o *EquipmentTpm) GetClassIdOk() (*string, bool)`
+
+GetClassIdOk returns a tuple with the ClassId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetClassId
+
+`func (o *EquipmentTpm) SetClassId(v string)`
+
+SetClassId sets ClassId field to given value.
+
+
+### GetObjectType
+
+`func (o *EquipmentTpm) GetObjectType() string`
+
+GetObjectType returns the ObjectType field if non-nil, zero value otherwise.
+
+### GetObjectTypeOk
+
+`func (o *EquipmentTpm) GetObjectTypeOk() (*string, bool)`
+
+GetObjectTypeOk returns a tuple with the ObjectType field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetObjectType
+
+`func (o *EquipmentTpm) SetObjectType(v string)`
+
+SetObjectType sets ObjectType field to given value.
+
 
 ### GetActivationStatus
 
@@ -83,6 +125,31 @@ SetAdminState sets AdminState field to given value.
 
 HasAdminState returns a boolean if a field has been set.
 
+### GetFirmwareVersion
+
+`func (o *EquipmentTpm) GetFirmwareVersion() string`
+
+GetFirmwareVersion returns the FirmwareVersion field if non-nil, zero value otherwise.
+
+### GetFirmwareVersionOk
+
+`func (o *EquipmentTpm) GetFirmwareVersionOk() (*string, bool)`
+
+GetFirmwareVersionOk returns a tuple with the FirmwareVersion field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetFirmwareVersion
+
+`func (o *EquipmentTpm) SetFirmwareVersion(v string)`
+
+SetFirmwareVersion sets FirmwareVersion field to given value.
+
+### HasFirmwareVersion
+
+`func (o *EquipmentTpm) HasFirmwareVersion() bool`
+
+HasFirmwareVersion returns a boolean if a field has been set.
+
 ### GetOwnership
 
 `func (o *EquipmentTpm) GetOwnership() string`
@@ -107,31 +174,6 @@ SetOwnership sets Ownership field to given value.
 `func (o *EquipmentTpm) HasOwnership() bool`
 
 HasOwnership returns a boolean if a field has been set.
-
-### GetPresence
-
-`func (o *EquipmentTpm) GetPresence() string`
-
-GetPresence returns the Presence field if non-nil, zero value otherwise.
-
-### GetPresenceOk
-
-`func (o *EquipmentTpm) GetPresenceOk() (*string, bool)`
-
-GetPresenceOk returns a tuple with the Presence field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetPresence
-
-`func (o *EquipmentTpm) SetPresence(v string)`
-
-SetPresence sets Presence field to given value.
-
-### HasPresence
-
-`func (o *EquipmentTpm) HasPresence() bool`
-
-HasPresence returns a boolean if a field has been set.
 
 ### GetTpmId
 

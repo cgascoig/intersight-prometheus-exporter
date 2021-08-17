@@ -4,7 +4,10 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**ClassId** | **string** | The fully-qualified name of the instantiated, concrete type. This property is used as a discriminator to identify the type of the payload when marshaling and unmarshaling data. | [default to "virtualization.VmwareDatastore"]
+**ObjectType** | **string** | The fully-qualified name of the instantiated, concrete type. The value should be the same as the &#39;ClassId&#39; property. | [default to "virtualization.VmwareDatastore"]
 **Accessible** | Pointer to **bool** | Shows if this datastore is accessible. | [optional] 
+**InventoryPath** | Pointer to **string** | Inventory path of the Datastore. | [optional] 
 **MaintenanceMode** | Pointer to **bool** | Indicates if the datastore is in maintenance mode. Will be set to True, when in maintenance mode. | [optional] 
 **MultipleHostAccess** | Pointer to **bool** | Indicates if this datastore is connected to multiple hosts. | [optional] 
 **Status** | Pointer to **string** | Datastore health status, as reported by the hypervisor platform. * &#x60;Unknown&#x60; - Entity status is unknown. * &#x60;Degraded&#x60; - State is degraded, and might impact normal operation of the entity. * &#x60;Critical&#x60; - Entity is in a critical state, impacting operations. * &#x60;Ok&#x60; - Entity status is in a stable state, operating normally. | [optional] [default to "Unknown"]
@@ -13,13 +16,13 @@ Name | Type | Description | Notes
 **Url** | Pointer to **string** | The URL to access this datastore (example - &#39;ds:///vmfs/volumes/562a4e8a-0eeb5372-dd61-78baf9cb9afa/&#39;). | [optional] 
 **Cluster** | Pointer to [**VirtualizationVmwareClusterRelationship**](virtualization.VmwareCluster.Relationship.md) |  | [optional] 
 **Datacenter** | Pointer to [**VirtualizationVmwareDatacenterRelationship**](virtualization.VmwareDatacenter.Relationship.md) |  | [optional] 
-**Hosts** | Pointer to [**[]VirtualizationVmwareHostRelationship**](virtualization.VmwareHost.Relationship.md) | An array of relationships to virtualizationVmwareHost resources. | [optional] [readonly] 
+**Hosts** | Pointer to [**[]VirtualizationVmwareHostRelationship**](VirtualizationVmwareHostRelationship.md) | An array of relationships to virtualizationVmwareHost resources. | [optional] [readonly] 
 
 ## Methods
 
 ### NewVirtualizationVmwareDatastoreAllOf
 
-`func NewVirtualizationVmwareDatastoreAllOf() *VirtualizationVmwareDatastoreAllOf`
+`func NewVirtualizationVmwareDatastoreAllOf(classId string, objectType string, ) *VirtualizationVmwareDatastoreAllOf`
 
 NewVirtualizationVmwareDatastoreAllOf instantiates a new VirtualizationVmwareDatastoreAllOf object
 This constructor will assign default values to properties that have it defined,
@@ -33,6 +36,46 @@ will change when the set of required properties is changed
 NewVirtualizationVmwareDatastoreAllOfWithDefaults instantiates a new VirtualizationVmwareDatastoreAllOf object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetClassId
+
+`func (o *VirtualizationVmwareDatastoreAllOf) GetClassId() string`
+
+GetClassId returns the ClassId field if non-nil, zero value otherwise.
+
+### GetClassIdOk
+
+`func (o *VirtualizationVmwareDatastoreAllOf) GetClassIdOk() (*string, bool)`
+
+GetClassIdOk returns a tuple with the ClassId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetClassId
+
+`func (o *VirtualizationVmwareDatastoreAllOf) SetClassId(v string)`
+
+SetClassId sets ClassId field to given value.
+
+
+### GetObjectType
+
+`func (o *VirtualizationVmwareDatastoreAllOf) GetObjectType() string`
+
+GetObjectType returns the ObjectType field if non-nil, zero value otherwise.
+
+### GetObjectTypeOk
+
+`func (o *VirtualizationVmwareDatastoreAllOf) GetObjectTypeOk() (*string, bool)`
+
+GetObjectTypeOk returns a tuple with the ObjectType field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetObjectType
+
+`func (o *VirtualizationVmwareDatastoreAllOf) SetObjectType(v string)`
+
+SetObjectType sets ObjectType field to given value.
+
 
 ### GetAccessible
 
@@ -58,6 +101,31 @@ SetAccessible sets Accessible field to given value.
 `func (o *VirtualizationVmwareDatastoreAllOf) HasAccessible() bool`
 
 HasAccessible returns a boolean if a field has been set.
+
+### GetInventoryPath
+
+`func (o *VirtualizationVmwareDatastoreAllOf) GetInventoryPath() string`
+
+GetInventoryPath returns the InventoryPath field if non-nil, zero value otherwise.
+
+### GetInventoryPathOk
+
+`func (o *VirtualizationVmwareDatastoreAllOf) GetInventoryPathOk() (*string, bool)`
+
+GetInventoryPathOk returns a tuple with the InventoryPath field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetInventoryPath
+
+`func (o *VirtualizationVmwareDatastoreAllOf) SetInventoryPath(v string)`
+
+SetInventoryPath sets InventoryPath field to given value.
+
+### HasInventoryPath
+
+`func (o *VirtualizationVmwareDatastoreAllOf) HasInventoryPath() bool`
+
+HasInventoryPath returns a boolean if a field has been set.
 
 ### GetMaintenanceMode
 

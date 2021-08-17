@@ -4,12 +4,15 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**AccountPermissions** | Pointer to [**[]IamAccountPermissions**](iam.AccountPermissions.md) |  | [optional] 
-**ClientIpAddress** | Pointer to **string** | The user agent IP address from which the session is launched. | [optional] [readonly] 
-**Expiration** | Pointer to [**time.Time**](time.Time.md) | Expiration time for the session. | [optional] [readonly] 
-**IdleTimeExpiration** | Pointer to [**time.Time**](time.Time.md) | Idle time expiration for the session. | [optional] [readonly] 
+**ClassId** | **string** | The fully-qualified name of the instantiated, concrete type. This property is used as a discriminator to identify the type of the payload when marshaling and unmarshaling data. | [default to "iam.Session"]
+**ObjectType** | **string** | The fully-qualified name of the instantiated, concrete type. The value should be the same as the &#39;ClassId&#39; property. | [default to "iam.Session"]
+**AccountPermissions** | Pointer to [**[]IamAccountPermissions**](IamAccountPermissions.md) |  | [optional] 
+**Expiration** | Pointer to **time.Time** | Expiration time for the session. | [optional] [readonly] 
+**FailedLogins** | Pointer to **int64** | Failed logins since last login for admin user. | [optional] [readonly] 
+**IdleTimeExpiration** | Pointer to **time.Time** | Idle time expiration for the session. | [optional] [readonly] 
 **LastLoginClient** | Pointer to **string** | The client address from which last login is initiated. | [optional] [readonly] 
-**LastLoginTime** | Pointer to [**time.Time**](time.Time.md) | The last login time for user. | [optional] [readonly] 
+**LastLoginTime** | Pointer to **time.Time** | The last login time for user. | [optional] [readonly] 
+**SessionId** | Pointer to **string** | Session token shared with the user agent which is used to identify the user session when API requests are received to perform authorization. | [optional] 
 **Permission** | Pointer to [**IamPermissionRelationship**](iam.Permission.Relationship.md) |  | [optional] 
 **User** | Pointer to [**IamUserRelationship**](iam.User.Relationship.md) |  | [optional] 
 
@@ -17,7 +20,7 @@ Name | Type | Description | Notes
 
 ### NewIamSession
 
-`func NewIamSession() *IamSession`
+`func NewIamSession(classId string, objectType string, ) *IamSession`
 
 NewIamSession instantiates a new IamSession object
 This constructor will assign default values to properties that have it defined,
@@ -31,6 +34,46 @@ will change when the set of required properties is changed
 NewIamSessionWithDefaults instantiates a new IamSession object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetClassId
+
+`func (o *IamSession) GetClassId() string`
+
+GetClassId returns the ClassId field if non-nil, zero value otherwise.
+
+### GetClassIdOk
+
+`func (o *IamSession) GetClassIdOk() (*string, bool)`
+
+GetClassIdOk returns a tuple with the ClassId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetClassId
+
+`func (o *IamSession) SetClassId(v string)`
+
+SetClassId sets ClassId field to given value.
+
+
+### GetObjectType
+
+`func (o *IamSession) GetObjectType() string`
+
+GetObjectType returns the ObjectType field if non-nil, zero value otherwise.
+
+### GetObjectTypeOk
+
+`func (o *IamSession) GetObjectTypeOk() (*string, bool)`
+
+GetObjectTypeOk returns a tuple with the ObjectType field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetObjectType
+
+`func (o *IamSession) SetObjectType(v string)`
+
+SetObjectType sets ObjectType field to given value.
+
 
 ### GetAccountPermissions
 
@@ -57,31 +100,16 @@ SetAccountPermissions sets AccountPermissions field to given value.
 
 HasAccountPermissions returns a boolean if a field has been set.
 
-### GetClientIpAddress
+### SetAccountPermissionsNil
 
-`func (o *IamSession) GetClientIpAddress() string`
+`func (o *IamSession) SetAccountPermissionsNil(b bool)`
 
-GetClientIpAddress returns the ClientIpAddress field if non-nil, zero value otherwise.
+ SetAccountPermissionsNil sets the value for AccountPermissions to be an explicit nil
 
-### GetClientIpAddressOk
+### UnsetAccountPermissions
+`func (o *IamSession) UnsetAccountPermissions()`
 
-`func (o *IamSession) GetClientIpAddressOk() (*string, bool)`
-
-GetClientIpAddressOk returns a tuple with the ClientIpAddress field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetClientIpAddress
-
-`func (o *IamSession) SetClientIpAddress(v string)`
-
-SetClientIpAddress sets ClientIpAddress field to given value.
-
-### HasClientIpAddress
-
-`func (o *IamSession) HasClientIpAddress() bool`
-
-HasClientIpAddress returns a boolean if a field has been set.
-
+UnsetAccountPermissions ensures that no value is present for AccountPermissions, not even an explicit nil
 ### GetExpiration
 
 `func (o *IamSession) GetExpiration() time.Time`
@@ -106,6 +134,31 @@ SetExpiration sets Expiration field to given value.
 `func (o *IamSession) HasExpiration() bool`
 
 HasExpiration returns a boolean if a field has been set.
+
+### GetFailedLogins
+
+`func (o *IamSession) GetFailedLogins() int64`
+
+GetFailedLogins returns the FailedLogins field if non-nil, zero value otherwise.
+
+### GetFailedLoginsOk
+
+`func (o *IamSession) GetFailedLoginsOk() (*int64, bool)`
+
+GetFailedLoginsOk returns a tuple with the FailedLogins field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetFailedLogins
+
+`func (o *IamSession) SetFailedLogins(v int64)`
+
+SetFailedLogins sets FailedLogins field to given value.
+
+### HasFailedLogins
+
+`func (o *IamSession) HasFailedLogins() bool`
+
+HasFailedLogins returns a boolean if a field has been set.
 
 ### GetIdleTimeExpiration
 
@@ -181,6 +234,31 @@ SetLastLoginTime sets LastLoginTime field to given value.
 `func (o *IamSession) HasLastLoginTime() bool`
 
 HasLastLoginTime returns a boolean if a field has been set.
+
+### GetSessionId
+
+`func (o *IamSession) GetSessionId() string`
+
+GetSessionId returns the SessionId field if non-nil, zero value otherwise.
+
+### GetSessionIdOk
+
+`func (o *IamSession) GetSessionIdOk() (*string, bool)`
+
+GetSessionIdOk returns a tuple with the SessionId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSessionId
+
+`func (o *IamSession) SetSessionId(v string)`
+
+SetSessionId sets SessionId field to given value.
+
+### HasSessionId
+
+`func (o *IamSession) HasSessionId() bool`
+
+HasSessionId returns a boolean if a field has been set.
 
 ### GetPermission
 

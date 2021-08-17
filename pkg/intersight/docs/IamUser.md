@@ -4,29 +4,32 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**ClassId** | **string** | The fully-qualified name of the instantiated, concrete type. This property is used as a discriminator to identify the type of the payload when marshaling and unmarshaling data. | [default to "iam.User"]
+**ObjectType** | **string** | The fully-qualified name of the instantiated, concrete type. The value should be the same as the &#39;ClassId&#39; property. | [default to "iam.User"]
 **ClientIpAddress** | Pointer to **string** | IP address from which the user last logged in to Intersight. | [optional] [readonly] 
 **Email** | Pointer to **string** | Email of the user. Users are added to Intersight using the email configured in the IdP. | [optional] 
 **FirstName** | Pointer to **string** | First name of the user. This field is populated from the IdP attributes received after authentication. | [optional] [readonly] 
-**LastLoginTime** | Pointer to [**time.Time**](time.Time.md) | Last successful login time for user. | [optional] [readonly] 
+**LastLoginTime** | Pointer to **time.Time** | Last successful login time for user. | [optional] [readonly] 
 **LastName** | Pointer to **string** | Last name of the user. This field is populated from the IdP attributes received after authentication. | [optional] [readonly] 
+**LastRoleModifiedTime** | Pointer to **time.Time** | Last role modification time for user. | [optional] [readonly] 
 **Name** | Pointer to **string** | Name as configured in the IdP. | [optional] [readonly] 
 **UserIdOrEmail** | Pointer to **string** | UserID or email as configured in the IdP. | [optional] 
 **UserType** | Pointer to **string** | Type of the User. If a user is added manually by specifying the email address, or has logged in using groups, based on the IdP attributes received during authentication. If added manually, the user type will be static, otherwise dynamic. | [optional] [readonly] 
 **UserUniqueIdentifier** | Pointer to **string** | Unique id of the user used by the identity provider to store the user. | [optional] [readonly] 
-**ApiKeys** | Pointer to [**[]IamApiKeyRelationship**](iam.ApiKey.Relationship.md) | An array of relationships to iamApiKey resources. | [optional] [readonly] 
-**AppRegistrations** | Pointer to [**[]IamAppRegistrationRelationship**](iam.AppRegistration.Relationship.md) | An array of relationships to iamAppRegistration resources. | [optional] [readonly] 
+**ApiKeys** | Pointer to [**[]IamApiKeyRelationship**](IamApiKeyRelationship.md) | An array of relationships to iamApiKey resources. | [optional] [readonly] 
+**AppRegistrations** | Pointer to [**[]IamAppRegistrationRelationship**](IamAppRegistrationRelationship.md) | An array of relationships to iamAppRegistration resources. | [optional] [readonly] 
 **Idp** | Pointer to [**IamIdpRelationship**](iam.Idp.Relationship.md) |  | [optional] 
 **Idpreference** | Pointer to [**IamIdpReferenceRelationship**](iam.IdpReference.Relationship.md) |  | [optional] 
 **LocalUserPassword** | Pointer to [**IamLocalUserPasswordRelationship**](iam.LocalUserPassword.Relationship.md) |  | [optional] 
-**OauthTokens** | Pointer to [**[]IamOAuthTokenRelationship**](iam.OAuthToken.Relationship.md) | An array of relationships to iamOAuthToken resources. | [optional] [readonly] 
-**Permissions** | Pointer to [**[]IamPermissionRelationship**](iam.Permission.Relationship.md) | An array of relationships to iamPermission resources. | [optional] 
-**Sessions** | Pointer to [**[]IamSessionRelationship**](iam.Session.Relationship.md) | An array of relationships to iamSession resources. | [optional] [readonly] 
+**OauthTokens** | Pointer to [**[]IamOAuthTokenRelationship**](IamOAuthTokenRelationship.md) | An array of relationships to iamOAuthToken resources. | [optional] [readonly] 
+**Permissions** | Pointer to [**[]IamPermissionRelationship**](IamPermissionRelationship.md) | An array of relationships to iamPermission resources. | [optional] 
+**Sessions** | Pointer to [**[]IamSessionRelationship**](IamSessionRelationship.md) | An array of relationships to iamSession resources. | [optional] [readonly] 
 
 ## Methods
 
 ### NewIamUser
 
-`func NewIamUser() *IamUser`
+`func NewIamUser(classId string, objectType string, ) *IamUser`
 
 NewIamUser instantiates a new IamUser object
 This constructor will assign default values to properties that have it defined,
@@ -40,6 +43,46 @@ will change when the set of required properties is changed
 NewIamUserWithDefaults instantiates a new IamUser object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetClassId
+
+`func (o *IamUser) GetClassId() string`
+
+GetClassId returns the ClassId field if non-nil, zero value otherwise.
+
+### GetClassIdOk
+
+`func (o *IamUser) GetClassIdOk() (*string, bool)`
+
+GetClassIdOk returns a tuple with the ClassId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetClassId
+
+`func (o *IamUser) SetClassId(v string)`
+
+SetClassId sets ClassId field to given value.
+
+
+### GetObjectType
+
+`func (o *IamUser) GetObjectType() string`
+
+GetObjectType returns the ObjectType field if non-nil, zero value otherwise.
+
+### GetObjectTypeOk
+
+`func (o *IamUser) GetObjectTypeOk() (*string, bool)`
+
+GetObjectTypeOk returns a tuple with the ObjectType field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetObjectType
+
+`func (o *IamUser) SetObjectType(v string)`
+
+SetObjectType sets ObjectType field to given value.
+
 
 ### GetClientIpAddress
 
@@ -165,6 +208,31 @@ SetLastName sets LastName field to given value.
 `func (o *IamUser) HasLastName() bool`
 
 HasLastName returns a boolean if a field has been set.
+
+### GetLastRoleModifiedTime
+
+`func (o *IamUser) GetLastRoleModifiedTime() time.Time`
+
+GetLastRoleModifiedTime returns the LastRoleModifiedTime field if non-nil, zero value otherwise.
+
+### GetLastRoleModifiedTimeOk
+
+`func (o *IamUser) GetLastRoleModifiedTimeOk() (*time.Time, bool)`
+
+GetLastRoleModifiedTimeOk returns a tuple with the LastRoleModifiedTime field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetLastRoleModifiedTime
+
+`func (o *IamUser) SetLastRoleModifiedTime(v time.Time)`
+
+SetLastRoleModifiedTime sets LastRoleModifiedTime field to given value.
+
+### HasLastRoleModifiedTime
+
+`func (o *IamUser) HasLastRoleModifiedTime() bool`
+
+HasLastRoleModifiedTime returns a boolean if a field has been set.
 
 ### GetName
 

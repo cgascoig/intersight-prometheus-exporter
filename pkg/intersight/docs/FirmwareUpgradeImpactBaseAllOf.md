@@ -4,17 +4,19 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**ClassId** | **string** | The fully-qualified name of the instantiated, concrete type. This property is used as a discriminator to identify the type of the payload when marshaling and unmarshaling data. The enum values provides the list of concrete types that can be instantiated from this abstract type. | 
+**ObjectType** | **string** | The fully-qualified name of the instantiated, concrete type. The value should be the same as the &#39;ClassId&#39; property. The enum values provides the list of concrete types that can be instantiated from this abstract type. | 
 **Components** | Pointer to **[]string** |  | [optional] 
 **ComputationState** | Pointer to **string** | Captures the status of an upgrade impact calculation. Indicates whether the calculation is complete, in progress or the calculation is impossible due to the absence of the target image on the endpoint. * &#x60;Inprogress&#x60; - Upgrade impact calculation is in progress. * &#x60;Completed&#x60; - Upgrade impact calculation is completed. * &#x60;Unavailable&#x60; - Upgrade impact is not available since image is not present in FI. | [optional] [default to "Inprogress"]
 **ExcludeComponents** | Pointer to **[]string** |  | [optional] 
-**Impacts** | Pointer to [**[]FirmwareBaseImpact**](firmware.BaseImpact.md) |  | [optional] 
+**Impacts** | Pointer to [**[]FirmwareBaseImpact**](FirmwareBaseImpact.md) |  | [optional] 
 **Summary** | Pointer to **string** | The summary on the component or components getting impacted by the upgrade. * &#x60;Basic&#x60; - Summary of a single instance involved in the upgrade operation. * &#x60;Detail&#x60; - Summary of the collection of single instances for a complex component involved in the upgrade operation. For example, in case of a server upgrade, a detailed summary indicates impact of all the single instances which are part of the server, such as storage controller, drives, and BIOS. | [optional] [default to "Basic"]
 
 ## Methods
 
 ### NewFirmwareUpgradeImpactBaseAllOf
 
-`func NewFirmwareUpgradeImpactBaseAllOf() *FirmwareUpgradeImpactBaseAllOf`
+`func NewFirmwareUpgradeImpactBaseAllOf(classId string, objectType string, ) *FirmwareUpgradeImpactBaseAllOf`
 
 NewFirmwareUpgradeImpactBaseAllOf instantiates a new FirmwareUpgradeImpactBaseAllOf object
 This constructor will assign default values to properties that have it defined,
@@ -28,6 +30,46 @@ will change when the set of required properties is changed
 NewFirmwareUpgradeImpactBaseAllOfWithDefaults instantiates a new FirmwareUpgradeImpactBaseAllOf object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetClassId
+
+`func (o *FirmwareUpgradeImpactBaseAllOf) GetClassId() string`
+
+GetClassId returns the ClassId field if non-nil, zero value otherwise.
+
+### GetClassIdOk
+
+`func (o *FirmwareUpgradeImpactBaseAllOf) GetClassIdOk() (*string, bool)`
+
+GetClassIdOk returns a tuple with the ClassId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetClassId
+
+`func (o *FirmwareUpgradeImpactBaseAllOf) SetClassId(v string)`
+
+SetClassId sets ClassId field to given value.
+
+
+### GetObjectType
+
+`func (o *FirmwareUpgradeImpactBaseAllOf) GetObjectType() string`
+
+GetObjectType returns the ObjectType field if non-nil, zero value otherwise.
+
+### GetObjectTypeOk
+
+`func (o *FirmwareUpgradeImpactBaseAllOf) GetObjectTypeOk() (*string, bool)`
+
+GetObjectTypeOk returns a tuple with the ObjectType field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetObjectType
+
+`func (o *FirmwareUpgradeImpactBaseAllOf) SetObjectType(v string)`
+
+SetObjectType sets ObjectType field to given value.
+
 
 ### GetComponents
 
@@ -54,6 +96,16 @@ SetComponents sets Components field to given value.
 
 HasComponents returns a boolean if a field has been set.
 
+### SetComponentsNil
+
+`func (o *FirmwareUpgradeImpactBaseAllOf) SetComponentsNil(b bool)`
+
+ SetComponentsNil sets the value for Components to be an explicit nil
+
+### UnsetComponents
+`func (o *FirmwareUpgradeImpactBaseAllOf) UnsetComponents()`
+
+UnsetComponents ensures that no value is present for Components, not even an explicit nil
 ### GetComputationState
 
 `func (o *FirmwareUpgradeImpactBaseAllOf) GetComputationState() string`
@@ -104,6 +156,16 @@ SetExcludeComponents sets ExcludeComponents field to given value.
 
 HasExcludeComponents returns a boolean if a field has been set.
 
+### SetExcludeComponentsNil
+
+`func (o *FirmwareUpgradeImpactBaseAllOf) SetExcludeComponentsNil(b bool)`
+
+ SetExcludeComponentsNil sets the value for ExcludeComponents to be an explicit nil
+
+### UnsetExcludeComponents
+`func (o *FirmwareUpgradeImpactBaseAllOf) UnsetExcludeComponents()`
+
+UnsetExcludeComponents ensures that no value is present for ExcludeComponents, not even an explicit nil
 ### GetImpacts
 
 `func (o *FirmwareUpgradeImpactBaseAllOf) GetImpacts() []FirmwareBaseImpact`
@@ -129,6 +191,16 @@ SetImpacts sets Impacts field to given value.
 
 HasImpacts returns a boolean if a field has been set.
 
+### SetImpactsNil
+
+`func (o *FirmwareUpgradeImpactBaseAllOf) SetImpactsNil(b bool)`
+
+ SetImpactsNil sets the value for Impacts to be an explicit nil
+
+### UnsetImpacts
+`func (o *FirmwareUpgradeImpactBaseAllOf) UnsetImpacts()`
+
+UnsetImpacts ensures that no value is present for Impacts, not even an explicit nil
 ### GetSummary
 
 `func (o *FirmwareUpgradeImpactBaseAllOf) GetSummary() string`

@@ -4,15 +4,18 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**ClassId** | **string** | The fully-qualified name of the instantiated, concrete type. This property is used as a discriminator to identify the type of the payload when marshaling and unmarshaling data. | [default to "workflow.MoReferenceProperty"]
+**ObjectType** | **string** | The fully-qualified name of the instantiated, concrete type. The value should be the same as the &#39;ClassId&#39; property. | [default to "workflow.MoReferenceProperty"]
 **DisplayAttributes** | Pointer to **[]string** |  | [optional] 
 **Selector** | Pointer to **string** | Field to hold an Intersight API along with an optional filter to narrow down the search options. | [optional] 
+**SelectorProperty** | Pointer to [**NullableWorkflowSelectorProperty**](workflow.SelectorProperty.md) |  | [optional] 
 **ValueAttribute** | Pointer to **string** | A property from the Intersight object, value of which can be used as value for referenced input definition. | [optional] 
 
 ## Methods
 
 ### NewWorkflowMoReferencePropertyAllOf
 
-`func NewWorkflowMoReferencePropertyAllOf() *WorkflowMoReferencePropertyAllOf`
+`func NewWorkflowMoReferencePropertyAllOf(classId string, objectType string, ) *WorkflowMoReferencePropertyAllOf`
 
 NewWorkflowMoReferencePropertyAllOf instantiates a new WorkflowMoReferencePropertyAllOf object
 This constructor will assign default values to properties that have it defined,
@@ -26,6 +29,46 @@ will change when the set of required properties is changed
 NewWorkflowMoReferencePropertyAllOfWithDefaults instantiates a new WorkflowMoReferencePropertyAllOf object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetClassId
+
+`func (o *WorkflowMoReferencePropertyAllOf) GetClassId() string`
+
+GetClassId returns the ClassId field if non-nil, zero value otherwise.
+
+### GetClassIdOk
+
+`func (o *WorkflowMoReferencePropertyAllOf) GetClassIdOk() (*string, bool)`
+
+GetClassIdOk returns a tuple with the ClassId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetClassId
+
+`func (o *WorkflowMoReferencePropertyAllOf) SetClassId(v string)`
+
+SetClassId sets ClassId field to given value.
+
+
+### GetObjectType
+
+`func (o *WorkflowMoReferencePropertyAllOf) GetObjectType() string`
+
+GetObjectType returns the ObjectType field if non-nil, zero value otherwise.
+
+### GetObjectTypeOk
+
+`func (o *WorkflowMoReferencePropertyAllOf) GetObjectTypeOk() (*string, bool)`
+
+GetObjectTypeOk returns a tuple with the ObjectType field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetObjectType
+
+`func (o *WorkflowMoReferencePropertyAllOf) SetObjectType(v string)`
+
+SetObjectType sets ObjectType field to given value.
+
 
 ### GetDisplayAttributes
 
@@ -52,6 +95,16 @@ SetDisplayAttributes sets DisplayAttributes field to given value.
 
 HasDisplayAttributes returns a boolean if a field has been set.
 
+### SetDisplayAttributesNil
+
+`func (o *WorkflowMoReferencePropertyAllOf) SetDisplayAttributesNil(b bool)`
+
+ SetDisplayAttributesNil sets the value for DisplayAttributes to be an explicit nil
+
+### UnsetDisplayAttributes
+`func (o *WorkflowMoReferencePropertyAllOf) UnsetDisplayAttributes()`
+
+UnsetDisplayAttributes ensures that no value is present for DisplayAttributes, not even an explicit nil
 ### GetSelector
 
 `func (o *WorkflowMoReferencePropertyAllOf) GetSelector() string`
@@ -77,6 +130,41 @@ SetSelector sets Selector field to given value.
 
 HasSelector returns a boolean if a field has been set.
 
+### GetSelectorProperty
+
+`func (o *WorkflowMoReferencePropertyAllOf) GetSelectorProperty() WorkflowSelectorProperty`
+
+GetSelectorProperty returns the SelectorProperty field if non-nil, zero value otherwise.
+
+### GetSelectorPropertyOk
+
+`func (o *WorkflowMoReferencePropertyAllOf) GetSelectorPropertyOk() (*WorkflowSelectorProperty, bool)`
+
+GetSelectorPropertyOk returns a tuple with the SelectorProperty field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSelectorProperty
+
+`func (o *WorkflowMoReferencePropertyAllOf) SetSelectorProperty(v WorkflowSelectorProperty)`
+
+SetSelectorProperty sets SelectorProperty field to given value.
+
+### HasSelectorProperty
+
+`func (o *WorkflowMoReferencePropertyAllOf) HasSelectorProperty() bool`
+
+HasSelectorProperty returns a boolean if a field has been set.
+
+### SetSelectorPropertyNil
+
+`func (o *WorkflowMoReferencePropertyAllOf) SetSelectorPropertyNil(b bool)`
+
+ SetSelectorPropertyNil sets the value for SelectorProperty to be an explicit nil
+
+### UnsetSelectorProperty
+`func (o *WorkflowMoReferencePropertyAllOf) UnsetSelectorProperty()`
+
+UnsetSelectorProperty ensures that no value is present for SelectorProperty, not even an explicit nil
 ### GetValueAttribute
 
 `func (o *WorkflowMoReferencePropertyAllOf) GetValueAttribute() string`

@@ -4,7 +4,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**AlarmSummary** | Pointer to [**ComputeAlarmSummary**](compute.AlarmSummary.md) |  | [optional] 
+**ClassId** | **string** | The fully-qualified name of the instantiated, concrete type. This property is used as a discriminator to identify the type of the payload when marshaling and unmarshaling data. | [default to "equipment.Chassis"]
+**ObjectType** | **string** | The fully-qualified name of the instantiated, concrete type. The value should be the same as the &#39;ClassId&#39; property. | [default to "equipment.Chassis"]
+**AlarmSummary** | Pointer to [**NullableComputeAlarmSummary**](compute.AlarmSummary.md) |  | [optional] 
 **ChassisId** | Pointer to **int64** | The assigned identifier for a chassis. | [optional] [readonly] 
 **ConnectionPath** | Pointer to **string** | This field identifies the connectivity path for the chassis enclosure. | [optional] [readonly] 
 **ConnectionStatus** | Pointer to **string** | This field identifies the connectivity status for the chassis enclosure. | [optional] [readonly] 
@@ -12,6 +14,7 @@ Name | Type | Description | Notes
 **FaultSummary** | Pointer to **int64** | This field summarizes the faults on the chassis enclosure. | [optional] 
 **ManagementMode** | Pointer to **string** | The management mode of the blade server chassis. * &#x60;IntersightStandalone&#x60; - Intersight Standalone mode of operation. * &#x60;UCSM&#x60; - Unified Computing System Manager mode of operation. * &#x60;Intersight&#x60; - Intersight managed mode of operation. | [optional] [readonly] [default to "IntersightStandalone"]
 **Name** | Pointer to **string** | This field identifies the name for the chassis enclosure. | [optional] [readonly] 
+**OperReason** | Pointer to **[]string** |  | [optional] 
 **OperState** | Pointer to **string** | This field identifies the Chassis Operational State. | [optional] [readonly] 
 **PartNumber** | Pointer to **string** | Part Number identifier for the chassis enclosure. | [optional] [readonly] 
 **Pid** | Pointer to **string** | This field identifies the Product ID for the chassis enclosure. | [optional] [readonly] 
@@ -19,23 +22,26 @@ Name | Type | Description | Notes
 **ProductName** | Pointer to **string** | This field identifies the Product Name for the chassis enclosure. | [optional] [readonly] 
 **Sku** | Pointer to **string** | This field identifies the Stock Keeping Unit for the chassis enclosure. | [optional] [readonly] 
 **Vid** | Pointer to **string** | This field identifies the Vendor ID for the chassis enclosure. | [optional] [readonly] 
-**Blades** | Pointer to [**[]ComputeBladeRelationship**](compute.Blade.Relationship.md) | An array of relationships to computeBlade resources. | [optional] [readonly] 
-**Fanmodules** | Pointer to [**[]EquipmentFanModuleRelationship**](equipment.FanModule.Relationship.md) | An array of relationships to equipmentFanModule resources. | [optional] [readonly] 
+**Blades** | Pointer to [**[]ComputeBladeRelationship**](ComputeBladeRelationship.md) | An array of relationships to computeBlade resources. | [optional] [readonly] 
+**FanControl** | Pointer to [**EquipmentFanControlRelationship**](equipment.FanControl.Relationship.md) |  | [optional] 
+**Fanmodules** | Pointer to [**[]EquipmentFanModuleRelationship**](EquipmentFanModuleRelationship.md) | An array of relationships to equipmentFanModule resources. | [optional] [readonly] 
 **InventoryDeviceInfo** | Pointer to [**InventoryDeviceInfoRelationship**](inventory.DeviceInfo.Relationship.md) |  | [optional] 
-**Ioms** | Pointer to [**[]EquipmentIoCardRelationship**](equipment.IoCard.Relationship.md) | An array of relationships to equipmentIoCard resources. | [optional] [readonly] 
+**Ioms** | Pointer to [**[]EquipmentIoCardRelationship**](EquipmentIoCardRelationship.md) | An array of relationships to equipmentIoCard resources. | [optional] [readonly] 
 **LocatorLed** | Pointer to [**EquipmentLocatorLedRelationship**](equipment.LocatorLed.Relationship.md) |  | [optional] 
+**PowerControlState** | Pointer to [**PowerControlStateRelationship**](power.ControlState.Relationship.md) |  | [optional] 
 **PsuControl** | Pointer to [**EquipmentPsuControlRelationship**](equipment.PsuControl.Relationship.md) |  | [optional] 
-**Psus** | Pointer to [**[]EquipmentPsuRelationship**](equipment.Psu.Relationship.md) | An array of relationships to equipmentPsu resources. | [optional] [readonly] 
+**Psus** | Pointer to [**[]EquipmentPsuRelationship**](EquipmentPsuRelationship.md) | An array of relationships to equipmentPsu resources. | [optional] [readonly] 
 **RegisteredDevice** | Pointer to [**AssetDeviceRegistrationRelationship**](asset.DeviceRegistration.Relationship.md) |  | [optional] 
-**Sasexpanders** | Pointer to [**[]StorageSasExpanderRelationship**](storage.SasExpander.Relationship.md) | An array of relationships to storageSasExpander resources. | [optional] [readonly] 
-**Siocs** | Pointer to [**[]EquipmentSystemIoControllerRelationship**](equipment.SystemIoController.Relationship.md) | An array of relationships to equipmentSystemIoController resources. | [optional] [readonly] 
-**StorageEnclosures** | Pointer to [**[]StorageEnclosureRelationship**](storage.Enclosure.Relationship.md) | An array of relationships to storageEnclosure resources. | [optional] [readonly] 
+**Sasexpanders** | Pointer to [**[]StorageSasExpanderRelationship**](StorageSasExpanderRelationship.md) | An array of relationships to storageSasExpander resources. | [optional] [readonly] 
+**Siocs** | Pointer to [**[]EquipmentSystemIoControllerRelationship**](EquipmentSystemIoControllerRelationship.md) | An array of relationships to equipmentSystemIoController resources. | [optional] [readonly] 
+**StorageEnclosures** | Pointer to [**[]StorageEnclosureRelationship**](StorageEnclosureRelationship.md) | An array of relationships to storageEnclosure resources. | [optional] [readonly] 
+**VirtualDriveContainer** | Pointer to [**[]StorageVirtualDriveContainerRelationship**](StorageVirtualDriveContainerRelationship.md) | An array of relationships to storageVirtualDriveContainer resources. | [optional] 
 
 ## Methods
 
 ### NewEquipmentChassisAllOf
 
-`func NewEquipmentChassisAllOf() *EquipmentChassisAllOf`
+`func NewEquipmentChassisAllOf(classId string, objectType string, ) *EquipmentChassisAllOf`
 
 NewEquipmentChassisAllOf instantiates a new EquipmentChassisAllOf object
 This constructor will assign default values to properties that have it defined,
@@ -49,6 +55,46 @@ will change when the set of required properties is changed
 NewEquipmentChassisAllOfWithDefaults instantiates a new EquipmentChassisAllOf object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetClassId
+
+`func (o *EquipmentChassisAllOf) GetClassId() string`
+
+GetClassId returns the ClassId field if non-nil, zero value otherwise.
+
+### GetClassIdOk
+
+`func (o *EquipmentChassisAllOf) GetClassIdOk() (*string, bool)`
+
+GetClassIdOk returns a tuple with the ClassId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetClassId
+
+`func (o *EquipmentChassisAllOf) SetClassId(v string)`
+
+SetClassId sets ClassId field to given value.
+
+
+### GetObjectType
+
+`func (o *EquipmentChassisAllOf) GetObjectType() string`
+
+GetObjectType returns the ObjectType field if non-nil, zero value otherwise.
+
+### GetObjectTypeOk
+
+`func (o *EquipmentChassisAllOf) GetObjectTypeOk() (*string, bool)`
+
+GetObjectTypeOk returns a tuple with the ObjectType field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetObjectType
+
+`func (o *EquipmentChassisAllOf) SetObjectType(v string)`
+
+SetObjectType sets ObjectType field to given value.
+
 
 ### GetAlarmSummary
 
@@ -75,6 +121,16 @@ SetAlarmSummary sets AlarmSummary field to given value.
 
 HasAlarmSummary returns a boolean if a field has been set.
 
+### SetAlarmSummaryNil
+
+`func (o *EquipmentChassisAllOf) SetAlarmSummaryNil(b bool)`
+
+ SetAlarmSummaryNil sets the value for AlarmSummary to be an explicit nil
+
+### UnsetAlarmSummary
+`func (o *EquipmentChassisAllOf) UnsetAlarmSummary()`
+
+UnsetAlarmSummary ensures that no value is present for AlarmSummary, not even an explicit nil
 ### GetChassisId
 
 `func (o *EquipmentChassisAllOf) GetChassisId() int64`
@@ -250,6 +306,41 @@ SetName sets Name field to given value.
 
 HasName returns a boolean if a field has been set.
 
+### GetOperReason
+
+`func (o *EquipmentChassisAllOf) GetOperReason() []string`
+
+GetOperReason returns the OperReason field if non-nil, zero value otherwise.
+
+### GetOperReasonOk
+
+`func (o *EquipmentChassisAllOf) GetOperReasonOk() (*[]string, bool)`
+
+GetOperReasonOk returns a tuple with the OperReason field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetOperReason
+
+`func (o *EquipmentChassisAllOf) SetOperReason(v []string)`
+
+SetOperReason sets OperReason field to given value.
+
+### HasOperReason
+
+`func (o *EquipmentChassisAllOf) HasOperReason() bool`
+
+HasOperReason returns a boolean if a field has been set.
+
+### SetOperReasonNil
+
+`func (o *EquipmentChassisAllOf) SetOperReasonNil(b bool)`
+
+ SetOperReasonNil sets the value for OperReason to be an explicit nil
+
+### UnsetOperReason
+`func (o *EquipmentChassisAllOf) UnsetOperReason()`
+
+UnsetOperReason ensures that no value is present for OperReason, not even an explicit nil
 ### GetOperState
 
 `func (o *EquipmentChassisAllOf) GetOperState() string`
@@ -460,6 +551,31 @@ HasBlades returns a boolean if a field has been set.
 `func (o *EquipmentChassisAllOf) UnsetBlades()`
 
 UnsetBlades ensures that no value is present for Blades, not even an explicit nil
+### GetFanControl
+
+`func (o *EquipmentChassisAllOf) GetFanControl() EquipmentFanControlRelationship`
+
+GetFanControl returns the FanControl field if non-nil, zero value otherwise.
+
+### GetFanControlOk
+
+`func (o *EquipmentChassisAllOf) GetFanControlOk() (*EquipmentFanControlRelationship, bool)`
+
+GetFanControlOk returns a tuple with the FanControl field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetFanControl
+
+`func (o *EquipmentChassisAllOf) SetFanControl(v EquipmentFanControlRelationship)`
+
+SetFanControl sets FanControl field to given value.
+
+### HasFanControl
+
+`func (o *EquipmentChassisAllOf) HasFanControl() bool`
+
+HasFanControl returns a boolean if a field has been set.
+
 ### GetFanmodules
 
 `func (o *EquipmentChassisAllOf) GetFanmodules() []EquipmentFanModuleRelationship`
@@ -579,6 +695,31 @@ SetLocatorLed sets LocatorLed field to given value.
 `func (o *EquipmentChassisAllOf) HasLocatorLed() bool`
 
 HasLocatorLed returns a boolean if a field has been set.
+
+### GetPowerControlState
+
+`func (o *EquipmentChassisAllOf) GetPowerControlState() PowerControlStateRelationship`
+
+GetPowerControlState returns the PowerControlState field if non-nil, zero value otherwise.
+
+### GetPowerControlStateOk
+
+`func (o *EquipmentChassisAllOf) GetPowerControlStateOk() (*PowerControlStateRelationship, bool)`
+
+GetPowerControlStateOk returns a tuple with the PowerControlState field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPowerControlState
+
+`func (o *EquipmentChassisAllOf) SetPowerControlState(v PowerControlStateRelationship)`
+
+SetPowerControlState sets PowerControlState field to given value.
+
+### HasPowerControlState
+
+`func (o *EquipmentChassisAllOf) HasPowerControlState() bool`
+
+HasPowerControlState returns a boolean if a field has been set.
 
 ### GetPsuControl
 
@@ -770,6 +911,41 @@ HasStorageEnclosures returns a boolean if a field has been set.
 `func (o *EquipmentChassisAllOf) UnsetStorageEnclosures()`
 
 UnsetStorageEnclosures ensures that no value is present for StorageEnclosures, not even an explicit nil
+### GetVirtualDriveContainer
+
+`func (o *EquipmentChassisAllOf) GetVirtualDriveContainer() []StorageVirtualDriveContainerRelationship`
+
+GetVirtualDriveContainer returns the VirtualDriveContainer field if non-nil, zero value otherwise.
+
+### GetVirtualDriveContainerOk
+
+`func (o *EquipmentChassisAllOf) GetVirtualDriveContainerOk() (*[]StorageVirtualDriveContainerRelationship, bool)`
+
+GetVirtualDriveContainerOk returns a tuple with the VirtualDriveContainer field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetVirtualDriveContainer
+
+`func (o *EquipmentChassisAllOf) SetVirtualDriveContainer(v []StorageVirtualDriveContainerRelationship)`
+
+SetVirtualDriveContainer sets VirtualDriveContainer field to given value.
+
+### HasVirtualDriveContainer
+
+`func (o *EquipmentChassisAllOf) HasVirtualDriveContainer() bool`
+
+HasVirtualDriveContainer returns a boolean if a field has been set.
+
+### SetVirtualDriveContainerNil
+
+`func (o *EquipmentChassisAllOf) SetVirtualDriveContainerNil(b bool)`
+
+ SetVirtualDriveContainerNil sets the value for VirtualDriveContainer to be an explicit nil
+
+### UnsetVirtualDriveContainer
+`func (o *EquipmentChassisAllOf) UnsetVirtualDriveContainer()`
+
+UnsetVirtualDriveContainer ensures that no value is present for VirtualDriveContainer, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

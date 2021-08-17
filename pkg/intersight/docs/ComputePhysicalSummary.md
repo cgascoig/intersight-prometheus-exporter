@@ -4,8 +4,10 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**ClassId** | **string** | The fully-qualified name of the instantiated, concrete type. This property is used as a discriminator to identify the type of the payload when marshaling and unmarshaling data. | [default to "compute.PhysicalSummary"]
+**ObjectType** | **string** | The fully-qualified name of the instantiated, concrete type. The value should be the same as the &#39;ClassId&#39; property. | [default to "compute.PhysicalSummary"]
 **AdminPowerState** | Pointer to **string** | The desired power state of the server. | [optional] [readonly] 
-**AlarmSummary** | Pointer to [**ComputeAlarmSummary**](compute.AlarmSummary.md) |  | [optional] 
+**AlarmSummary** | Pointer to [**NullableComputeAlarmSummary**](compute.AlarmSummary.md) |  | [optional] 
 **AssetTag** | Pointer to **string** | The user defined asset tag assigned to the server. | [optional] [readonly] 
 **AvailableMemory** | Pointer to **int64** | The amount of memory available on the server. | [optional] [readonly] 
 **BiosPostComplete** | Pointer to **bool** | The BIOS POST completion status of the server. | [optional] [readonly] 
@@ -17,7 +19,7 @@ Name | Type | Description | Notes
 **FaultSummary** | Pointer to **int64** | The fault summary for the server. | [optional] [readonly] 
 **Firmware** | Pointer to **string** | The firmware version of the Cisco Integrated Management Controller (CIMC) for this server. | [optional] [readonly] 
 **Ipv4Address** | Pointer to **string** | The IPv4 address configured on the management interface of the Integrated Management Controller. | [optional] [readonly] 
-**KvmIpAddresses** | Pointer to [**[]ComputeIpAddress**](compute.IpAddress.md) |  | [optional] 
+**KvmIpAddresses** | Pointer to [**[]ComputeIpAddress**](ComputeIpAddress.md) |  | [optional] 
 **ManagementMode** | Pointer to **string** | The management mode of the server. * &#x60;IntersightStandalone&#x60; - Intersight Standalone mode of operation. * &#x60;UCSM&#x60; - Unified Computing System Manager mode of operation. * &#x60;Intersight&#x60; - Intersight managed mode of operation. | [optional] [readonly] [default to "IntersightStandalone"]
 **MemorySpeed** | Pointer to **string** | The maximum memory speed in MHz available on the server. | [optional] [readonly] 
 **MgmtIpAddress** | Pointer to **string** | Management address of the server. | [optional] [readonly] 
@@ -31,10 +33,11 @@ Name | Type | Description | Notes
 **NumFcHostInterfaces** | Pointer to **int64** | The total number of vHBAs which are visible to a host on the server. | [optional] [readonly] 
 **NumThreads** | Pointer to **int64** | The total number of threads the server is capable of handling. | [optional] [readonly] 
 **OperPowerState** | Pointer to **string** | The actual power state of the server. | [optional] [readonly] 
+**OperReason** | Pointer to **[]string** |  | [optional] 
 **OperState** | Pointer to **string** | The operational state of the server. | [optional] [readonly] 
 **Operability** | Pointer to **string** | The operability of the server. | [optional] [readonly] 
 **PlatformType** | Pointer to **string** | The platform type of the registered device - whether managed by UCSM or operating in standalone mode. | [optional] [readonly] 
-**Presence** | Pointer to **string** | Indicates if a server is present in a slot and is applicable for blade servers. | [optional] [readonly] 
+**Presence** | Pointer to **string** | This field identifies the presence (equipped) or absence of the given component. | [optional] [readonly] 
 **Revision** | Pointer to **string** | This field identifies the revision of the given component. | [optional] [readonly] 
 **Rn** | Pointer to **string** | The Relative Name uniquely identifies an object within a given context. | [optional] [readonly] 
 **ScaledMode** | Pointer to **string** | The mode of the server that determines it is scaled. | [optional] [readonly] 
@@ -48,7 +51,6 @@ Name | Type | Description | Notes
 **UserLabel** | Pointer to **string** | The user defined label assigned to the server. | [optional] [readonly] 
 **Uuid** | Pointer to **string** | The universally unique identity of the server. | [optional] [readonly] 
 **Vendor** | Pointer to **string** | This field identifies the vendor of the given component. | [optional] [readonly] 
-**EquipmentChassis** | Pointer to [**EquipmentChassisRelationship**](equipment.Chassis.Relationship.md) |  | [optional] 
 **InventoryDeviceInfo** | Pointer to [**InventoryDeviceInfoRelationship**](inventory.DeviceInfo.Relationship.md) |  | [optional] 
 **RegisteredDevice** | Pointer to [**AssetDeviceRegistrationRelationship**](asset.DeviceRegistration.Relationship.md) |  | [optional] 
 
@@ -56,7 +58,7 @@ Name | Type | Description | Notes
 
 ### NewComputePhysicalSummary
 
-`func NewComputePhysicalSummary() *ComputePhysicalSummary`
+`func NewComputePhysicalSummary(classId string, objectType string, ) *ComputePhysicalSummary`
 
 NewComputePhysicalSummary instantiates a new ComputePhysicalSummary object
 This constructor will assign default values to properties that have it defined,
@@ -70,6 +72,46 @@ will change when the set of required properties is changed
 NewComputePhysicalSummaryWithDefaults instantiates a new ComputePhysicalSummary object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetClassId
+
+`func (o *ComputePhysicalSummary) GetClassId() string`
+
+GetClassId returns the ClassId field if non-nil, zero value otherwise.
+
+### GetClassIdOk
+
+`func (o *ComputePhysicalSummary) GetClassIdOk() (*string, bool)`
+
+GetClassIdOk returns a tuple with the ClassId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetClassId
+
+`func (o *ComputePhysicalSummary) SetClassId(v string)`
+
+SetClassId sets ClassId field to given value.
+
+
+### GetObjectType
+
+`func (o *ComputePhysicalSummary) GetObjectType() string`
+
+GetObjectType returns the ObjectType field if non-nil, zero value otherwise.
+
+### GetObjectTypeOk
+
+`func (o *ComputePhysicalSummary) GetObjectTypeOk() (*string, bool)`
+
+GetObjectTypeOk returns a tuple with the ObjectType field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetObjectType
+
+`func (o *ComputePhysicalSummary) SetObjectType(v string)`
+
+SetObjectType sets ObjectType field to given value.
+
 
 ### GetAdminPowerState
 
@@ -121,6 +163,16 @@ SetAlarmSummary sets AlarmSummary field to given value.
 
 HasAlarmSummary returns a boolean if a field has been set.
 
+### SetAlarmSummaryNil
+
+`func (o *ComputePhysicalSummary) SetAlarmSummaryNil(b bool)`
+
+ SetAlarmSummaryNil sets the value for AlarmSummary to be an explicit nil
+
+### UnsetAlarmSummary
+`func (o *ComputePhysicalSummary) UnsetAlarmSummary()`
+
+UnsetAlarmSummary ensures that no value is present for AlarmSummary, not even an explicit nil
 ### GetAssetTag
 
 `func (o *ComputePhysicalSummary) GetAssetTag() string`
@@ -421,6 +473,16 @@ SetKvmIpAddresses sets KvmIpAddresses field to given value.
 
 HasKvmIpAddresses returns a boolean if a field has been set.
 
+### SetKvmIpAddressesNil
+
+`func (o *ComputePhysicalSummary) SetKvmIpAddressesNil(b bool)`
+
+ SetKvmIpAddressesNil sets the value for KvmIpAddresses to be an explicit nil
+
+### UnsetKvmIpAddresses
+`func (o *ComputePhysicalSummary) UnsetKvmIpAddresses()`
+
+UnsetKvmIpAddresses ensures that no value is present for KvmIpAddresses, not even an explicit nil
 ### GetManagementMode
 
 `func (o *ComputePhysicalSummary) GetManagementMode() string`
@@ -746,6 +808,41 @@ SetOperPowerState sets OperPowerState field to given value.
 
 HasOperPowerState returns a boolean if a field has been set.
 
+### GetOperReason
+
+`func (o *ComputePhysicalSummary) GetOperReason() []string`
+
+GetOperReason returns the OperReason field if non-nil, zero value otherwise.
+
+### GetOperReasonOk
+
+`func (o *ComputePhysicalSummary) GetOperReasonOk() (*[]string, bool)`
+
+GetOperReasonOk returns a tuple with the OperReason field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetOperReason
+
+`func (o *ComputePhysicalSummary) SetOperReason(v []string)`
+
+SetOperReason sets OperReason field to given value.
+
+### HasOperReason
+
+`func (o *ComputePhysicalSummary) HasOperReason() bool`
+
+HasOperReason returns a boolean if a field has been set.
+
+### SetOperReasonNil
+
+`func (o *ComputePhysicalSummary) SetOperReasonNil(b bool)`
+
+ SetOperReasonNil sets the value for OperReason to be an explicit nil
+
+### UnsetOperReason
+`func (o *ComputePhysicalSummary) UnsetOperReason()`
+
+UnsetOperReason ensures that no value is present for OperReason, not even an explicit nil
 ### GetOperState
 
 `func (o *ComputePhysicalSummary) GetOperState() string`
@@ -1170,31 +1267,6 @@ SetVendor sets Vendor field to given value.
 `func (o *ComputePhysicalSummary) HasVendor() bool`
 
 HasVendor returns a boolean if a field has been set.
-
-### GetEquipmentChassis
-
-`func (o *ComputePhysicalSummary) GetEquipmentChassis() EquipmentChassisRelationship`
-
-GetEquipmentChassis returns the EquipmentChassis field if non-nil, zero value otherwise.
-
-### GetEquipmentChassisOk
-
-`func (o *ComputePhysicalSummary) GetEquipmentChassisOk() (*EquipmentChassisRelationship, bool)`
-
-GetEquipmentChassisOk returns a tuple with the EquipmentChassis field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetEquipmentChassis
-
-`func (o *ComputePhysicalSummary) SetEquipmentChassis(v EquipmentChassisRelationship)`
-
-SetEquipmentChassis sets EquipmentChassis field to given value.
-
-### HasEquipmentChassis
-
-`func (o *ComputePhysicalSummary) HasEquipmentChassis() bool`
-
-HasEquipmentChassis returns a boolean if a field has been set.
 
 ### GetInventoryDeviceInfo
 

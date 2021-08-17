@@ -4,18 +4,21 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**ClassId** | **string** | The fully-qualified name of the instantiated, concrete type. This property is used as a discriminator to identify the type of the payload when marshaling and unmarshaling data. | [default to "hyperflex.NodeProfile"]
+**ObjectType** | **string** | The fully-qualified name of the instantiated, concrete type. The value should be the same as the &#39;ClassId&#39; property. | [default to "hyperflex.NodeProfile"]
 **HxdpDataIp** | Pointer to **string** | IP address for storage data network (Controller VM interface). | [optional] 
 **HxdpMgmtIp** | Pointer to **string** | IP address for HyperFlex management network. | [optional] 
+**HypervisorControlIp** | Pointer to **string** | IP address for hypervisor control such as VM migration or pod management. | [optional] 
 **HypervisorDataIp** | Pointer to **string** | IP address for storage data network (Hypervisor interface). | [optional] 
 **HypervisorMgmtIp** | Pointer to **string** | IP address for Hypervisor management network. | [optional] 
-**AssignedServer** | Pointer to [**ComputeRackUnitRelationship**](compute.RackUnit.Relationship.md) |  | [optional] 
+**AssignedServer** | Pointer to [**ComputePhysicalRelationship**](compute.Physical.Relationship.md) |  | [optional] 
 **ClusterProfile** | Pointer to [**HyperflexClusterProfileRelationship**](hyperflex.ClusterProfile.Relationship.md) |  | [optional] 
 
 ## Methods
 
 ### NewHyperflexNodeProfileAllOf
 
-`func NewHyperflexNodeProfileAllOf() *HyperflexNodeProfileAllOf`
+`func NewHyperflexNodeProfileAllOf(classId string, objectType string, ) *HyperflexNodeProfileAllOf`
 
 NewHyperflexNodeProfileAllOf instantiates a new HyperflexNodeProfileAllOf object
 This constructor will assign default values to properties that have it defined,
@@ -29,6 +32,46 @@ will change when the set of required properties is changed
 NewHyperflexNodeProfileAllOfWithDefaults instantiates a new HyperflexNodeProfileAllOf object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetClassId
+
+`func (o *HyperflexNodeProfileAllOf) GetClassId() string`
+
+GetClassId returns the ClassId field if non-nil, zero value otherwise.
+
+### GetClassIdOk
+
+`func (o *HyperflexNodeProfileAllOf) GetClassIdOk() (*string, bool)`
+
+GetClassIdOk returns a tuple with the ClassId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetClassId
+
+`func (o *HyperflexNodeProfileAllOf) SetClassId(v string)`
+
+SetClassId sets ClassId field to given value.
+
+
+### GetObjectType
+
+`func (o *HyperflexNodeProfileAllOf) GetObjectType() string`
+
+GetObjectType returns the ObjectType field if non-nil, zero value otherwise.
+
+### GetObjectTypeOk
+
+`func (o *HyperflexNodeProfileAllOf) GetObjectTypeOk() (*string, bool)`
+
+GetObjectTypeOk returns a tuple with the ObjectType field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetObjectType
+
+`func (o *HyperflexNodeProfileAllOf) SetObjectType(v string)`
+
+SetObjectType sets ObjectType field to given value.
+
 
 ### GetHxdpDataIp
 
@@ -79,6 +122,31 @@ SetHxdpMgmtIp sets HxdpMgmtIp field to given value.
 `func (o *HyperflexNodeProfileAllOf) HasHxdpMgmtIp() bool`
 
 HasHxdpMgmtIp returns a boolean if a field has been set.
+
+### GetHypervisorControlIp
+
+`func (o *HyperflexNodeProfileAllOf) GetHypervisorControlIp() string`
+
+GetHypervisorControlIp returns the HypervisorControlIp field if non-nil, zero value otherwise.
+
+### GetHypervisorControlIpOk
+
+`func (o *HyperflexNodeProfileAllOf) GetHypervisorControlIpOk() (*string, bool)`
+
+GetHypervisorControlIpOk returns a tuple with the HypervisorControlIp field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetHypervisorControlIp
+
+`func (o *HyperflexNodeProfileAllOf) SetHypervisorControlIp(v string)`
+
+SetHypervisorControlIp sets HypervisorControlIp field to given value.
+
+### HasHypervisorControlIp
+
+`func (o *HyperflexNodeProfileAllOf) HasHypervisorControlIp() bool`
+
+HasHypervisorControlIp returns a boolean if a field has been set.
 
 ### GetHypervisorDataIp
 
@@ -132,20 +200,20 @@ HasHypervisorMgmtIp returns a boolean if a field has been set.
 
 ### GetAssignedServer
 
-`func (o *HyperflexNodeProfileAllOf) GetAssignedServer() ComputeRackUnitRelationship`
+`func (o *HyperflexNodeProfileAllOf) GetAssignedServer() ComputePhysicalRelationship`
 
 GetAssignedServer returns the AssignedServer field if non-nil, zero value otherwise.
 
 ### GetAssignedServerOk
 
-`func (o *HyperflexNodeProfileAllOf) GetAssignedServerOk() (*ComputeRackUnitRelationship, bool)`
+`func (o *HyperflexNodeProfileAllOf) GetAssignedServerOk() (*ComputePhysicalRelationship, bool)`
 
 GetAssignedServerOk returns a tuple with the AssignedServer field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAssignedServer
 
-`func (o *HyperflexNodeProfileAllOf) SetAssignedServer(v ComputeRackUnitRelationship)`
+`func (o *HyperflexNodeProfileAllOf) SetAssignedServer(v ComputePhysicalRelationship)`
 
 SetAssignedServer sets AssignedServer field to given value.
 

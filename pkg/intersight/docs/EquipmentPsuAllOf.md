@@ -4,11 +4,13 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**ClassId** | **string** | The fully-qualified name of the instantiated, concrete type. This property is used as a discriminator to identify the type of the payload when marshaling and unmarshaling data. | [default to "equipment.Psu"]
+**ObjectType** | **string** | The fully-qualified name of the instantiated, concrete type. The value should be the same as the &#39;ClassId&#39; property. | [default to "equipment.Psu"]
 **Description** | Pointer to **string** | This field is to provide description for the power supply unit. | [optional] [readonly] 
+**OperReason** | Pointer to **[]string** |  | [optional] 
 **OperState** | Pointer to **string** | This field identifies the psu operational state. | [optional] [readonly] 
 **PartNumber** | Pointer to **string** | This field identifies the Part Number for this Power Supply Unit. | [optional] [readonly] 
 **Pid** | Pointer to **string** | This field identifies the Product ID for the Power Supply. | [optional] [readonly] 
-**Presence** | Pointer to **string** | This field identifies the presence state of the psu. | [optional] [readonly] 
 **PsuFwVersion** | Pointer to **string** | This field identifies the Firmware Version of the Power Supply. | [optional] [readonly] 
 **PsuId** | Pointer to **int64** | This represents power supply unit identifier in chassis/server. | [optional] [readonly] 
 **PsuInputSrc** | Pointer to **string** | This field identifies the input source for the Power Supply. | [optional] [readonly] 
@@ -16,7 +18,7 @@ Name | Type | Description | Notes
 **PsuWattage** | Pointer to **string** | This field identifies the Wattage of the Power Supply. | [optional] [readonly] 
 **Sku** | Pointer to **string** | This field identifies the Stockkeeping Unit for this Power Supply. | [optional] [readonly] 
 **Vid** | Pointer to **string** | This field identifies the Vendor ID for this Power Supply Unit. | [optional] [readonly] 
-**Voltage** | Pointer to **string** | This field is used to indicate the Voltage for this Power Supply. | [optional] [readonly] 
+**Voltage** | Pointer to **string** | This field is used to indicate the voltage state for this Power Supply. | [optional] [readonly] 
 **ComputeRackUnit** | Pointer to [**ComputeRackUnitRelationship**](compute.RackUnit.Relationship.md) |  | [optional] 
 **EquipmentChassis** | Pointer to [**EquipmentChassisRelationship**](equipment.Chassis.Relationship.md) |  | [optional] 
 **EquipmentFex** | Pointer to [**EquipmentFexRelationship**](equipment.Fex.Relationship.md) |  | [optional] 
@@ -29,7 +31,7 @@ Name | Type | Description | Notes
 
 ### NewEquipmentPsuAllOf
 
-`func NewEquipmentPsuAllOf() *EquipmentPsuAllOf`
+`func NewEquipmentPsuAllOf(classId string, objectType string, ) *EquipmentPsuAllOf`
 
 NewEquipmentPsuAllOf instantiates a new EquipmentPsuAllOf object
 This constructor will assign default values to properties that have it defined,
@@ -43,6 +45,46 @@ will change when the set of required properties is changed
 NewEquipmentPsuAllOfWithDefaults instantiates a new EquipmentPsuAllOf object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetClassId
+
+`func (o *EquipmentPsuAllOf) GetClassId() string`
+
+GetClassId returns the ClassId field if non-nil, zero value otherwise.
+
+### GetClassIdOk
+
+`func (o *EquipmentPsuAllOf) GetClassIdOk() (*string, bool)`
+
+GetClassIdOk returns a tuple with the ClassId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetClassId
+
+`func (o *EquipmentPsuAllOf) SetClassId(v string)`
+
+SetClassId sets ClassId field to given value.
+
+
+### GetObjectType
+
+`func (o *EquipmentPsuAllOf) GetObjectType() string`
+
+GetObjectType returns the ObjectType field if non-nil, zero value otherwise.
+
+### GetObjectTypeOk
+
+`func (o *EquipmentPsuAllOf) GetObjectTypeOk() (*string, bool)`
+
+GetObjectTypeOk returns a tuple with the ObjectType field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetObjectType
+
+`func (o *EquipmentPsuAllOf) SetObjectType(v string)`
+
+SetObjectType sets ObjectType field to given value.
+
 
 ### GetDescription
 
@@ -69,6 +111,41 @@ SetDescription sets Description field to given value.
 
 HasDescription returns a boolean if a field has been set.
 
+### GetOperReason
+
+`func (o *EquipmentPsuAllOf) GetOperReason() []string`
+
+GetOperReason returns the OperReason field if non-nil, zero value otherwise.
+
+### GetOperReasonOk
+
+`func (o *EquipmentPsuAllOf) GetOperReasonOk() (*[]string, bool)`
+
+GetOperReasonOk returns a tuple with the OperReason field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetOperReason
+
+`func (o *EquipmentPsuAllOf) SetOperReason(v []string)`
+
+SetOperReason sets OperReason field to given value.
+
+### HasOperReason
+
+`func (o *EquipmentPsuAllOf) HasOperReason() bool`
+
+HasOperReason returns a boolean if a field has been set.
+
+### SetOperReasonNil
+
+`func (o *EquipmentPsuAllOf) SetOperReasonNil(b bool)`
+
+ SetOperReasonNil sets the value for OperReason to be an explicit nil
+
+### UnsetOperReason
+`func (o *EquipmentPsuAllOf) UnsetOperReason()`
+
+UnsetOperReason ensures that no value is present for OperReason, not even an explicit nil
 ### GetOperState
 
 `func (o *EquipmentPsuAllOf) GetOperState() string`
@@ -143,31 +220,6 @@ SetPid sets Pid field to given value.
 `func (o *EquipmentPsuAllOf) HasPid() bool`
 
 HasPid returns a boolean if a field has been set.
-
-### GetPresence
-
-`func (o *EquipmentPsuAllOf) GetPresence() string`
-
-GetPresence returns the Presence field if non-nil, zero value otherwise.
-
-### GetPresenceOk
-
-`func (o *EquipmentPsuAllOf) GetPresenceOk() (*string, bool)`
-
-GetPresenceOk returns a tuple with the Presence field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetPresence
-
-`func (o *EquipmentPsuAllOf) SetPresence(v string)`
-
-SetPresence sets Presence field to given value.
-
-### HasPresence
-
-`func (o *EquipmentPsuAllOf) HasPresence() bool`
-
-HasPresence returns a boolean if a field has been set.
 
 ### GetPsuFwVersion
 

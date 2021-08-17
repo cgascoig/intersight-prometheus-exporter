@@ -4,22 +4,26 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**BootTime** | Pointer to [**time.Time**](time.Time.md) | The time when this host booted up. | [optional] 
+**ClassId** | **string** | The fully-qualified name of the instantiated, concrete type. This property is used as a discriminator to identify the type of the payload when marshaling and unmarshaling data. | [default to "virtualization.VmwareHost"]
+**ObjectType** | **string** | The fully-qualified name of the instantiated, concrete type. The value should be the same as the &#39;ClassId&#39; property. | [default to "virtualization.VmwareHost"]
+**BootTime** | Pointer to **time.Time** | The time when this host booted up. | [optional] 
 **ConnectionState** | Pointer to **string** | Indicates if the host is connected to the vCenter. Values are connected, not connected. | [optional] 
-**HwPowerState** | Pointer to **string** | Is the host Powered-up or Powered-down. * &#x60;Unknown&#x60; - The entity&#39;s power state is unknown. * &#x60;PoweredOn&#x60; - The entity is powered on. * &#x60;PoweredOff&#x60; - The entity is powered down. * &#x60;StandBy&#x60; - The entity is in standby mode. * &#x60;Paused&#x60; - The entity is in pause state. | [optional] [default to "Unknown"]
+**HwPowerState** | Pointer to **string** | Is the host Powered-up or Powered-down. * &#x60;Unknown&#x60; - The entity&#39;s power state is unknown. * &#x60;PoweringOn&#x60; - The entity is powering on. * &#x60;PoweredOn&#x60; - The entity is powered on. * &#x60;PoweringOff&#x60; - The entity is powering off. * &#x60;PoweredOff&#x60; - The entity is powered down. * &#x60;StandBy&#x60; - The entity is in standby mode. * &#x60;Paused&#x60; - The entity is in pause state. * &#x60;Rebooting&#x60; - The entity reboot is in progress. * &#x60;&#x60; - The entity&#39;s power state is not available. | [optional] [default to "Unknown"]
 **NetworkAdapterCount** | Pointer to **int64** | The count of all network adapters attached to this host. | [optional] 
-**ResourceConsumed** | Pointer to [**VirtualizationVmwareResourceConsumption**](virtualization.VmwareResourceConsumption.md) |  | [optional] 
+**ResourceConsumed** | Pointer to [**NullableVirtualizationVmwareResourceConsumption**](virtualization.VmwareResourceConsumption.md) |  | [optional] 
 **StorageAdapterCount** | Pointer to **int64** | The count of all storage adapters attached to this host. | [optional] 
 **VcenterHostId** | Pointer to **string** | The identity of this host within vCenter (optional). | [optional] 
 **Cluster** | Pointer to [**VirtualizationVmwareClusterRelationship**](virtualization.VmwareCluster.Relationship.md) |  | [optional] 
 **Datacenter** | Pointer to [**VirtualizationVmwareDatacenterRelationship**](virtualization.VmwareDatacenter.Relationship.md) |  | [optional] 
-**Datastores** | Pointer to [**[]VirtualizationVmwareDatastoreRelationship**](virtualization.VmwareDatastore.Relationship.md) | An array of relationships to virtualizationVmwareDatastore resources. | [optional] [readonly] 
+**Datastores** | Pointer to [**[]VirtualizationVmwareDatastoreRelationship**](VirtualizationVmwareDatastoreRelationship.md) | An array of relationships to virtualizationVmwareDatastore resources. | [optional] [readonly] 
+**DistributedNetworks** | Pointer to [**[]VirtualizationVmwareDistributedNetworkRelationship**](VirtualizationVmwareDistributedNetworkRelationship.md) | An array of relationships to virtualizationVmwareDistributedNetwork resources. | [optional] [readonly] 
+**DistributedSwitches** | Pointer to [**[]VirtualizationVmwareDistributedSwitchRelationship**](VirtualizationVmwareDistributedSwitchRelationship.md) | An array of relationships to virtualizationVmwareDistributedSwitch resources. | [optional] [readonly] 
 
 ## Methods
 
 ### NewVirtualizationVmwareHost
 
-`func NewVirtualizationVmwareHost() *VirtualizationVmwareHost`
+`func NewVirtualizationVmwareHost(classId string, objectType string, ) *VirtualizationVmwareHost`
 
 NewVirtualizationVmwareHost instantiates a new VirtualizationVmwareHost object
 This constructor will assign default values to properties that have it defined,
@@ -33,6 +37,46 @@ will change when the set of required properties is changed
 NewVirtualizationVmwareHostWithDefaults instantiates a new VirtualizationVmwareHost object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetClassId
+
+`func (o *VirtualizationVmwareHost) GetClassId() string`
+
+GetClassId returns the ClassId field if non-nil, zero value otherwise.
+
+### GetClassIdOk
+
+`func (o *VirtualizationVmwareHost) GetClassIdOk() (*string, bool)`
+
+GetClassIdOk returns a tuple with the ClassId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetClassId
+
+`func (o *VirtualizationVmwareHost) SetClassId(v string)`
+
+SetClassId sets ClassId field to given value.
+
+
+### GetObjectType
+
+`func (o *VirtualizationVmwareHost) GetObjectType() string`
+
+GetObjectType returns the ObjectType field if non-nil, zero value otherwise.
+
+### GetObjectTypeOk
+
+`func (o *VirtualizationVmwareHost) GetObjectTypeOk() (*string, bool)`
+
+GetObjectTypeOk returns a tuple with the ObjectType field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetObjectType
+
+`func (o *VirtualizationVmwareHost) SetObjectType(v string)`
+
+SetObjectType sets ObjectType field to given value.
+
 
 ### GetBootTime
 
@@ -159,6 +203,16 @@ SetResourceConsumed sets ResourceConsumed field to given value.
 
 HasResourceConsumed returns a boolean if a field has been set.
 
+### SetResourceConsumedNil
+
+`func (o *VirtualizationVmwareHost) SetResourceConsumedNil(b bool)`
+
+ SetResourceConsumedNil sets the value for ResourceConsumed to be an explicit nil
+
+### UnsetResourceConsumed
+`func (o *VirtualizationVmwareHost) UnsetResourceConsumed()`
+
+UnsetResourceConsumed ensures that no value is present for ResourceConsumed, not even an explicit nil
 ### GetStorageAdapterCount
 
 `func (o *VirtualizationVmwareHost) GetStorageAdapterCount() int64`
@@ -294,6 +348,76 @@ HasDatastores returns a boolean if a field has been set.
 `func (o *VirtualizationVmwareHost) UnsetDatastores()`
 
 UnsetDatastores ensures that no value is present for Datastores, not even an explicit nil
+### GetDistributedNetworks
+
+`func (o *VirtualizationVmwareHost) GetDistributedNetworks() []VirtualizationVmwareDistributedNetworkRelationship`
+
+GetDistributedNetworks returns the DistributedNetworks field if non-nil, zero value otherwise.
+
+### GetDistributedNetworksOk
+
+`func (o *VirtualizationVmwareHost) GetDistributedNetworksOk() (*[]VirtualizationVmwareDistributedNetworkRelationship, bool)`
+
+GetDistributedNetworksOk returns a tuple with the DistributedNetworks field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDistributedNetworks
+
+`func (o *VirtualizationVmwareHost) SetDistributedNetworks(v []VirtualizationVmwareDistributedNetworkRelationship)`
+
+SetDistributedNetworks sets DistributedNetworks field to given value.
+
+### HasDistributedNetworks
+
+`func (o *VirtualizationVmwareHost) HasDistributedNetworks() bool`
+
+HasDistributedNetworks returns a boolean if a field has been set.
+
+### SetDistributedNetworksNil
+
+`func (o *VirtualizationVmwareHost) SetDistributedNetworksNil(b bool)`
+
+ SetDistributedNetworksNil sets the value for DistributedNetworks to be an explicit nil
+
+### UnsetDistributedNetworks
+`func (o *VirtualizationVmwareHost) UnsetDistributedNetworks()`
+
+UnsetDistributedNetworks ensures that no value is present for DistributedNetworks, not even an explicit nil
+### GetDistributedSwitches
+
+`func (o *VirtualizationVmwareHost) GetDistributedSwitches() []VirtualizationVmwareDistributedSwitchRelationship`
+
+GetDistributedSwitches returns the DistributedSwitches field if non-nil, zero value otherwise.
+
+### GetDistributedSwitchesOk
+
+`func (o *VirtualizationVmwareHost) GetDistributedSwitchesOk() (*[]VirtualizationVmwareDistributedSwitchRelationship, bool)`
+
+GetDistributedSwitchesOk returns a tuple with the DistributedSwitches field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDistributedSwitches
+
+`func (o *VirtualizationVmwareHost) SetDistributedSwitches(v []VirtualizationVmwareDistributedSwitchRelationship)`
+
+SetDistributedSwitches sets DistributedSwitches field to given value.
+
+### HasDistributedSwitches
+
+`func (o *VirtualizationVmwareHost) HasDistributedSwitches() bool`
+
+HasDistributedSwitches returns a boolean if a field has been set.
+
+### SetDistributedSwitchesNil
+
+`func (o *VirtualizationVmwareHost) SetDistributedSwitchesNil(b bool)`
+
+ SetDistributedSwitchesNil sets the value for DistributedSwitches to be an explicit nil
+
+### UnsetDistributedSwitches
+`func (o *VirtualizationVmwareHost) UnsetDistributedSwitches()`
+
+UnsetDistributedSwitches ensures that no value is present for DistributedSwitches, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -4,9 +4,12 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**ClassId** | **string** | The fully-qualified name of the instantiated, concrete type. This property is used as a discriminator to identify the type of the payload when marshaling and unmarshaling data. The enum values provides the list of concrete types that can be instantiated from this abstract type. | 
+**ObjectType** | **string** | The fully-qualified name of the instantiated, concrete type. The value should be the same as the &#39;ClassId&#39; property. The enum values provides the list of concrete types that can be instantiated from this abstract type. | 
 **BundleType** | Pointer to **string** | The bundle type of the image, as published on cisco.com. | [optional] [readonly] 
-**ComponentMeta** | Pointer to [**[]FirmwareComponentMeta**](firmware.ComponentMeta.md) |  | [optional] 
+**ComponentMeta** | Pointer to [**[]FirmwareComponentMeta**](FirmwareComponentMeta.md) |  | [optional] 
 **Guid** | Pointer to **string** | The unique identifier for an image in a Cisco repository. | [optional] [readonly] 
+**ImageType** | Pointer to **string** | The type of image which the distributable falls into according to the component it can upgrade. For e.g.; Standalone server, Intersight managed server, UCS Managed Fabric Interconnect. The field is used in private appliance mode, where image does not have description populated from CCO. | [optional] 
 **Mdfid** | Pointer to **string** | The mdfid of the image provided by cisco.com. | [optional] 
 **Model** | Pointer to **string** | The endpoint model for which this firmware image is applicable. | [optional] 
 **PlatformType** | Pointer to **string** | The platform type of the image. | [optional] [readonly] 
@@ -14,15 +17,15 @@ Name | Type | Description | Notes
 **ReleaseNotesUrl** | Pointer to **string** | The url for the release notes of this image. | [optional] 
 **SoftwareTypeId** | Pointer to **string** | The software type id provided by cisco.com. | [optional] [readonly] 
 **SupportedModels** | Pointer to **[]string** |  | [optional] 
-**Vendor** | Pointer to **string** | The vendor or publisher of this file. | [optional] 
-**DistributableMetas** | Pointer to [**[]FirmwareDistributableMetaRelationship**](firmware.DistributableMeta.Relationship.md) | An array of relationships to firmwareDistributableMeta resources. | [optional] 
+**Vendor** | Pointer to **string** | The vendor or publisher of this file. | [optional] [default to "Cisco"]
+**DistributableMetas** | Pointer to [**[]FirmwareDistributableMetaRelationship**](FirmwareDistributableMetaRelationship.md) | An array of relationships to firmwareDistributableMeta resources. | [optional] 
 **Release** | Pointer to [**SoftwarerepositoryReleaseRelationship**](softwarerepository.Release.Relationship.md) |  | [optional] 
 
 ## Methods
 
 ### NewFirmwareBaseDistributableAllOf
 
-`func NewFirmwareBaseDistributableAllOf() *FirmwareBaseDistributableAllOf`
+`func NewFirmwareBaseDistributableAllOf(classId string, objectType string, ) *FirmwareBaseDistributableAllOf`
 
 NewFirmwareBaseDistributableAllOf instantiates a new FirmwareBaseDistributableAllOf object
 This constructor will assign default values to properties that have it defined,
@@ -36,6 +39,46 @@ will change when the set of required properties is changed
 NewFirmwareBaseDistributableAllOfWithDefaults instantiates a new FirmwareBaseDistributableAllOf object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetClassId
+
+`func (o *FirmwareBaseDistributableAllOf) GetClassId() string`
+
+GetClassId returns the ClassId field if non-nil, zero value otherwise.
+
+### GetClassIdOk
+
+`func (o *FirmwareBaseDistributableAllOf) GetClassIdOk() (*string, bool)`
+
+GetClassIdOk returns a tuple with the ClassId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetClassId
+
+`func (o *FirmwareBaseDistributableAllOf) SetClassId(v string)`
+
+SetClassId sets ClassId field to given value.
+
+
+### GetObjectType
+
+`func (o *FirmwareBaseDistributableAllOf) GetObjectType() string`
+
+GetObjectType returns the ObjectType field if non-nil, zero value otherwise.
+
+### GetObjectTypeOk
+
+`func (o *FirmwareBaseDistributableAllOf) GetObjectTypeOk() (*string, bool)`
+
+GetObjectTypeOk returns a tuple with the ObjectType field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetObjectType
+
+`func (o *FirmwareBaseDistributableAllOf) SetObjectType(v string)`
+
+SetObjectType sets ObjectType field to given value.
+
 
 ### GetBundleType
 
@@ -87,6 +130,16 @@ SetComponentMeta sets ComponentMeta field to given value.
 
 HasComponentMeta returns a boolean if a field has been set.
 
+### SetComponentMetaNil
+
+`func (o *FirmwareBaseDistributableAllOf) SetComponentMetaNil(b bool)`
+
+ SetComponentMetaNil sets the value for ComponentMeta to be an explicit nil
+
+### UnsetComponentMeta
+`func (o *FirmwareBaseDistributableAllOf) UnsetComponentMeta()`
+
+UnsetComponentMeta ensures that no value is present for ComponentMeta, not even an explicit nil
 ### GetGuid
 
 `func (o *FirmwareBaseDistributableAllOf) GetGuid() string`
@@ -111,6 +164,31 @@ SetGuid sets Guid field to given value.
 `func (o *FirmwareBaseDistributableAllOf) HasGuid() bool`
 
 HasGuid returns a boolean if a field has been set.
+
+### GetImageType
+
+`func (o *FirmwareBaseDistributableAllOf) GetImageType() string`
+
+GetImageType returns the ImageType field if non-nil, zero value otherwise.
+
+### GetImageTypeOk
+
+`func (o *FirmwareBaseDistributableAllOf) GetImageTypeOk() (*string, bool)`
+
+GetImageTypeOk returns a tuple with the ImageType field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetImageType
+
+`func (o *FirmwareBaseDistributableAllOf) SetImageType(v string)`
+
+SetImageType sets ImageType field to given value.
+
+### HasImageType
+
+`func (o *FirmwareBaseDistributableAllOf) HasImageType() bool`
+
+HasImageType returns a boolean if a field has been set.
 
 ### GetMdfid
 
@@ -287,6 +365,16 @@ SetSupportedModels sets SupportedModels field to given value.
 
 HasSupportedModels returns a boolean if a field has been set.
 
+### SetSupportedModelsNil
+
+`func (o *FirmwareBaseDistributableAllOf) SetSupportedModelsNil(b bool)`
+
+ SetSupportedModelsNil sets the value for SupportedModels to be an explicit nil
+
+### UnsetSupportedModels
+`func (o *FirmwareBaseDistributableAllOf) UnsetSupportedModels()`
+
+UnsetSupportedModels ensures that no value is present for SupportedModels, not even an explicit nil
 ### GetVendor
 
 `func (o *FirmwareBaseDistributableAllOf) GetVendor() string`

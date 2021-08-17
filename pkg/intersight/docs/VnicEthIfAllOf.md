@@ -4,33 +4,42 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Cdn** | Pointer to [**VnicCdn**](vnic.Cdn.md) |  | [optional] 
-**FailoverEnabled** | Pointer to **bool** | Setting this to true esnures that the traffic failsover from one uplink to another auotmatically in case of an uplink failure. It is applicable for Cisco VIC adapters only which are connected to Fabric Interconnect cluster. The uplink if specified determines the primary uplink in case of a failover. | [optional] 
-**MacAddress** | Pointer to **string** | The MAC address that is assigned to the vnic based on the MAC pool that has been assigned to the LAN Connectivity Policy. | [optional] [readonly] 
+**ClassId** | **string** | The fully-qualified name of the instantiated, concrete type. This property is used as a discriminator to identify the type of the payload when marshaling and unmarshaling data. | [default to "vnic.EthIf"]
+**ObjectType** | **string** | The fully-qualified name of the instantiated, concrete type. The value should be the same as the &#39;ClassId&#39; property. | [default to "vnic.EthIf"]
+**Cdn** | Pointer to [**NullableVnicCdn**](vnic.Cdn.md) |  | [optional] 
+**FailoverEnabled** | Pointer to **bool** | Setting this to true esnures that the traffic failsover from one uplink to another auotmatically in case of an uplink failure. It is applicable for Cisco VIC adapters only which are connected to Fabric Interconnect cluster. The uplink if specified determines the primary uplink in case of a failover. | [optional] [default to false]
+**IscsiIpV4AddressAllocationType** | Pointer to **string** | Static/Pool/DHCP Type of IP address allocated to the vNIC. It is derived from iSCSI boot policy IP Address type. * &#x60;None&#x60; - Type indicates that there is no IP associated to an vnic. * &#x60;DHCP&#x60; - The IP address is assigned using DHCP, if available. * &#x60;Static&#x60; - Static IPv4 address is assigned to the iSCSI boot interface based on the information entered in this area. * &#x60;Pool&#x60; - An IPv4 address is assigned to the iSCSI boot interface from the management IP address pool. | [optional] [readonly] [default to "None"]
+**IscsiIpV4Config** | Pointer to [**NullableIppoolIpV4Config**](ippool.IpV4Config.md) |  | [optional] 
+**IscsiIpv4Address** | Pointer to **string** | IP address associated to the vNIC. | [optional] [readonly] 
+**MacAddress** | Pointer to **string** | The MAC address that is assigned to the vNIC based on the MAC pool that has been assigned to the LAN Connectivity Policy. | [optional] [readonly] 
+**MacAddressType** | Pointer to **string** | Type of allocation selected to assign a MAC address for the vnic. * &#x60;POOL&#x60; - The user selects a pool from which the mac/wwn address will be leased for the Virtual Interface. * &#x60;STATIC&#x60; - The user assigns a static mac/wwn address for the Virtual Interface. | [optional] [default to "POOL"]
 **Name** | Pointer to **string** | Name of the virtual ethernet interface. | [optional] 
 **Order** | Pointer to **int64** | The order in which the virtual interface is brought up. The order assigned to an interface should be unique for all the Ethernet and Fibre-Channel interfaces on each PCI link on a VIC adapter. The maximum value of PCI order is limited by the number of virtual interfaces (Ethernet and Fibre-Channel) on each PCI link on a VIC adapter. All VIC adapters have a single PCI link except VIC 1385 which has two. | [optional] 
-**Placement** | Pointer to [**VnicPlacementSettings**](vnic.PlacementSettings.md) |  | [optional] 
+**Placement** | Pointer to [**NullableVnicPlacementSettings**](vnic.PlacementSettings.md) |  | [optional] 
 **StandbyVifId** | Pointer to **int64** | The Standby VIF Id is applicable for failover enabled vNICS. It should be the same as the channel number of the standby vethernet created on switch in order to set up the standby data path. | [optional] [readonly] 
-**UsnicSettings** | Pointer to [**VnicUsnicSettings**](vnic.UsnicSettings.md) |  | [optional] 
+**StaticMacAddress** | Pointer to **string** | The MAC address must be in hexadecimal format xx:xx:xx:xx:xx:xx. To ensure uniqueness of MACs in the LAN fabric, you are strongly encouraged to use the following MAC prefix 00:25:B5:xx:xx:xx. | [optional] 
+**UsnicSettings** | Pointer to [**NullableVnicUsnicSettings**](vnic.UsnicSettings.md) |  | [optional] 
 **VifId** | Pointer to **int64** | The Vif Id should be same as the channel number of the vethernet created on switch in order to set up the data path. The property is applicable only for FI attached servers where a vethernet is created on the switch for every vNIC. | [optional] [readonly] 
-**VmqSettings** | Pointer to [**VnicVmqSettings**](vnic.VmqSettings.md) |  | [optional] 
+**VmqSettings** | Pointer to [**NullableVnicVmqSettings**](vnic.VmqSettings.md) |  | [optional] 
 **EthAdapterPolicy** | Pointer to [**VnicEthAdapterPolicyRelationship**](vnic.EthAdapterPolicy.Relationship.md) |  | [optional] 
 **EthNetworkPolicy** | Pointer to [**VnicEthNetworkPolicyRelationship**](vnic.EthNetworkPolicy.Relationship.md) |  | [optional] 
 **EthQosPolicy** | Pointer to [**VnicEthQosPolicyRelationship**](vnic.EthQosPolicy.Relationship.md) |  | [optional] 
 **FabricEthNetworkControlPolicy** | Pointer to [**FabricEthNetworkControlPolicyRelationship**](fabric.EthNetworkControlPolicy.Relationship.md) |  | [optional] 
-**FabricEthNetworkGroupPolicy** | Pointer to [**[]FabricEthNetworkGroupPolicyRelationship**](fabric.EthNetworkGroupPolicy.Relationship.md) | An array of relationships to fabricEthNetworkGroupPolicy resources. | [optional] 
+**FabricEthNetworkGroupPolicy** | Pointer to [**[]FabricEthNetworkGroupPolicyRelationship**](FabricEthNetworkGroupPolicyRelationship.md) | An array of relationships to fabricEthNetworkGroupPolicy resources. | [optional] 
+**IpLease** | Pointer to [**IppoolIpLeaseRelationship**](ippool.IpLease.Relationship.md) |  | [optional] 
+**IscsiBootPolicy** | Pointer to [**VnicIscsiBootPolicyRelationship**](vnic.IscsiBootPolicy.Relationship.md) |  | [optional] 
 **LanConnectivityPolicy** | Pointer to [**VnicLanConnectivityPolicyRelationship**](vnic.LanConnectivityPolicy.Relationship.md) |  | [optional] 
 **LcpVnic** | Pointer to [**VnicEthIfRelationship**](vnic.EthIf.Relationship.md) |  | [optional] 
 **MacLease** | Pointer to [**MacpoolLeaseRelationship**](macpool.Lease.Relationship.md) |  | [optional] 
 **MacPool** | Pointer to [**MacpoolPoolRelationship**](macpool.Pool.Relationship.md) |  | [optional] 
 **Profile** | Pointer to [**PolicyAbstractConfigProfileRelationship**](policy.AbstractConfigProfile.Relationship.md) |  | [optional] 
-**SpVnics** | Pointer to [**[]VnicEthIfRelationship**](vnic.EthIf.Relationship.md) | An array of relationships to vnicEthIf resources. | [optional] 
+**SpVnics** | Pointer to [**[]VnicEthIfRelationship**](VnicEthIfRelationship.md) | An array of relationships to vnicEthIf resources. | [optional] [readonly] 
 
 ## Methods
 
 ### NewVnicEthIfAllOf
 
-`func NewVnicEthIfAllOf() *VnicEthIfAllOf`
+`func NewVnicEthIfAllOf(classId string, objectType string, ) *VnicEthIfAllOf`
 
 NewVnicEthIfAllOf instantiates a new VnicEthIfAllOf object
 This constructor will assign default values to properties that have it defined,
@@ -44,6 +53,46 @@ will change when the set of required properties is changed
 NewVnicEthIfAllOfWithDefaults instantiates a new VnicEthIfAllOf object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetClassId
+
+`func (o *VnicEthIfAllOf) GetClassId() string`
+
+GetClassId returns the ClassId field if non-nil, zero value otherwise.
+
+### GetClassIdOk
+
+`func (o *VnicEthIfAllOf) GetClassIdOk() (*string, bool)`
+
+GetClassIdOk returns a tuple with the ClassId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetClassId
+
+`func (o *VnicEthIfAllOf) SetClassId(v string)`
+
+SetClassId sets ClassId field to given value.
+
+
+### GetObjectType
+
+`func (o *VnicEthIfAllOf) GetObjectType() string`
+
+GetObjectType returns the ObjectType field if non-nil, zero value otherwise.
+
+### GetObjectTypeOk
+
+`func (o *VnicEthIfAllOf) GetObjectTypeOk() (*string, bool)`
+
+GetObjectTypeOk returns a tuple with the ObjectType field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetObjectType
+
+`func (o *VnicEthIfAllOf) SetObjectType(v string)`
+
+SetObjectType sets ObjectType field to given value.
+
 
 ### GetCdn
 
@@ -70,6 +119,16 @@ SetCdn sets Cdn field to given value.
 
 HasCdn returns a boolean if a field has been set.
 
+### SetCdnNil
+
+`func (o *VnicEthIfAllOf) SetCdnNil(b bool)`
+
+ SetCdnNil sets the value for Cdn to be an explicit nil
+
+### UnsetCdn
+`func (o *VnicEthIfAllOf) UnsetCdn()`
+
+UnsetCdn ensures that no value is present for Cdn, not even an explicit nil
 ### GetFailoverEnabled
 
 `func (o *VnicEthIfAllOf) GetFailoverEnabled() bool`
@@ -95,6 +154,91 @@ SetFailoverEnabled sets FailoverEnabled field to given value.
 
 HasFailoverEnabled returns a boolean if a field has been set.
 
+### GetIscsiIpV4AddressAllocationType
+
+`func (o *VnicEthIfAllOf) GetIscsiIpV4AddressAllocationType() string`
+
+GetIscsiIpV4AddressAllocationType returns the IscsiIpV4AddressAllocationType field if non-nil, zero value otherwise.
+
+### GetIscsiIpV4AddressAllocationTypeOk
+
+`func (o *VnicEthIfAllOf) GetIscsiIpV4AddressAllocationTypeOk() (*string, bool)`
+
+GetIscsiIpV4AddressAllocationTypeOk returns a tuple with the IscsiIpV4AddressAllocationType field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetIscsiIpV4AddressAllocationType
+
+`func (o *VnicEthIfAllOf) SetIscsiIpV4AddressAllocationType(v string)`
+
+SetIscsiIpV4AddressAllocationType sets IscsiIpV4AddressAllocationType field to given value.
+
+### HasIscsiIpV4AddressAllocationType
+
+`func (o *VnicEthIfAllOf) HasIscsiIpV4AddressAllocationType() bool`
+
+HasIscsiIpV4AddressAllocationType returns a boolean if a field has been set.
+
+### GetIscsiIpV4Config
+
+`func (o *VnicEthIfAllOf) GetIscsiIpV4Config() IppoolIpV4Config`
+
+GetIscsiIpV4Config returns the IscsiIpV4Config field if non-nil, zero value otherwise.
+
+### GetIscsiIpV4ConfigOk
+
+`func (o *VnicEthIfAllOf) GetIscsiIpV4ConfigOk() (*IppoolIpV4Config, bool)`
+
+GetIscsiIpV4ConfigOk returns a tuple with the IscsiIpV4Config field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetIscsiIpV4Config
+
+`func (o *VnicEthIfAllOf) SetIscsiIpV4Config(v IppoolIpV4Config)`
+
+SetIscsiIpV4Config sets IscsiIpV4Config field to given value.
+
+### HasIscsiIpV4Config
+
+`func (o *VnicEthIfAllOf) HasIscsiIpV4Config() bool`
+
+HasIscsiIpV4Config returns a boolean if a field has been set.
+
+### SetIscsiIpV4ConfigNil
+
+`func (o *VnicEthIfAllOf) SetIscsiIpV4ConfigNil(b bool)`
+
+ SetIscsiIpV4ConfigNil sets the value for IscsiIpV4Config to be an explicit nil
+
+### UnsetIscsiIpV4Config
+`func (o *VnicEthIfAllOf) UnsetIscsiIpV4Config()`
+
+UnsetIscsiIpV4Config ensures that no value is present for IscsiIpV4Config, not even an explicit nil
+### GetIscsiIpv4Address
+
+`func (o *VnicEthIfAllOf) GetIscsiIpv4Address() string`
+
+GetIscsiIpv4Address returns the IscsiIpv4Address field if non-nil, zero value otherwise.
+
+### GetIscsiIpv4AddressOk
+
+`func (o *VnicEthIfAllOf) GetIscsiIpv4AddressOk() (*string, bool)`
+
+GetIscsiIpv4AddressOk returns a tuple with the IscsiIpv4Address field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetIscsiIpv4Address
+
+`func (o *VnicEthIfAllOf) SetIscsiIpv4Address(v string)`
+
+SetIscsiIpv4Address sets IscsiIpv4Address field to given value.
+
+### HasIscsiIpv4Address
+
+`func (o *VnicEthIfAllOf) HasIscsiIpv4Address() bool`
+
+HasIscsiIpv4Address returns a boolean if a field has been set.
+
 ### GetMacAddress
 
 `func (o *VnicEthIfAllOf) GetMacAddress() string`
@@ -119,6 +263,31 @@ SetMacAddress sets MacAddress field to given value.
 `func (o *VnicEthIfAllOf) HasMacAddress() bool`
 
 HasMacAddress returns a boolean if a field has been set.
+
+### GetMacAddressType
+
+`func (o *VnicEthIfAllOf) GetMacAddressType() string`
+
+GetMacAddressType returns the MacAddressType field if non-nil, zero value otherwise.
+
+### GetMacAddressTypeOk
+
+`func (o *VnicEthIfAllOf) GetMacAddressTypeOk() (*string, bool)`
+
+GetMacAddressTypeOk returns a tuple with the MacAddressType field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMacAddressType
+
+`func (o *VnicEthIfAllOf) SetMacAddressType(v string)`
+
+SetMacAddressType sets MacAddressType field to given value.
+
+### HasMacAddressType
+
+`func (o *VnicEthIfAllOf) HasMacAddressType() bool`
+
+HasMacAddressType returns a boolean if a field has been set.
 
 ### GetName
 
@@ -195,6 +364,16 @@ SetPlacement sets Placement field to given value.
 
 HasPlacement returns a boolean if a field has been set.
 
+### SetPlacementNil
+
+`func (o *VnicEthIfAllOf) SetPlacementNil(b bool)`
+
+ SetPlacementNil sets the value for Placement to be an explicit nil
+
+### UnsetPlacement
+`func (o *VnicEthIfAllOf) UnsetPlacement()`
+
+UnsetPlacement ensures that no value is present for Placement, not even an explicit nil
 ### GetStandbyVifId
 
 `func (o *VnicEthIfAllOf) GetStandbyVifId() int64`
@@ -219,6 +398,31 @@ SetStandbyVifId sets StandbyVifId field to given value.
 `func (o *VnicEthIfAllOf) HasStandbyVifId() bool`
 
 HasStandbyVifId returns a boolean if a field has been set.
+
+### GetStaticMacAddress
+
+`func (o *VnicEthIfAllOf) GetStaticMacAddress() string`
+
+GetStaticMacAddress returns the StaticMacAddress field if non-nil, zero value otherwise.
+
+### GetStaticMacAddressOk
+
+`func (o *VnicEthIfAllOf) GetStaticMacAddressOk() (*string, bool)`
+
+GetStaticMacAddressOk returns a tuple with the StaticMacAddress field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetStaticMacAddress
+
+`func (o *VnicEthIfAllOf) SetStaticMacAddress(v string)`
+
+SetStaticMacAddress sets StaticMacAddress field to given value.
+
+### HasStaticMacAddress
+
+`func (o *VnicEthIfAllOf) HasStaticMacAddress() bool`
+
+HasStaticMacAddress returns a boolean if a field has been set.
 
 ### GetUsnicSettings
 
@@ -245,6 +449,16 @@ SetUsnicSettings sets UsnicSettings field to given value.
 
 HasUsnicSettings returns a boolean if a field has been set.
 
+### SetUsnicSettingsNil
+
+`func (o *VnicEthIfAllOf) SetUsnicSettingsNil(b bool)`
+
+ SetUsnicSettingsNil sets the value for UsnicSettings to be an explicit nil
+
+### UnsetUsnicSettings
+`func (o *VnicEthIfAllOf) UnsetUsnicSettings()`
+
+UnsetUsnicSettings ensures that no value is present for UsnicSettings, not even an explicit nil
 ### GetVifId
 
 `func (o *VnicEthIfAllOf) GetVifId() int64`
@@ -295,6 +509,16 @@ SetVmqSettings sets VmqSettings field to given value.
 
 HasVmqSettings returns a boolean if a field has been set.
 
+### SetVmqSettingsNil
+
+`func (o *VnicEthIfAllOf) SetVmqSettingsNil(b bool)`
+
+ SetVmqSettingsNil sets the value for VmqSettings to be an explicit nil
+
+### UnsetVmqSettings
+`func (o *VnicEthIfAllOf) UnsetVmqSettings()`
+
+UnsetVmqSettings ensures that no value is present for VmqSettings, not even an explicit nil
 ### GetEthAdapterPolicy
 
 `func (o *VnicEthIfAllOf) GetEthAdapterPolicy() VnicEthAdapterPolicyRelationship`
@@ -430,6 +654,56 @@ HasFabricEthNetworkGroupPolicy returns a boolean if a field has been set.
 `func (o *VnicEthIfAllOf) UnsetFabricEthNetworkGroupPolicy()`
 
 UnsetFabricEthNetworkGroupPolicy ensures that no value is present for FabricEthNetworkGroupPolicy, not even an explicit nil
+### GetIpLease
+
+`func (o *VnicEthIfAllOf) GetIpLease() IppoolIpLeaseRelationship`
+
+GetIpLease returns the IpLease field if non-nil, zero value otherwise.
+
+### GetIpLeaseOk
+
+`func (o *VnicEthIfAllOf) GetIpLeaseOk() (*IppoolIpLeaseRelationship, bool)`
+
+GetIpLeaseOk returns a tuple with the IpLease field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetIpLease
+
+`func (o *VnicEthIfAllOf) SetIpLease(v IppoolIpLeaseRelationship)`
+
+SetIpLease sets IpLease field to given value.
+
+### HasIpLease
+
+`func (o *VnicEthIfAllOf) HasIpLease() bool`
+
+HasIpLease returns a boolean if a field has been set.
+
+### GetIscsiBootPolicy
+
+`func (o *VnicEthIfAllOf) GetIscsiBootPolicy() VnicIscsiBootPolicyRelationship`
+
+GetIscsiBootPolicy returns the IscsiBootPolicy field if non-nil, zero value otherwise.
+
+### GetIscsiBootPolicyOk
+
+`func (o *VnicEthIfAllOf) GetIscsiBootPolicyOk() (*VnicIscsiBootPolicyRelationship, bool)`
+
+GetIscsiBootPolicyOk returns a tuple with the IscsiBootPolicy field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetIscsiBootPolicy
+
+`func (o *VnicEthIfAllOf) SetIscsiBootPolicy(v VnicIscsiBootPolicyRelationship)`
+
+SetIscsiBootPolicy sets IscsiBootPolicy field to given value.
+
+### HasIscsiBootPolicy
+
+`func (o *VnicEthIfAllOf) HasIscsiBootPolicy() bool`
+
+HasIscsiBootPolicy returns a boolean if a field has been set.
+
 ### GetLanConnectivityPolicy
 
 `func (o *VnicEthIfAllOf) GetLanConnectivityPolicy() VnicLanConnectivityPolicyRelationship`

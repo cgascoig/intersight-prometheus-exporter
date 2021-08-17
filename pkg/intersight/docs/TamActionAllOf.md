@@ -4,19 +4,21 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**ClassId** | **string** | The fully-qualified name of the instantiated, concrete type. This property is used as a discriminator to identify the type of the payload when marshaling and unmarshaling data. | [default to "tam.Action"]
+**ObjectType** | **string** | The fully-qualified name of the instantiated, concrete type. The value should be the same as the &#39;ClassId&#39; property. | [default to "tam.Action"]
 **AffectedObjectType** | Pointer to **string** | Type of the managed object that should be marked with an instance of the Alert (when operation type is create) or that should have an alert instance removed (when operation type is remove). | [optional] 
 **AlertType** | Pointer to **string** | Alert type is used to denote the category of an Intersight alert (FieldNotice, equipment Fault etc.). * &#x60;psirt&#x60; - Respresents the psirt alert type (https://tools.cisco.com/security/center/publicationListing.x). * &#x60;fieldNotice&#x60; - Respresents the field notice alert type (https://www.cisco.com/c/en/us/support/web/tsd-products-field-notice-summary.html). | [optional] [default to "psirt"]
-**Identifiers** | Pointer to [**[]TamIdentifiers**](tam.Identifiers.md) |  | [optional] 
+**Identifiers** | Pointer to [**[]TamIdentifiers**](TamIdentifiers.md) |  | [optional] 
 **Name** | Pointer to **string** | Uniquely identifies a given action among the set of actions corresponding to an advisory. Primarily used to store and compare results of subsequent iterations corresponding to the action queries. | [optional] 
 **OperationType** | Pointer to **string** | Operation type for the alert action. An action is used to carry out the process of \&quot;reacting\&quot; to an alert condition. For e.g.in case of a fieldNotice alert, the intention may be to create a new alert (if the condition matches and there is no existing alert) or to remove an existing alert when the alert condition has been remedied. * &#x60;create&#x60; - Create an instance of AdvisoryInstance. * &#x60;remove&#x60; - Remove an instance of AdvisoryInstance. | [optional] [default to "create"]
-**Queries** | Pointer to [**[]TamQueryEntry**](tam.QueryEntry.md) |  | [optional] 
+**Queries** | Pointer to [**[]TamQueryEntry**](TamQueryEntry.md) |  | [optional] 
 **Type** | Pointer to **string** | Type of Intersight alert. An alert in Intersight could be one of several kinds (FieldNotice, PSIRT etc.). Primarily used for filtering alerts based on the type. * &#x60;restApi&#x60; - Repesents the use of REST API for carrying out alert actions. | [optional] [default to "restApi"]
 
 ## Methods
 
 ### NewTamActionAllOf
 
-`func NewTamActionAllOf() *TamActionAllOf`
+`func NewTamActionAllOf(classId string, objectType string, ) *TamActionAllOf`
 
 NewTamActionAllOf instantiates a new TamActionAllOf object
 This constructor will assign default values to properties that have it defined,
@@ -30,6 +32,46 @@ will change when the set of required properties is changed
 NewTamActionAllOfWithDefaults instantiates a new TamActionAllOf object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetClassId
+
+`func (o *TamActionAllOf) GetClassId() string`
+
+GetClassId returns the ClassId field if non-nil, zero value otherwise.
+
+### GetClassIdOk
+
+`func (o *TamActionAllOf) GetClassIdOk() (*string, bool)`
+
+GetClassIdOk returns a tuple with the ClassId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetClassId
+
+`func (o *TamActionAllOf) SetClassId(v string)`
+
+SetClassId sets ClassId field to given value.
+
+
+### GetObjectType
+
+`func (o *TamActionAllOf) GetObjectType() string`
+
+GetObjectType returns the ObjectType field if non-nil, zero value otherwise.
+
+### GetObjectTypeOk
+
+`func (o *TamActionAllOf) GetObjectTypeOk() (*string, bool)`
+
+GetObjectTypeOk returns a tuple with the ObjectType field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetObjectType
+
+`func (o *TamActionAllOf) SetObjectType(v string)`
+
+SetObjectType sets ObjectType field to given value.
+
 
 ### GetAffectedObjectType
 
@@ -106,6 +148,16 @@ SetIdentifiers sets Identifiers field to given value.
 
 HasIdentifiers returns a boolean if a field has been set.
 
+### SetIdentifiersNil
+
+`func (o *TamActionAllOf) SetIdentifiersNil(b bool)`
+
+ SetIdentifiersNil sets the value for Identifiers to be an explicit nil
+
+### UnsetIdentifiers
+`func (o *TamActionAllOf) UnsetIdentifiers()`
+
+UnsetIdentifiers ensures that no value is present for Identifiers, not even an explicit nil
 ### GetName
 
 `func (o *TamActionAllOf) GetName() string`
@@ -181,6 +233,16 @@ SetQueries sets Queries field to given value.
 
 HasQueries returns a boolean if a field has been set.
 
+### SetQueriesNil
+
+`func (o *TamActionAllOf) SetQueriesNil(b bool)`
+
+ SetQueriesNil sets the value for Queries to be an explicit nil
+
+### UnsetQueries
+`func (o *TamActionAllOf) UnsetQueries()`
+
+UnsetQueries ensures that no value is present for Queries, not even an explicit nil
 ### GetType
 
 `func (o *TamActionAllOf) GetType() string`

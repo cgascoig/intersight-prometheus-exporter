@@ -4,6 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**ClassId** | **string** | The fully-qualified name of the instantiated, concrete type. This property is used as a discriminator to identify the type of the payload when marshaling and unmarshaling data. The enum values provides the list of concrete types that can be instantiated from this abstract type. | 
+**ObjectType** | **string** | The fully-qualified name of the instantiated, concrete type. The value should be the same as the &#39;ClassId&#39; property. The enum values provides the list of concrete types that can be instantiated from this abstract type. | 
 **AdminState** | Pointer to **string** | This represents the administrative state of the memory unit on a server. | [optional] [readonly] 
 **ArrayId** | Pointer to **int64** | This represents the memory array to which the memory unit belongs to. | [optional] [readonly] 
 **Bank** | Pointer to **int64** | This represents the memory bank of the memory unit on a server. | [optional] [readonly] 
@@ -13,9 +15,9 @@ Name | Type | Description | Notes
 **Latency** | Pointer to **string** | This represents the latency of the memory unit on a server. | [optional] [readonly] 
 **Location** | Pointer to **string** | This represents the location of the memory unit on a server. | [optional] [readonly] 
 **OperPowerState** | Pointer to **string** | This represents the operational power state of the memory unit on a server. | [optional] [readonly] 
+**OperReason** | Pointer to **[]string** |  | [optional] 
 **OperState** | Pointer to **string** | This represents the operational state of the memory unit on a server. | [optional] [readonly] 
 **Operability** | Pointer to **string** | This represents the operability of the memory unit on a server. | [optional] [readonly] 
-**Presence** | Pointer to **string** | This represents the presence state of the memory unit on a server. | [optional] [readonly] 
 **Set** | Pointer to **int64** | This represents the set of the memory unit on a server. | [optional] [readonly] 
 **Speed** | Pointer to **string** | This represents the speed of the memory unit on a server. | [optional] [readonly] 
 **Thermal** | Pointer to **string** | This represents the thremal state of the memory unit on a server. | [optional] [readonly] 
@@ -27,7 +29,7 @@ Name | Type | Description | Notes
 
 ### NewMemoryAbstractUnit
 
-`func NewMemoryAbstractUnit() *MemoryAbstractUnit`
+`func NewMemoryAbstractUnit(classId string, objectType string, ) *MemoryAbstractUnit`
 
 NewMemoryAbstractUnit instantiates a new MemoryAbstractUnit object
 This constructor will assign default values to properties that have it defined,
@@ -41,6 +43,46 @@ will change when the set of required properties is changed
 NewMemoryAbstractUnitWithDefaults instantiates a new MemoryAbstractUnit object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetClassId
+
+`func (o *MemoryAbstractUnit) GetClassId() string`
+
+GetClassId returns the ClassId field if non-nil, zero value otherwise.
+
+### GetClassIdOk
+
+`func (o *MemoryAbstractUnit) GetClassIdOk() (*string, bool)`
+
+GetClassIdOk returns a tuple with the ClassId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetClassId
+
+`func (o *MemoryAbstractUnit) SetClassId(v string)`
+
+SetClassId sets ClassId field to given value.
+
+
+### GetObjectType
+
+`func (o *MemoryAbstractUnit) GetObjectType() string`
+
+GetObjectType returns the ObjectType field if non-nil, zero value otherwise.
+
+### GetObjectTypeOk
+
+`func (o *MemoryAbstractUnit) GetObjectTypeOk() (*string, bool)`
+
+GetObjectTypeOk returns a tuple with the ObjectType field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetObjectType
+
+`func (o *MemoryAbstractUnit) SetObjectType(v string)`
+
+SetObjectType sets ObjectType field to given value.
+
 
 ### GetAdminState
 
@@ -267,6 +309,41 @@ SetOperPowerState sets OperPowerState field to given value.
 
 HasOperPowerState returns a boolean if a field has been set.
 
+### GetOperReason
+
+`func (o *MemoryAbstractUnit) GetOperReason() []string`
+
+GetOperReason returns the OperReason field if non-nil, zero value otherwise.
+
+### GetOperReasonOk
+
+`func (o *MemoryAbstractUnit) GetOperReasonOk() (*[]string, bool)`
+
+GetOperReasonOk returns a tuple with the OperReason field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetOperReason
+
+`func (o *MemoryAbstractUnit) SetOperReason(v []string)`
+
+SetOperReason sets OperReason field to given value.
+
+### HasOperReason
+
+`func (o *MemoryAbstractUnit) HasOperReason() bool`
+
+HasOperReason returns a boolean if a field has been set.
+
+### SetOperReasonNil
+
+`func (o *MemoryAbstractUnit) SetOperReasonNil(b bool)`
+
+ SetOperReasonNil sets the value for OperReason to be an explicit nil
+
+### UnsetOperReason
+`func (o *MemoryAbstractUnit) UnsetOperReason()`
+
+UnsetOperReason ensures that no value is present for OperReason, not even an explicit nil
 ### GetOperState
 
 `func (o *MemoryAbstractUnit) GetOperState() string`
@@ -316,31 +393,6 @@ SetOperability sets Operability field to given value.
 `func (o *MemoryAbstractUnit) HasOperability() bool`
 
 HasOperability returns a boolean if a field has been set.
-
-### GetPresence
-
-`func (o *MemoryAbstractUnit) GetPresence() string`
-
-GetPresence returns the Presence field if non-nil, zero value otherwise.
-
-### GetPresenceOk
-
-`func (o *MemoryAbstractUnit) GetPresenceOk() (*string, bool)`
-
-GetPresenceOk returns a tuple with the Presence field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetPresence
-
-`func (o *MemoryAbstractUnit) SetPresence(v string)`
-
-SetPresence sets Presence field to given value.
-
-### HasPresence
-
-`func (o *MemoryAbstractUnit) HasPresence() bool`
-
-HasPresence returns a boolean if a field has been set.
 
 ### GetSet
 

@@ -4,20 +4,22 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**ClassId** | **string** | The fully-qualified name of the instantiated, concrete type. This property is used as a discriminator to identify the type of the payload when marshaling and unmarshaling data. | [default to "appliance.SetupInfo"]
+**ObjectType** | **string** | The fully-qualified name of the instantiated, concrete type. The value should be the same as the &#39;ClassId&#39; property. | [default to "appliance.SetupInfo"]
 **BuildType** | Pointer to **string** | Build type of the Intersight Appliance setup (e.g. release or debug). | [optional] [readonly] 
-**Capabilities** | Pointer to [**[]ApplianceKeyValuePair**](appliance.KeyValuePair.md) |  | [optional] 
+**Capabilities** | Pointer to [**[]ApplianceKeyValuePair**](ApplianceKeyValuePair.md) |  | [optional] 
 **CloudUrl** | Pointer to **string** | URL of the Intersight to which this Intersight Appliance is connected to. | [optional] [readonly] 
 **DeploymentMode** | Pointer to **string** | Indicates where Intersight Appliance is installed in air-gapped or connected mode. In connected mode, Intersight Appliance is claimed by Intesight SaaS. In air-gapped mode, Intersight Appliance does not connect to any Cisco services. * &#x60;Connected&#x60; - In connected mode, Intersight Appliance connects to Intersight SaaS and other cisco.com services. * &#x60;Private&#x60; - In private mode, Intersight Appliance does not connect to Intersight SaaS or any cisco.com services. | [optional] [readonly] [default to "Connected"]
-**EndTime** | Pointer to [**time.Time**](time.Time.md) | End date of the Intersight Appliance&#39;s initial setup. | [optional] [readonly] 
+**EndTime** | Pointer to **time.Time** | End date of the Intersight Appliance&#39;s initial setup. | [optional] [readonly] 
 **SetupStates** | Pointer to **[]string** |  | [optional] 
-**StartTime** | Pointer to [**time.Time**](time.Time.md) | Start date of the Intersight Appliance&#39;s initial setup. | [optional] [readonly] 
+**StartTime** | Pointer to **time.Time** | Start date of the Intersight Appliance&#39;s initial setup. | [optional] [readonly] 
 **Account** | Pointer to [**IamAccountRelationship**](iam.Account.Relationship.md) |  | [optional] 
 
 ## Methods
 
 ### NewApplianceSetupInfoAllOf
 
-`func NewApplianceSetupInfoAllOf() *ApplianceSetupInfoAllOf`
+`func NewApplianceSetupInfoAllOf(classId string, objectType string, ) *ApplianceSetupInfoAllOf`
 
 NewApplianceSetupInfoAllOf instantiates a new ApplianceSetupInfoAllOf object
 This constructor will assign default values to properties that have it defined,
@@ -31,6 +33,46 @@ will change when the set of required properties is changed
 NewApplianceSetupInfoAllOfWithDefaults instantiates a new ApplianceSetupInfoAllOf object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetClassId
+
+`func (o *ApplianceSetupInfoAllOf) GetClassId() string`
+
+GetClassId returns the ClassId field if non-nil, zero value otherwise.
+
+### GetClassIdOk
+
+`func (o *ApplianceSetupInfoAllOf) GetClassIdOk() (*string, bool)`
+
+GetClassIdOk returns a tuple with the ClassId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetClassId
+
+`func (o *ApplianceSetupInfoAllOf) SetClassId(v string)`
+
+SetClassId sets ClassId field to given value.
+
+
+### GetObjectType
+
+`func (o *ApplianceSetupInfoAllOf) GetObjectType() string`
+
+GetObjectType returns the ObjectType field if non-nil, zero value otherwise.
+
+### GetObjectTypeOk
+
+`func (o *ApplianceSetupInfoAllOf) GetObjectTypeOk() (*string, bool)`
+
+GetObjectTypeOk returns a tuple with the ObjectType field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetObjectType
+
+`func (o *ApplianceSetupInfoAllOf) SetObjectType(v string)`
+
+SetObjectType sets ObjectType field to given value.
+
 
 ### GetBuildType
 
@@ -82,6 +124,16 @@ SetCapabilities sets Capabilities field to given value.
 
 HasCapabilities returns a boolean if a field has been set.
 
+### SetCapabilitiesNil
+
+`func (o *ApplianceSetupInfoAllOf) SetCapabilitiesNil(b bool)`
+
+ SetCapabilitiesNil sets the value for Capabilities to be an explicit nil
+
+### UnsetCapabilities
+`func (o *ApplianceSetupInfoAllOf) UnsetCapabilities()`
+
+UnsetCapabilities ensures that no value is present for Capabilities, not even an explicit nil
 ### GetCloudUrl
 
 `func (o *ApplianceSetupInfoAllOf) GetCloudUrl() string`
@@ -182,6 +234,16 @@ SetSetupStates sets SetupStates field to given value.
 
 HasSetupStates returns a boolean if a field has been set.
 
+### SetSetupStatesNil
+
+`func (o *ApplianceSetupInfoAllOf) SetSetupStatesNil(b bool)`
+
+ SetSetupStatesNil sets the value for SetupStates to be an explicit nil
+
+### UnsetSetupStates
+`func (o *ApplianceSetupInfoAllOf) UnsetSetupStates()`
+
+UnsetSetupStates ensures that no value is present for SetupStates, not even an explicit nil
 ### GetStartTime
 
 `func (o *ApplianceSetupInfoAllOf) GetStartTime() time.Time`

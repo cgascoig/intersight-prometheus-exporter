@@ -4,28 +4,30 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**ClassId** | **string** | The fully-qualified name of the instantiated, concrete type. This property is used as a discriminator to identify the type of the payload when marshaling and unmarshaling data. The enum values provides the list of concrete types that can be instantiated from this abstract type. | 
+**ObjectType** | **string** | The fully-qualified name of the instantiated, concrete type. The value should be the same as the &#39;ClassId&#39; property. The enum values provides the list of concrete types that can be instantiated from this abstract type. | 
 **AffectedPids** | Pointer to **string** | String contains the PID of hardwares affected by this notice, seperated by comma. | [optional] 
-**AnnouncementDate** | Pointer to [**time.Time**](time.Time.md) | When this notice is announced. | [optional] 
+**AnnouncementDate** | Pointer to **time.Time** | When this notice is announced. | [optional] 
 **AnnouncementDateEpoch** | Pointer to **int64** | Epoch time of Announcement Date. | [optional] 
 **BulletinNo** | Pointer to **string** | The bulletinno of this hardware end of life notice. | [optional] 
 **Description** | Pointer to **string** | The description of this hardware end of life notice. | [optional] 
-**EndofNewServiceAttachmentDate** | Pointer to [**time.Time**](time.Time.md) | Date time of end of new services attachment  . | [optional] 
+**EndofNewServiceAttachmentDate** | Pointer to **time.Time** | Date time of end of new services attachment  . | [optional] 
 **EndofNewServiceAttachmentDateEpoch** | Pointer to **int64** | Epoch time of New service attachment Date . | [optional] 
-**EndofRoutineFailureAnalysisDate** | Pointer to [**time.Time**](time.Time.md) | Date time of end of routinefailure analysis. | [optional] 
+**EndofRoutineFailureAnalysisDate** | Pointer to **time.Time** | Date time of end of routinefailure analysis. | [optional] 
 **EndofRoutineFailureAnalysisDateEpoch** | Pointer to **int64** | Epoch time of End of Routine Failure Analysis Date. | [optional] 
-**EndofSaleDate** | Pointer to [**time.Time**](time.Time.md) | When this hardware will end sale. | [optional] 
+**EndofSaleDate** | Pointer to **time.Time** | When this hardware will end sale. | [optional] 
 **EndofSaleDateEpoch** | Pointer to **int64** | Epoch time of End of Sale Date. | [optional] 
-**EndofSecuritySupport** | Pointer to [**time.Time**](time.Time.md) | Date time of end of security support . | [optional] 
+**EndofSecuritySupport** | Pointer to **time.Time** | Date time of end of security support . | [optional] 
 **EndofSecuritySupportEpoch** | Pointer to **int64** | Epoch time of End of Security Support Date . | [optional] 
-**EndofServiceContractRenewalDate** | Pointer to [**time.Time**](time.Time.md) | Date time of end of service contract renew . | [optional] 
+**EndofServiceContractRenewalDate** | Pointer to **time.Time** | Date time of end of service contract renew . | [optional] 
 **EndofServiceContractRenewalDateEpoch** | Pointer to **int64** | Epoch time of End of Renewal service contract. | [optional] 
-**EndofSwMaintenanceDate** | Pointer to [**time.Time**](time.Time.md) | The date of end of maintainance. | [optional] 
+**EndofSwMaintenanceDate** | Pointer to **time.Time** | The date of end of maintainance. | [optional] 
 **EndofSwMaintenanceDateEpoch** | Pointer to **int64** | Epoch time of End of maintenance Date. | [optional] 
 **HardwareEolUrl** | Pointer to **string** | Hardware end of sale URL link to the notice webpage. | [optional] 
 **Headline** | Pointer to **string** | The title of this hardware end of life notice. | [optional] 
-**LastDateofSupport** | Pointer to [**time.Time**](time.Time.md) | Date time of end of support . | [optional] 
+**LastDateofSupport** | Pointer to **time.Time** | Date time of end of support . | [optional] 
 **LastDateofSupportEpoch** | Pointer to **int64** | Epoch time of last date of support . | [optional] 
-**LastShipDate** | Pointer to [**time.Time**](time.Time.md) | Date time of Lastship Date. | [optional] 
+**LastShipDate** | Pointer to **time.Time** | Date time of Lastship Date. | [optional] 
 **LastShipDateEpoch** | Pointer to **int64** | Epoch time of last ship Date. | [optional] 
 **MigrationUrl** | Pointer to **string** | The URL of this migration notice. | [optional] 
 
@@ -33,7 +35,7 @@ Name | Type | Description | Notes
 
 ### NewNiaapiHardwareEol
 
-`func NewNiaapiHardwareEol() *NiaapiHardwareEol`
+`func NewNiaapiHardwareEol(classId string, objectType string, ) *NiaapiHardwareEol`
 
 NewNiaapiHardwareEol instantiates a new NiaapiHardwareEol object
 This constructor will assign default values to properties that have it defined,
@@ -47,6 +49,46 @@ will change when the set of required properties is changed
 NewNiaapiHardwareEolWithDefaults instantiates a new NiaapiHardwareEol object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetClassId
+
+`func (o *NiaapiHardwareEol) GetClassId() string`
+
+GetClassId returns the ClassId field if non-nil, zero value otherwise.
+
+### GetClassIdOk
+
+`func (o *NiaapiHardwareEol) GetClassIdOk() (*string, bool)`
+
+GetClassIdOk returns a tuple with the ClassId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetClassId
+
+`func (o *NiaapiHardwareEol) SetClassId(v string)`
+
+SetClassId sets ClassId field to given value.
+
+
+### GetObjectType
+
+`func (o *NiaapiHardwareEol) GetObjectType() string`
+
+GetObjectType returns the ObjectType field if non-nil, zero value otherwise.
+
+### GetObjectTypeOk
+
+`func (o *NiaapiHardwareEol) GetObjectTypeOk() (*string, bool)`
+
+GetObjectTypeOk returns a tuple with the ObjectType field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetObjectType
+
+`func (o *NiaapiHardwareEol) SetObjectType(v string)`
+
+SetObjectType sets ObjectType field to given value.
+
 
 ### GetAffectedPids
 

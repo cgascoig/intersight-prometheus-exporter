@@ -4,15 +4,16 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Var0OnDemandBackup** | Pointer to [**RecoveryOnDemandBackupRelationship**](recovery.OnDemandBackup.Relationship.md) |  | [optional] 
+**ClassId** | **string** | The fully-qualified name of the instantiated, concrete type. This property is used as a discriminator to identify the type of the payload when marshaling and unmarshaling data. | [default to "recovery.ConfigResult"]
+**ObjectType** | **string** | The fully-qualified name of the instantiated, concrete type. The value should be the same as the &#39;ClassId&#39; property. | [default to "recovery.ConfigResult"]
 **BackupProfile** | Pointer to [**RecoveryBackupProfileRelationship**](recovery.BackupProfile.Relationship.md) |  | [optional] 
-**ResultEntries** | Pointer to [**[]RecoveryConfigResultEntryRelationship**](recovery.ConfigResultEntry.Relationship.md) | An array of relationships to recoveryConfigResultEntry resources. | [optional] 
+**ResultEntries** | Pointer to [**[]RecoveryConfigResultEntryRelationship**](RecoveryConfigResultEntryRelationship.md) | An array of relationships to recoveryConfigResultEntry resources. | [optional] 
 
 ## Methods
 
 ### NewRecoveryConfigResult
 
-`func NewRecoveryConfigResult() *RecoveryConfigResult`
+`func NewRecoveryConfigResult(classId string, objectType string, ) *RecoveryConfigResult`
 
 NewRecoveryConfigResult instantiates a new RecoveryConfigResult object
 This constructor will assign default values to properties that have it defined,
@@ -27,30 +28,45 @@ NewRecoveryConfigResultWithDefaults instantiates a new RecoveryConfigResult obje
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
-### GetVar0OnDemandBackup
+### GetClassId
 
-`func (o *RecoveryConfigResult) GetVar0OnDemandBackup() RecoveryOnDemandBackupRelationship`
+`func (o *RecoveryConfigResult) GetClassId() string`
 
-GetVar0OnDemandBackup returns the Var0OnDemandBackup field if non-nil, zero value otherwise.
+GetClassId returns the ClassId field if non-nil, zero value otherwise.
 
-### GetVar0OnDemandBackupOk
+### GetClassIdOk
 
-`func (o *RecoveryConfigResult) GetVar0OnDemandBackupOk() (*RecoveryOnDemandBackupRelationship, bool)`
+`func (o *RecoveryConfigResult) GetClassIdOk() (*string, bool)`
 
-GetVar0OnDemandBackupOk returns a tuple with the Var0OnDemandBackup field if it's non-nil, zero value otherwise
+GetClassIdOk returns a tuple with the ClassId field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetVar0OnDemandBackup
+### SetClassId
 
-`func (o *RecoveryConfigResult) SetVar0OnDemandBackup(v RecoveryOnDemandBackupRelationship)`
+`func (o *RecoveryConfigResult) SetClassId(v string)`
 
-SetVar0OnDemandBackup sets Var0OnDemandBackup field to given value.
+SetClassId sets ClassId field to given value.
 
-### HasVar0OnDemandBackup
 
-`func (o *RecoveryConfigResult) HasVar0OnDemandBackup() bool`
+### GetObjectType
 
-HasVar0OnDemandBackup returns a boolean if a field has been set.
+`func (o *RecoveryConfigResult) GetObjectType() string`
+
+GetObjectType returns the ObjectType field if non-nil, zero value otherwise.
+
+### GetObjectTypeOk
+
+`func (o *RecoveryConfigResult) GetObjectTypeOk() (*string, bool)`
+
+GetObjectTypeOk returns a tuple with the ObjectType field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetObjectType
+
+`func (o *RecoveryConfigResult) SetObjectType(v string)`
+
+SetObjectType sets ObjectType field to given value.
+
 
 ### GetBackupProfile
 

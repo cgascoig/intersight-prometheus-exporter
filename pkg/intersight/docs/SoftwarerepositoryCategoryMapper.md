@@ -4,8 +4,11 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**ClassId** | **string** | The fully-qualified name of the instantiated, concrete type. This property is used as a discriminator to identify the type of the payload when marshaling and unmarshaling data. | [default to "softwarerepository.CategoryMapper"]
+**ObjectType** | **string** | The fully-qualified name of the instantiated, concrete type. The value should be the same as the &#39;ClassId&#39; property. | [default to "softwarerepository.CategoryMapper"]
 **Category** | Pointer to **string** | The category of the model series. | [optional] 
 **FileType** | Pointer to **string** | The type of distributable image, example huu, scu, driver, os. * &#x60;Distributable&#x60; - Stores firmware host utility images and fabric images. * &#x60;DriverDistributable&#x60; - Stores driver distributable images. * &#x60;ServerConfigurationUtilityDistributable&#x60; - Stores server configuration utility images. * &#x60;OperatingSystemFile&#x60; - Stores operating system iso images. * &#x60;HyperflexDistributable&#x60; - It stores HyperFlex images. | [optional] [default to "Distributable"]
+**ImageType** | Pointer to **string** | The type of image based on the endpoint it can upgrade. For example, ucs-c420m5-huu-3.2.1a.iso can upgrade standalone servers, so the image type is Standalone Server. | [optional] 
 **MdfId** | Pointer to **string** | Cisco software repository image category identifier. | [optional] 
 **RegexPattern** | Pointer to **string** | The regex that all images of this category follow. | [optional] 
 **Source** | Pointer to **string** | The image can be downloaded from cisco.com or external cloud store. * &#x60;Cisco&#x60; - External repository hosted on cisco.com. * &#x60;IntersightCloud&#x60; - Repository hosted by the Intersight Cloud. * &#x60;LocalMachine&#x60; - The file is available on the local client machine. Used as an upload source type. * &#x60;NetworkShare&#x60; - External repository in the customer datacenter. This will typically be a file server. | [optional] [default to "Cisco"]
@@ -18,7 +21,7 @@ Name | Type | Description | Notes
 
 ### NewSoftwarerepositoryCategoryMapper
 
-`func NewSoftwarerepositoryCategoryMapper() *SoftwarerepositoryCategoryMapper`
+`func NewSoftwarerepositoryCategoryMapper(classId string, objectType string, ) *SoftwarerepositoryCategoryMapper`
 
 NewSoftwarerepositoryCategoryMapper instantiates a new SoftwarerepositoryCategoryMapper object
 This constructor will assign default values to properties that have it defined,
@@ -32,6 +35,46 @@ will change when the set of required properties is changed
 NewSoftwarerepositoryCategoryMapperWithDefaults instantiates a new SoftwarerepositoryCategoryMapper object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetClassId
+
+`func (o *SoftwarerepositoryCategoryMapper) GetClassId() string`
+
+GetClassId returns the ClassId field if non-nil, zero value otherwise.
+
+### GetClassIdOk
+
+`func (o *SoftwarerepositoryCategoryMapper) GetClassIdOk() (*string, bool)`
+
+GetClassIdOk returns a tuple with the ClassId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetClassId
+
+`func (o *SoftwarerepositoryCategoryMapper) SetClassId(v string)`
+
+SetClassId sets ClassId field to given value.
+
+
+### GetObjectType
+
+`func (o *SoftwarerepositoryCategoryMapper) GetObjectType() string`
+
+GetObjectType returns the ObjectType field if non-nil, zero value otherwise.
+
+### GetObjectTypeOk
+
+`func (o *SoftwarerepositoryCategoryMapper) GetObjectTypeOk() (*string, bool)`
+
+GetObjectTypeOk returns a tuple with the ObjectType field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetObjectType
+
+`func (o *SoftwarerepositoryCategoryMapper) SetObjectType(v string)`
+
+SetObjectType sets ObjectType field to given value.
+
 
 ### GetCategory
 
@@ -82,6 +125,31 @@ SetFileType sets FileType field to given value.
 `func (o *SoftwarerepositoryCategoryMapper) HasFileType() bool`
 
 HasFileType returns a boolean if a field has been set.
+
+### GetImageType
+
+`func (o *SoftwarerepositoryCategoryMapper) GetImageType() string`
+
+GetImageType returns the ImageType field if non-nil, zero value otherwise.
+
+### GetImageTypeOk
+
+`func (o *SoftwarerepositoryCategoryMapper) GetImageTypeOk() (*string, bool)`
+
+GetImageTypeOk returns a tuple with the ImageType field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetImageType
+
+`func (o *SoftwarerepositoryCategoryMapper) SetImageType(v string)`
+
+SetImageType sets ImageType field to given value.
+
+### HasImageType
+
+`func (o *SoftwarerepositoryCategoryMapper) HasImageType() bool`
+
+HasImageType returns a boolean if a field has been set.
 
 ### GetMdfId
 
@@ -183,6 +251,16 @@ SetSupportedModels sets SupportedModels field to given value.
 
 HasSupportedModels returns a boolean if a field has been set.
 
+### SetSupportedModelsNil
+
+`func (o *SoftwarerepositoryCategoryMapper) SetSupportedModelsNil(b bool)`
+
+ SetSupportedModelsNil sets the value for SupportedModels to be an explicit nil
+
+### UnsetSupportedModels
+`func (o *SoftwarerepositoryCategoryMapper) UnsetSupportedModels()`
+
+UnsetSupportedModels ensures that no value is present for SupportedModels, not even an explicit nil
 ### GetSwId
 
 `func (o *SoftwarerepositoryCategoryMapper) GetSwId() string`
@@ -233,6 +311,16 @@ SetTagTypes sets TagTypes field to given value.
 
 HasTagTypes returns a boolean if a field has been set.
 
+### SetTagTypesNil
+
+`func (o *SoftwarerepositoryCategoryMapper) SetTagTypesNil(b bool)`
+
+ SetTagTypesNil sets the value for TagTypes to be an explicit nil
+
+### UnsetTagTypes
+`func (o *SoftwarerepositoryCategoryMapper) UnsetTagTypes()`
+
+UnsetTagTypes ensures that no value is present for TagTypes, not even an explicit nil
 ### GetVersion
 
 `func (o *SoftwarerepositoryCategoryMapper) GetVersion() string`

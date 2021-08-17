@@ -4,15 +4,15 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**AdminSpeed** | Pointer to **string** | Admin configured speed for the port. * &#x60;Auto&#x60; - Admin configurable speed AUTO ( default ). * &#x60;1Gbps&#x60; - Admin configurable speed 1Gbps. * &#x60;10Gbps&#x60; - Admin configurable speed 10Gbps. * &#x60;25Gbps&#x60; - Admin configurable speed 25Gbps. * &#x60;40Gbps&#x60; - Admin configurable speed 40Gbps. * &#x60;100Gbps&#x60; - Admin configurable speed 100Gbps. | [optional] [default to "Auto"]
-**Fec** | Pointer to **string** | Forward error correction configuration for the port. * &#x60;Auto&#x60; - Forward error correction option &#39;Auto&#39;. * &#x60;Cl91&#x60; - Forward error correction option &#39;cl91&#39;. * &#x60;Cl74&#x60; - Forward error correction option &#39;cl74&#39;. | [optional] [default to "Auto"]
-**UdldAdminState** | Pointer to **string** | Admin configured state for UDLD for this port. * &#x60;Disabled&#x60; - Admin configured Disabled State. * &#x60;Enabled&#x60; - Admin configured Enabled State. | [optional] [default to "Disabled"]
+**ClassId** | **string** | The fully-qualified name of the instantiated, concrete type. This property is used as a discriminator to identify the type of the payload when marshaling and unmarshaling data. | [default to "fabric.FcoeUplinkRole"]
+**ObjectType** | **string** | The fully-qualified name of the instantiated, concrete type. The value should be the same as the &#39;ClassId&#39; property. | [default to "fabric.FcoeUplinkRole"]
+**LinkControlPolicy** | Pointer to [**FabricLinkControlPolicyRelationship**](fabric.LinkControlPolicy.Relationship.md) |  | [optional] 
 
 ## Methods
 
 ### NewFabricFcoeUplinkRole
 
-`func NewFabricFcoeUplinkRole() *FabricFcoeUplinkRole`
+`func NewFabricFcoeUplinkRole(classId string, objectType string, ) *FabricFcoeUplinkRole`
 
 NewFabricFcoeUplinkRole instantiates a new FabricFcoeUplinkRole object
 This constructor will assign default values to properties that have it defined,
@@ -27,80 +27,70 @@ NewFabricFcoeUplinkRoleWithDefaults instantiates a new FabricFcoeUplinkRole obje
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
-### GetAdminSpeed
+### GetClassId
 
-`func (o *FabricFcoeUplinkRole) GetAdminSpeed() string`
+`func (o *FabricFcoeUplinkRole) GetClassId() string`
 
-GetAdminSpeed returns the AdminSpeed field if non-nil, zero value otherwise.
+GetClassId returns the ClassId field if non-nil, zero value otherwise.
 
-### GetAdminSpeedOk
+### GetClassIdOk
 
-`func (o *FabricFcoeUplinkRole) GetAdminSpeedOk() (*string, bool)`
+`func (o *FabricFcoeUplinkRole) GetClassIdOk() (*string, bool)`
 
-GetAdminSpeedOk returns a tuple with the AdminSpeed field if it's non-nil, zero value otherwise
+GetClassIdOk returns a tuple with the ClassId field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetAdminSpeed
+### SetClassId
 
-`func (o *FabricFcoeUplinkRole) SetAdminSpeed(v string)`
+`func (o *FabricFcoeUplinkRole) SetClassId(v string)`
 
-SetAdminSpeed sets AdminSpeed field to given value.
+SetClassId sets ClassId field to given value.
 
-### HasAdminSpeed
 
-`func (o *FabricFcoeUplinkRole) HasAdminSpeed() bool`
+### GetObjectType
 
-HasAdminSpeed returns a boolean if a field has been set.
+`func (o *FabricFcoeUplinkRole) GetObjectType() string`
 
-### GetFec
+GetObjectType returns the ObjectType field if non-nil, zero value otherwise.
 
-`func (o *FabricFcoeUplinkRole) GetFec() string`
+### GetObjectTypeOk
 
-GetFec returns the Fec field if non-nil, zero value otherwise.
+`func (o *FabricFcoeUplinkRole) GetObjectTypeOk() (*string, bool)`
 
-### GetFecOk
-
-`func (o *FabricFcoeUplinkRole) GetFecOk() (*string, bool)`
-
-GetFecOk returns a tuple with the Fec field if it's non-nil, zero value otherwise
+GetObjectTypeOk returns a tuple with the ObjectType field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetFec
+### SetObjectType
 
-`func (o *FabricFcoeUplinkRole) SetFec(v string)`
+`func (o *FabricFcoeUplinkRole) SetObjectType(v string)`
 
-SetFec sets Fec field to given value.
+SetObjectType sets ObjectType field to given value.
 
-### HasFec
 
-`func (o *FabricFcoeUplinkRole) HasFec() bool`
+### GetLinkControlPolicy
 
-HasFec returns a boolean if a field has been set.
+`func (o *FabricFcoeUplinkRole) GetLinkControlPolicy() FabricLinkControlPolicyRelationship`
 
-### GetUdldAdminState
+GetLinkControlPolicy returns the LinkControlPolicy field if non-nil, zero value otherwise.
 
-`func (o *FabricFcoeUplinkRole) GetUdldAdminState() string`
+### GetLinkControlPolicyOk
 
-GetUdldAdminState returns the UdldAdminState field if non-nil, zero value otherwise.
+`func (o *FabricFcoeUplinkRole) GetLinkControlPolicyOk() (*FabricLinkControlPolicyRelationship, bool)`
 
-### GetUdldAdminStateOk
-
-`func (o *FabricFcoeUplinkRole) GetUdldAdminStateOk() (*string, bool)`
-
-GetUdldAdminStateOk returns a tuple with the UdldAdminState field if it's non-nil, zero value otherwise
+GetLinkControlPolicyOk returns a tuple with the LinkControlPolicy field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetUdldAdminState
+### SetLinkControlPolicy
 
-`func (o *FabricFcoeUplinkRole) SetUdldAdminState(v string)`
+`func (o *FabricFcoeUplinkRole) SetLinkControlPolicy(v FabricLinkControlPolicyRelationship)`
 
-SetUdldAdminState sets UdldAdminState field to given value.
+SetLinkControlPolicy sets LinkControlPolicy field to given value.
 
-### HasUdldAdminState
+### HasLinkControlPolicy
 
-`func (o *FabricFcoeUplinkRole) HasUdldAdminState() bool`
+`func (o *FabricFcoeUplinkRole) HasLinkControlPolicy() bool`
 
-HasUdldAdminState returns a boolean if a field has been set.
+HasLinkControlPolicy returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

@@ -4,6 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**ClassId** | **string** | The fully-qualified name of the instantiated, concrete type. This property is used as a discriminator to identify the type of the payload when marshaling and unmarshaling data. | [default to "management.Interface"]
+**ObjectType** | **string** | The fully-qualified name of the instantiated, concrete type. The value should be the same as the &#39;ClassId&#39; property. | [default to "management.Interface"]
 **Gateway** | Pointer to **string** | Default gateway for the interface. | [optional] [readonly] 
 **HostName** | Pointer to **string** | Hostname configured for the interface. | [optional] 
 **IpAddress** | Pointer to **string** | IP address of the interface. | [optional] [readonly] 
@@ -18,6 +20,7 @@ Name | Type | Description | Notes
 **SwitchId** | Pointer to **string** | Switch Id connected to the interface. | [optional] 
 **UemConnStatus** | Pointer to **string** | The event channel connection status for the interface. | [optional] 
 **VirtualHostName** | Pointer to **string** | Virtual hostname configured for the interface in case of clustered environment. | [optional] 
+**VlanId** | Pointer to **int64** | VlanId configured for the interface. | [optional] 
 **InventoryDeviceInfo** | Pointer to [**InventoryDeviceInfoRelationship**](inventory.DeviceInfo.Relationship.md) |  | [optional] 
 **ManagementController** | Pointer to [**ManagementControllerRelationship**](management.Controller.Relationship.md) |  | [optional] 
 **RegisteredDevice** | Pointer to [**AssetDeviceRegistrationRelationship**](asset.DeviceRegistration.Relationship.md) |  | [optional] 
@@ -26,7 +29,7 @@ Name | Type | Description | Notes
 
 ### NewManagementInterfaceAllOf
 
-`func NewManagementInterfaceAllOf() *ManagementInterfaceAllOf`
+`func NewManagementInterfaceAllOf(classId string, objectType string, ) *ManagementInterfaceAllOf`
 
 NewManagementInterfaceAllOf instantiates a new ManagementInterfaceAllOf object
 This constructor will assign default values to properties that have it defined,
@@ -40,6 +43,46 @@ will change when the set of required properties is changed
 NewManagementInterfaceAllOfWithDefaults instantiates a new ManagementInterfaceAllOf object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetClassId
+
+`func (o *ManagementInterfaceAllOf) GetClassId() string`
+
+GetClassId returns the ClassId field if non-nil, zero value otherwise.
+
+### GetClassIdOk
+
+`func (o *ManagementInterfaceAllOf) GetClassIdOk() (*string, bool)`
+
+GetClassIdOk returns a tuple with the ClassId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetClassId
+
+`func (o *ManagementInterfaceAllOf) SetClassId(v string)`
+
+SetClassId sets ClassId field to given value.
+
+
+### GetObjectType
+
+`func (o *ManagementInterfaceAllOf) GetObjectType() string`
+
+GetObjectType returns the ObjectType field if non-nil, zero value otherwise.
+
+### GetObjectTypeOk
+
+`func (o *ManagementInterfaceAllOf) GetObjectTypeOk() (*string, bool)`
+
+GetObjectTypeOk returns a tuple with the ObjectType field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetObjectType
+
+`func (o *ManagementInterfaceAllOf) SetObjectType(v string)`
+
+SetObjectType sets ObjectType field to given value.
+
 
 ### GetGateway
 
@@ -390,6 +433,31 @@ SetVirtualHostName sets VirtualHostName field to given value.
 `func (o *ManagementInterfaceAllOf) HasVirtualHostName() bool`
 
 HasVirtualHostName returns a boolean if a field has been set.
+
+### GetVlanId
+
+`func (o *ManagementInterfaceAllOf) GetVlanId() int64`
+
+GetVlanId returns the VlanId field if non-nil, zero value otherwise.
+
+### GetVlanIdOk
+
+`func (o *ManagementInterfaceAllOf) GetVlanIdOk() (*int64, bool)`
+
+GetVlanIdOk returns a tuple with the VlanId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetVlanId
+
+`func (o *ManagementInterfaceAllOf) SetVlanId(v int64)`
+
+SetVlanId sets VlanId field to given value.
+
+### HasVlanId
+
+`func (o *ManagementInterfaceAllOf) HasVlanId() bool`
+
+HasVlanId returns a boolean if a field has been set.
 
 ### GetInventoryDeviceInfo
 

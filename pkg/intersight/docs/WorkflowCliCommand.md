@@ -4,9 +4,12 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**ClassId** | **string** | The fully-qualified name of the instantiated, concrete type. This property is used as a discriminator to identify the type of the payload when marshaling and unmarshaling data. | [default to "workflow.CliCommand"]
+**ObjectType** | **string** | The fully-qualified name of the instantiated, concrete type. The value should be the same as the &#39;ClassId&#39; property. | [default to "workflow.CliCommand"]
 **Command** | Pointer to **string** | The command to run on the device connector. | [optional] 
 **EndPrompt** | Pointer to **string** | The regex string that identifies the end of the command response. | [optional] 
-**ExpectPrompts** | Pointer to [**[]WorkflowExpectPrompt**](workflow.ExpectPrompt.md) |  | [optional] 
+**ExpectPrompts** | Pointer to [**[]WorkflowExpectPrompt**](WorkflowExpectPrompt.md) |  | [optional] 
+**ExpectedExitCodes** | Pointer to **[]int64** |  | [optional] 
 **SkipStatusCheck** | Pointer to **bool** | Skips the execution status check of the terminal command. One use case for this is while exiting the terminal session from esxi host. | [optional] 
 **TerminalEnd** | Pointer to **bool** | If this flag is set, it marks the end of the terminal session where the previous commands were executed. | [optional] 
 **TerminalStart** | Pointer to **bool** | If this flag is set, the execution of this command initiates a terminal session in which the subsequent CLI commands are executed until a command with terminalEnd flag is encountered or the end of the batch. | [optional] 
@@ -16,7 +19,7 @@ Name | Type | Description | Notes
 
 ### NewWorkflowCliCommand
 
-`func NewWorkflowCliCommand() *WorkflowCliCommand`
+`func NewWorkflowCliCommand(classId string, objectType string, ) *WorkflowCliCommand`
 
 NewWorkflowCliCommand instantiates a new WorkflowCliCommand object
 This constructor will assign default values to properties that have it defined,
@@ -30,6 +33,46 @@ will change when the set of required properties is changed
 NewWorkflowCliCommandWithDefaults instantiates a new WorkflowCliCommand object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetClassId
+
+`func (o *WorkflowCliCommand) GetClassId() string`
+
+GetClassId returns the ClassId field if non-nil, zero value otherwise.
+
+### GetClassIdOk
+
+`func (o *WorkflowCliCommand) GetClassIdOk() (*string, bool)`
+
+GetClassIdOk returns a tuple with the ClassId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetClassId
+
+`func (o *WorkflowCliCommand) SetClassId(v string)`
+
+SetClassId sets ClassId field to given value.
+
+
+### GetObjectType
+
+`func (o *WorkflowCliCommand) GetObjectType() string`
+
+GetObjectType returns the ObjectType field if non-nil, zero value otherwise.
+
+### GetObjectTypeOk
+
+`func (o *WorkflowCliCommand) GetObjectTypeOk() (*string, bool)`
+
+GetObjectTypeOk returns a tuple with the ObjectType field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetObjectType
+
+`func (o *WorkflowCliCommand) SetObjectType(v string)`
+
+SetObjectType sets ObjectType field to given value.
+
 
 ### GetCommand
 
@@ -106,6 +149,51 @@ SetExpectPrompts sets ExpectPrompts field to given value.
 
 HasExpectPrompts returns a boolean if a field has been set.
 
+### SetExpectPromptsNil
+
+`func (o *WorkflowCliCommand) SetExpectPromptsNil(b bool)`
+
+ SetExpectPromptsNil sets the value for ExpectPrompts to be an explicit nil
+
+### UnsetExpectPrompts
+`func (o *WorkflowCliCommand) UnsetExpectPrompts()`
+
+UnsetExpectPrompts ensures that no value is present for ExpectPrompts, not even an explicit nil
+### GetExpectedExitCodes
+
+`func (o *WorkflowCliCommand) GetExpectedExitCodes() []int64`
+
+GetExpectedExitCodes returns the ExpectedExitCodes field if non-nil, zero value otherwise.
+
+### GetExpectedExitCodesOk
+
+`func (o *WorkflowCliCommand) GetExpectedExitCodesOk() (*[]int64, bool)`
+
+GetExpectedExitCodesOk returns a tuple with the ExpectedExitCodes field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetExpectedExitCodes
+
+`func (o *WorkflowCliCommand) SetExpectedExitCodes(v []int64)`
+
+SetExpectedExitCodes sets ExpectedExitCodes field to given value.
+
+### HasExpectedExitCodes
+
+`func (o *WorkflowCliCommand) HasExpectedExitCodes() bool`
+
+HasExpectedExitCodes returns a boolean if a field has been set.
+
+### SetExpectedExitCodesNil
+
+`func (o *WorkflowCliCommand) SetExpectedExitCodesNil(b bool)`
+
+ SetExpectedExitCodesNil sets the value for ExpectedExitCodes to be an explicit nil
+
+### UnsetExpectedExitCodes
+`func (o *WorkflowCliCommand) UnsetExpectedExitCodes()`
+
+UnsetExpectedExitCodes ensures that no value is present for ExpectedExitCodes, not even an explicit nil
 ### GetSkipStatusCheck
 
 `func (o *WorkflowCliCommand) GetSkipStatusCheck() bool`

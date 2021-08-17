@@ -4,17 +4,22 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**ClassId** | **string** | The fully-qualified name of the instantiated, concrete type. This property is used as a discriminator to identify the type of the payload when marshaling and unmarshaling data. | [default to "capability.AdapterUnitDescriptor"]
+**ObjectType** | **string** | The fully-qualified name of the instantiated, concrete type. The value should be the same as the &#39;ClassId&#39; property. | [default to "capability.AdapterUnitDescriptor"]
 **ConnectivityOrder** | Pointer to **string** | Order in which the ports are connected; sequential or cyclic. | [optional] 
 **EthernetPortSpeed** | Pointer to **int64** | The port speed for ethernet ports in Mbps. | [optional] 
 **FibreChannelPortSpeed** | Pointer to **int64** | The port speed for fibre channel ports in Mbps. | [optional] 
-**NumDcePorts** | Pointer to **int64** | Number of Dce Ports for the adaptor. | [optional] 
-**PromCardType** | Pointer to **string** | Prom card type for the adaptor. | [optional] 
+**FibreChannelScsiIoqLimit** | Pointer to **int64** | The number of SCSI I/O Queue resources to allocate. | [optional] 
+**IsAzureQosSupported** | Pointer to **bool** | Indicates that the Azure Stack Host QoS feature is supported by this adapter. | [optional] [default to true]
+**IsGeneveSupported** | Pointer to **bool** | Indicates that the GENEVE offload feature is supported by this adapter. | [optional] [default to true]
+**NumDcePorts** | Pointer to **int64** | Number of Dce Ports for the adapter. | [optional] 
+**PromCardType** | Pointer to **string** | Prom card type for the adapter. | [optional] 
 
 ## Methods
 
 ### NewCapabilityAdapterUnitDescriptor
 
-`func NewCapabilityAdapterUnitDescriptor() *CapabilityAdapterUnitDescriptor`
+`func NewCapabilityAdapterUnitDescriptor(classId string, objectType string, ) *CapabilityAdapterUnitDescriptor`
 
 NewCapabilityAdapterUnitDescriptor instantiates a new CapabilityAdapterUnitDescriptor object
 This constructor will assign default values to properties that have it defined,
@@ -28,6 +33,46 @@ will change when the set of required properties is changed
 NewCapabilityAdapterUnitDescriptorWithDefaults instantiates a new CapabilityAdapterUnitDescriptor object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetClassId
+
+`func (o *CapabilityAdapterUnitDescriptor) GetClassId() string`
+
+GetClassId returns the ClassId field if non-nil, zero value otherwise.
+
+### GetClassIdOk
+
+`func (o *CapabilityAdapterUnitDescriptor) GetClassIdOk() (*string, bool)`
+
+GetClassIdOk returns a tuple with the ClassId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetClassId
+
+`func (o *CapabilityAdapterUnitDescriptor) SetClassId(v string)`
+
+SetClassId sets ClassId field to given value.
+
+
+### GetObjectType
+
+`func (o *CapabilityAdapterUnitDescriptor) GetObjectType() string`
+
+GetObjectType returns the ObjectType field if non-nil, zero value otherwise.
+
+### GetObjectTypeOk
+
+`func (o *CapabilityAdapterUnitDescriptor) GetObjectTypeOk() (*string, bool)`
+
+GetObjectTypeOk returns a tuple with the ObjectType field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetObjectType
+
+`func (o *CapabilityAdapterUnitDescriptor) SetObjectType(v string)`
+
+SetObjectType sets ObjectType field to given value.
+
 
 ### GetConnectivityOrder
 
@@ -103,6 +148,81 @@ SetFibreChannelPortSpeed sets FibreChannelPortSpeed field to given value.
 `func (o *CapabilityAdapterUnitDescriptor) HasFibreChannelPortSpeed() bool`
 
 HasFibreChannelPortSpeed returns a boolean if a field has been set.
+
+### GetFibreChannelScsiIoqLimit
+
+`func (o *CapabilityAdapterUnitDescriptor) GetFibreChannelScsiIoqLimit() int64`
+
+GetFibreChannelScsiIoqLimit returns the FibreChannelScsiIoqLimit field if non-nil, zero value otherwise.
+
+### GetFibreChannelScsiIoqLimitOk
+
+`func (o *CapabilityAdapterUnitDescriptor) GetFibreChannelScsiIoqLimitOk() (*int64, bool)`
+
+GetFibreChannelScsiIoqLimitOk returns a tuple with the FibreChannelScsiIoqLimit field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetFibreChannelScsiIoqLimit
+
+`func (o *CapabilityAdapterUnitDescriptor) SetFibreChannelScsiIoqLimit(v int64)`
+
+SetFibreChannelScsiIoqLimit sets FibreChannelScsiIoqLimit field to given value.
+
+### HasFibreChannelScsiIoqLimit
+
+`func (o *CapabilityAdapterUnitDescriptor) HasFibreChannelScsiIoqLimit() bool`
+
+HasFibreChannelScsiIoqLimit returns a boolean if a field has been set.
+
+### GetIsAzureQosSupported
+
+`func (o *CapabilityAdapterUnitDescriptor) GetIsAzureQosSupported() bool`
+
+GetIsAzureQosSupported returns the IsAzureQosSupported field if non-nil, zero value otherwise.
+
+### GetIsAzureQosSupportedOk
+
+`func (o *CapabilityAdapterUnitDescriptor) GetIsAzureQosSupportedOk() (*bool, bool)`
+
+GetIsAzureQosSupportedOk returns a tuple with the IsAzureQosSupported field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetIsAzureQosSupported
+
+`func (o *CapabilityAdapterUnitDescriptor) SetIsAzureQosSupported(v bool)`
+
+SetIsAzureQosSupported sets IsAzureQosSupported field to given value.
+
+### HasIsAzureQosSupported
+
+`func (o *CapabilityAdapterUnitDescriptor) HasIsAzureQosSupported() bool`
+
+HasIsAzureQosSupported returns a boolean if a field has been set.
+
+### GetIsGeneveSupported
+
+`func (o *CapabilityAdapterUnitDescriptor) GetIsGeneveSupported() bool`
+
+GetIsGeneveSupported returns the IsGeneveSupported field if non-nil, zero value otherwise.
+
+### GetIsGeneveSupportedOk
+
+`func (o *CapabilityAdapterUnitDescriptor) GetIsGeneveSupportedOk() (*bool, bool)`
+
+GetIsGeneveSupportedOk returns a tuple with the IsGeneveSupported field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetIsGeneveSupported
+
+`func (o *CapabilityAdapterUnitDescriptor) SetIsGeneveSupported(v bool)`
+
+SetIsGeneveSupported sets IsGeneveSupported field to given value.
+
+### HasIsGeneveSupported
+
+`func (o *CapabilityAdapterUnitDescriptor) HasIsGeneveSupported() bool`
+
+HasIsGeneveSupported returns a boolean if a field has been set.
 
 ### GetNumDcePorts
 

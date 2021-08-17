@@ -4,15 +4,16 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**AdminSpeed** | Pointer to **string** | Admin configured speed for the port. * &#x60;Auto&#x60; - Admin configurable speed AUTO ( default ). * &#x60;1Gbps&#x60; - Admin configurable speed 1Gbps. * &#x60;10Gbps&#x60; - Admin configurable speed 10Gbps. * &#x60;25Gbps&#x60; - Admin configurable speed 25Gbps. * &#x60;40Gbps&#x60; - Admin configurable speed 40Gbps. * &#x60;100Gbps&#x60; - Admin configurable speed 100Gbps. | [optional] [default to "Auto"]
-**Fec** | Pointer to **string** | Forward error correction configuration for the port. * &#x60;Auto&#x60; - Forward error correction option &#39;Auto&#39;. * &#x60;Cl91&#x60; - Forward error correction option &#39;cl91&#39;. * &#x60;Cl74&#x60; - Forward error correction option &#39;cl74&#39;. | [optional] [default to "Auto"]
-**UdldAdminState** | Pointer to **string** | Admin configured state for UDLD for this port. * &#x60;Disabled&#x60; - Admin configured Disabled State. * &#x60;Enabled&#x60; - Admin configured Enabled State. | [optional] [default to "Disabled"]
+**ClassId** | **string** | The fully-qualified name of the instantiated, concrete type. This property is used as a discriminator to identify the type of the payload when marshaling and unmarshaling data. | [default to "fabric.UplinkRole"]
+**ObjectType** | **string** | The fully-qualified name of the instantiated, concrete type. The value should be the same as the &#39;ClassId&#39; property. | [default to "fabric.UplinkRole"]
+**FlowControlPolicy** | Pointer to [**FabricFlowControlPolicyRelationship**](fabric.FlowControlPolicy.Relationship.md) |  | [optional] 
+**LinkControlPolicy** | Pointer to [**FabricLinkControlPolicyRelationship**](fabric.LinkControlPolicy.Relationship.md) |  | [optional] 
 
 ## Methods
 
 ### NewFabricUplinkRole
 
-`func NewFabricUplinkRole() *FabricUplinkRole`
+`func NewFabricUplinkRole(classId string, objectType string, ) *FabricUplinkRole`
 
 NewFabricUplinkRole instantiates a new FabricUplinkRole object
 This constructor will assign default values to properties that have it defined,
@@ -27,80 +28,95 @@ NewFabricUplinkRoleWithDefaults instantiates a new FabricUplinkRole object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
-### GetAdminSpeed
+### GetClassId
 
-`func (o *FabricUplinkRole) GetAdminSpeed() string`
+`func (o *FabricUplinkRole) GetClassId() string`
 
-GetAdminSpeed returns the AdminSpeed field if non-nil, zero value otherwise.
+GetClassId returns the ClassId field if non-nil, zero value otherwise.
 
-### GetAdminSpeedOk
+### GetClassIdOk
 
-`func (o *FabricUplinkRole) GetAdminSpeedOk() (*string, bool)`
+`func (o *FabricUplinkRole) GetClassIdOk() (*string, bool)`
 
-GetAdminSpeedOk returns a tuple with the AdminSpeed field if it's non-nil, zero value otherwise
+GetClassIdOk returns a tuple with the ClassId field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetAdminSpeed
+### SetClassId
 
-`func (o *FabricUplinkRole) SetAdminSpeed(v string)`
+`func (o *FabricUplinkRole) SetClassId(v string)`
 
-SetAdminSpeed sets AdminSpeed field to given value.
+SetClassId sets ClassId field to given value.
 
-### HasAdminSpeed
 
-`func (o *FabricUplinkRole) HasAdminSpeed() bool`
+### GetObjectType
 
-HasAdminSpeed returns a boolean if a field has been set.
+`func (o *FabricUplinkRole) GetObjectType() string`
 
-### GetFec
+GetObjectType returns the ObjectType field if non-nil, zero value otherwise.
 
-`func (o *FabricUplinkRole) GetFec() string`
+### GetObjectTypeOk
 
-GetFec returns the Fec field if non-nil, zero value otherwise.
+`func (o *FabricUplinkRole) GetObjectTypeOk() (*string, bool)`
 
-### GetFecOk
-
-`func (o *FabricUplinkRole) GetFecOk() (*string, bool)`
-
-GetFecOk returns a tuple with the Fec field if it's non-nil, zero value otherwise
+GetObjectTypeOk returns a tuple with the ObjectType field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetFec
+### SetObjectType
 
-`func (o *FabricUplinkRole) SetFec(v string)`
+`func (o *FabricUplinkRole) SetObjectType(v string)`
 
-SetFec sets Fec field to given value.
+SetObjectType sets ObjectType field to given value.
 
-### HasFec
 
-`func (o *FabricUplinkRole) HasFec() bool`
+### GetFlowControlPolicy
 
-HasFec returns a boolean if a field has been set.
+`func (o *FabricUplinkRole) GetFlowControlPolicy() FabricFlowControlPolicyRelationship`
 
-### GetUdldAdminState
+GetFlowControlPolicy returns the FlowControlPolicy field if non-nil, zero value otherwise.
 
-`func (o *FabricUplinkRole) GetUdldAdminState() string`
+### GetFlowControlPolicyOk
 
-GetUdldAdminState returns the UdldAdminState field if non-nil, zero value otherwise.
+`func (o *FabricUplinkRole) GetFlowControlPolicyOk() (*FabricFlowControlPolicyRelationship, bool)`
 
-### GetUdldAdminStateOk
-
-`func (o *FabricUplinkRole) GetUdldAdminStateOk() (*string, bool)`
-
-GetUdldAdminStateOk returns a tuple with the UdldAdminState field if it's non-nil, zero value otherwise
+GetFlowControlPolicyOk returns a tuple with the FlowControlPolicy field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetUdldAdminState
+### SetFlowControlPolicy
 
-`func (o *FabricUplinkRole) SetUdldAdminState(v string)`
+`func (o *FabricUplinkRole) SetFlowControlPolicy(v FabricFlowControlPolicyRelationship)`
 
-SetUdldAdminState sets UdldAdminState field to given value.
+SetFlowControlPolicy sets FlowControlPolicy field to given value.
 
-### HasUdldAdminState
+### HasFlowControlPolicy
 
-`func (o *FabricUplinkRole) HasUdldAdminState() bool`
+`func (o *FabricUplinkRole) HasFlowControlPolicy() bool`
 
-HasUdldAdminState returns a boolean if a field has been set.
+HasFlowControlPolicy returns a boolean if a field has been set.
+
+### GetLinkControlPolicy
+
+`func (o *FabricUplinkRole) GetLinkControlPolicy() FabricLinkControlPolicyRelationship`
+
+GetLinkControlPolicy returns the LinkControlPolicy field if non-nil, zero value otherwise.
+
+### GetLinkControlPolicyOk
+
+`func (o *FabricUplinkRole) GetLinkControlPolicyOk() (*FabricLinkControlPolicyRelationship, bool)`
+
+GetLinkControlPolicyOk returns a tuple with the LinkControlPolicy field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetLinkControlPolicy
+
+`func (o *FabricUplinkRole) SetLinkControlPolicy(v FabricLinkControlPolicyRelationship)`
+
+SetLinkControlPolicy sets LinkControlPolicy field to given value.
+
+### HasLinkControlPolicy
+
+`func (o *FabricUplinkRole) HasLinkControlPolicy() bool`
+
+HasLinkControlPolicy returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

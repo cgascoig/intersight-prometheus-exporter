@@ -4,52 +4,59 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**ClassId** | **string** | The fully-qualified name of the instantiated, concrete type. This property is used as a discriminator to identify the type of the payload when marshaling and unmarshaling data. | [default to "virtualization.VmwareVirtualMachine"]
+**ObjectType** | **string** | The fully-qualified name of the instantiated, concrete type. The value should be the same as the &#39;ClassId&#39; property. | [default to "virtualization.VmwareVirtualMachine"]
 **Annotation** | Pointer to **string** | List of annotations provided to this VM by user. Can be long. | [optional] 
-**BootTime** | Pointer to [**time.Time**](time.Time.md) | Time when this VM booted up. | [optional] 
 **ConfigName** | Pointer to **string** | The configuration name for this VM. This maybe the same as the guest hostname. | [optional] 
 **ConnectionState** | Pointer to **string** | Shows if virtual machine is connected to vCenter. Values are Connected, Disconnected, Orphaned, Inaccessible, and Invalid. | [optional] 
 **CpuHotAddEnabled** | Pointer to **bool** | Indicates if the capability to add CPUs to a running VM is enabled. | [optional] 
-**CpuShares** | Pointer to [**VirtualizationVmwareVmCpuShareInfo**](virtualization.VmwareVmCpuShareInfo.md) |  | [optional] 
-**CpuSocketInfo** | Pointer to [**VirtualizationVmwareVmCpuSocketInfo**](virtualization.VmwareVmCpuSocketInfo.md) |  | [optional] 
+**CpuShares** | Pointer to [**NullableVirtualizationVmwareVmCpuShareInfo**](virtualization.VmwareVmCpuShareInfo.md) |  | [optional] 
+**CpuSocketInfo** | Pointer to [**NullableVirtualizationVmwareVmCpuSocketInfo**](virtualization.VmwareVmCpuSocketInfo.md) |  | [optional] 
 **CustomAttributes** | Pointer to **[]string** |  | [optional] 
 **DefaultPowerOffType** | Pointer to **string** | Indicates how the VM will be powered off (soft, hard etc.). | [optional] 
 **DhcpEnabled** | Pointer to **bool** | Shows if DHCP is used for IP/DNS on this VM. | [optional] 
-**DiskCommitInfo** | Pointer to [**VirtualizationVmwareVmDiskCommitInfo**](virtualization.VmwareVmDiskCommitInfo.md) |  | [optional] 
+**DiskCommitInfo** | Pointer to [**NullableVirtualizationVmwareVmDiskCommitInfo**](virtualization.VmwareVmDiskCommitInfo.md) |  | [optional] 
 **DnsServerList** | Pointer to **[]string** |  | [optional] 
 **DnsSuffixList** | Pointer to **[]string** |  | [optional] 
+**ExtraConfig** | Pointer to **interface{}** | Additional custom configuration settings applied to this VM. It is a set of name-value pairs stored as json. | [optional] 
 **Folder** | Pointer to **string** | The folder name associated with this VM. | [optional] 
 **GuestState** | Pointer to **string** | The state of the guest OS running on this VM. Could be running, not running etc. * &#x60;Unknown&#x60; - Indicates that the guest OS state cannot be determined. * &#x60;NotRunning&#x60; - Indicates that the guest OS is not running. * &#x60;Resetting&#x60; - Indicates that the guest OS is resetting. * &#x60;Running&#x60; - Indicates that the guest OS is running normally. * &#x60;ShuttingDown&#x60; - Indicates that the guest OS is shutting down. * &#x60;Standby&#x60; - Indicates that the guest OS is in standby mode. | [optional] [default to "Unknown"]
 **InstanceUuid** | Pointer to **string** | UUID assigned by vCenter to every VM. | [optional] 
+**InventoryPath** | Pointer to **string** | Inventory path to the VM. Example - /DC/vm/folder/VMName. | [optional] 
 **IsTemplate** | Pointer to **bool** | If true, indicates that the entity refers to a template of a virtual machine and not a real virtual machine. | [optional] 
 **MacAddress** | Pointer to **[]string** |  | [optional] 
-**MemShares** | Pointer to [**VirtualizationVmwareVmMemoryShareInfo**](virtualization.VmwareVmMemoryShareInfo.md) |  | [optional] 
+**MemShares** | Pointer to [**NullableVirtualizationVmwareVmMemoryShareInfo**](virtualization.VmwareVmMemoryShareInfo.md) |  | [optional] 
 **MemoryHotAddEnabled** | Pointer to **bool** | Adding memory to a running VM. | [optional] 
 **NetworkCount** | Pointer to **int64** | Indicates how many networks are used by this VM. | [optional] 
 **PortGroups** | Pointer to **[]string** |  | [optional] 
 **ProtectedVm** | Pointer to **bool** | Shows if this is a protected VM. VMs can be in protection groups. | [optional] 
-**RemoteDisplayInfo** | Pointer to [**VirtualizationVmwareRemoteDisplayInfo**](virtualization.VmwareRemoteDisplayInfo.md) |  | [optional] 
+**RemoteDisplayInfo** | Pointer to [**NullableVirtualizationVmwareRemoteDisplayInfo**](virtualization.VmwareRemoteDisplayInfo.md) |  | [optional] 
 **RemoteDisplayVncEnabled** | Pointer to **bool** | Shows if support for a remote VNC access is enabled. | [optional] 
 **ResourcePool** | Pointer to **string** | Name of the resource pool to which this VM belongs (optional). | [optional] 
 **ResourcePoolOwner** | Pointer to **string** | Who owns the resource pool. | [optional] 
 **ResourcePoolParent** | Pointer to **string** | The parent of the current resource pool to which this VM belongs. | [optional] 
 **ToolRunningStatus** | Pointer to **string** | Indicates if guest tools are running on this VM. Could be set to guestToolNotRunning or guestToolsRunning. | [optional] 
 **ToolsVersion** | Pointer to **string** | The version of the guest tools, usually not specified. | [optional] 
+**VirtualDisks** | Pointer to **[]int64** |  | [optional] 
+**VirtualNetworkInterfaces** | Pointer to **[]int64** |  | [optional] 
 **VmDiskCount** | Pointer to **int64** | Shows the number of disks assigned to this VM. | [optional] 
 **VmOverallStatus** | Pointer to **string** | The operational state of the VM. Could be Available, Provisioned, Maintenance mode, Deleting, etc. | [optional] 
-**VmPath** | Pointer to **string** | Example - [datastore3] VCSA-134/VCSA-134.vmx. | [optional] 
+**VmPath** | Pointer to **string** | Path to the vmx file of the VM. Example - [datastore3] VCSA-134/VCSA-134.vmx. | [optional] 
 **VmVersion** | Pointer to **string** | Information about the version of this VM (vmx-09, vmx-11 etc.). | [optional] 
 **VmVnicCount** | Pointer to **int64** | How many vnics are present. | [optional] 
 **VnicDeviceConfigId** | Pointer to **string** | Information related to the guest info&#39;s VNIC virtual device. It is a comma-separated list. | [optional] 
 **Cluster** | Pointer to [**VirtualizationVmwareClusterRelationship**](virtualization.VmwareCluster.Relationship.md) |  | [optional] 
 **Datacenter** | Pointer to [**VirtualizationVmwareDatacenterRelationship**](virtualization.VmwareDatacenter.Relationship.md) |  | [optional] 
-**Datastores** | Pointer to [**[]VirtualizationVmwareDatastoreRelationship**](virtualization.VmwareDatastore.Relationship.md) | An array of relationships to virtualizationVmwareDatastore resources. | [optional] [readonly] 
+**Datastores** | Pointer to [**[]VirtualizationVmwareDatastoreRelationship**](VirtualizationVmwareDatastoreRelationship.md) | An array of relationships to virtualizationVmwareDatastore resources. | [optional] [readonly] 
 **Host** | Pointer to [**VirtualizationVmwareHostRelationship**](virtualization.VmwareHost.Relationship.md) |  | [optional] 
+**Networks** | Pointer to [**[]VirtualizationBaseNetworkRelationship**](VirtualizationBaseNetworkRelationship.md) | An array of relationships to virtualizationBaseNetwork resources. | [optional] [readonly] 
+**ParentFolder** | Pointer to [**VirtualizationVmwareFolderRelationship**](virtualization.VmwareFolder.Relationship.md) |  | [optional] 
 
 ## Methods
 
 ### NewVirtualizationVmwareVirtualMachine
 
-`func NewVirtualizationVmwareVirtualMachine() *VirtualizationVmwareVirtualMachine`
+`func NewVirtualizationVmwareVirtualMachine(classId string, objectType string, ) *VirtualizationVmwareVirtualMachine`
 
 NewVirtualizationVmwareVirtualMachine instantiates a new VirtualizationVmwareVirtualMachine object
 This constructor will assign default values to properties that have it defined,
@@ -63,6 +70,46 @@ will change when the set of required properties is changed
 NewVirtualizationVmwareVirtualMachineWithDefaults instantiates a new VirtualizationVmwareVirtualMachine object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetClassId
+
+`func (o *VirtualizationVmwareVirtualMachine) GetClassId() string`
+
+GetClassId returns the ClassId field if non-nil, zero value otherwise.
+
+### GetClassIdOk
+
+`func (o *VirtualizationVmwareVirtualMachine) GetClassIdOk() (*string, bool)`
+
+GetClassIdOk returns a tuple with the ClassId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetClassId
+
+`func (o *VirtualizationVmwareVirtualMachine) SetClassId(v string)`
+
+SetClassId sets ClassId field to given value.
+
+
+### GetObjectType
+
+`func (o *VirtualizationVmwareVirtualMachine) GetObjectType() string`
+
+GetObjectType returns the ObjectType field if non-nil, zero value otherwise.
+
+### GetObjectTypeOk
+
+`func (o *VirtualizationVmwareVirtualMachine) GetObjectTypeOk() (*string, bool)`
+
+GetObjectTypeOk returns a tuple with the ObjectType field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetObjectType
+
+`func (o *VirtualizationVmwareVirtualMachine) SetObjectType(v string)`
+
+SetObjectType sets ObjectType field to given value.
+
 
 ### GetAnnotation
 
@@ -88,31 +135,6 @@ SetAnnotation sets Annotation field to given value.
 `func (o *VirtualizationVmwareVirtualMachine) HasAnnotation() bool`
 
 HasAnnotation returns a boolean if a field has been set.
-
-### GetBootTime
-
-`func (o *VirtualizationVmwareVirtualMachine) GetBootTime() time.Time`
-
-GetBootTime returns the BootTime field if non-nil, zero value otherwise.
-
-### GetBootTimeOk
-
-`func (o *VirtualizationVmwareVirtualMachine) GetBootTimeOk() (*time.Time, bool)`
-
-GetBootTimeOk returns a tuple with the BootTime field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetBootTime
-
-`func (o *VirtualizationVmwareVirtualMachine) SetBootTime(v time.Time)`
-
-SetBootTime sets BootTime field to given value.
-
-### HasBootTime
-
-`func (o *VirtualizationVmwareVirtualMachine) HasBootTime() bool`
-
-HasBootTime returns a boolean if a field has been set.
 
 ### GetConfigName
 
@@ -214,6 +236,16 @@ SetCpuShares sets CpuShares field to given value.
 
 HasCpuShares returns a boolean if a field has been set.
 
+### SetCpuSharesNil
+
+`func (o *VirtualizationVmwareVirtualMachine) SetCpuSharesNil(b bool)`
+
+ SetCpuSharesNil sets the value for CpuShares to be an explicit nil
+
+### UnsetCpuShares
+`func (o *VirtualizationVmwareVirtualMachine) UnsetCpuShares()`
+
+UnsetCpuShares ensures that no value is present for CpuShares, not even an explicit nil
 ### GetCpuSocketInfo
 
 `func (o *VirtualizationVmwareVirtualMachine) GetCpuSocketInfo() VirtualizationVmwareVmCpuSocketInfo`
@@ -239,6 +271,16 @@ SetCpuSocketInfo sets CpuSocketInfo field to given value.
 
 HasCpuSocketInfo returns a boolean if a field has been set.
 
+### SetCpuSocketInfoNil
+
+`func (o *VirtualizationVmwareVirtualMachine) SetCpuSocketInfoNil(b bool)`
+
+ SetCpuSocketInfoNil sets the value for CpuSocketInfo to be an explicit nil
+
+### UnsetCpuSocketInfo
+`func (o *VirtualizationVmwareVirtualMachine) UnsetCpuSocketInfo()`
+
+UnsetCpuSocketInfo ensures that no value is present for CpuSocketInfo, not even an explicit nil
 ### GetCustomAttributes
 
 `func (o *VirtualizationVmwareVirtualMachine) GetCustomAttributes() []string`
@@ -264,6 +306,16 @@ SetCustomAttributes sets CustomAttributes field to given value.
 
 HasCustomAttributes returns a boolean if a field has been set.
 
+### SetCustomAttributesNil
+
+`func (o *VirtualizationVmwareVirtualMachine) SetCustomAttributesNil(b bool)`
+
+ SetCustomAttributesNil sets the value for CustomAttributes to be an explicit nil
+
+### UnsetCustomAttributes
+`func (o *VirtualizationVmwareVirtualMachine) UnsetCustomAttributes()`
+
+UnsetCustomAttributes ensures that no value is present for CustomAttributes, not even an explicit nil
 ### GetDefaultPowerOffType
 
 `func (o *VirtualizationVmwareVirtualMachine) GetDefaultPowerOffType() string`
@@ -339,6 +391,16 @@ SetDiskCommitInfo sets DiskCommitInfo field to given value.
 
 HasDiskCommitInfo returns a boolean if a field has been set.
 
+### SetDiskCommitInfoNil
+
+`func (o *VirtualizationVmwareVirtualMachine) SetDiskCommitInfoNil(b bool)`
+
+ SetDiskCommitInfoNil sets the value for DiskCommitInfo to be an explicit nil
+
+### UnsetDiskCommitInfo
+`func (o *VirtualizationVmwareVirtualMachine) UnsetDiskCommitInfo()`
+
+UnsetDiskCommitInfo ensures that no value is present for DiskCommitInfo, not even an explicit nil
 ### GetDnsServerList
 
 `func (o *VirtualizationVmwareVirtualMachine) GetDnsServerList() []string`
@@ -364,6 +426,16 @@ SetDnsServerList sets DnsServerList field to given value.
 
 HasDnsServerList returns a boolean if a field has been set.
 
+### SetDnsServerListNil
+
+`func (o *VirtualizationVmwareVirtualMachine) SetDnsServerListNil(b bool)`
+
+ SetDnsServerListNil sets the value for DnsServerList to be an explicit nil
+
+### UnsetDnsServerList
+`func (o *VirtualizationVmwareVirtualMachine) UnsetDnsServerList()`
+
+UnsetDnsServerList ensures that no value is present for DnsServerList, not even an explicit nil
 ### GetDnsSuffixList
 
 `func (o *VirtualizationVmwareVirtualMachine) GetDnsSuffixList() []string`
@@ -389,6 +461,51 @@ SetDnsSuffixList sets DnsSuffixList field to given value.
 
 HasDnsSuffixList returns a boolean if a field has been set.
 
+### SetDnsSuffixListNil
+
+`func (o *VirtualizationVmwareVirtualMachine) SetDnsSuffixListNil(b bool)`
+
+ SetDnsSuffixListNil sets the value for DnsSuffixList to be an explicit nil
+
+### UnsetDnsSuffixList
+`func (o *VirtualizationVmwareVirtualMachine) UnsetDnsSuffixList()`
+
+UnsetDnsSuffixList ensures that no value is present for DnsSuffixList, not even an explicit nil
+### GetExtraConfig
+
+`func (o *VirtualizationVmwareVirtualMachine) GetExtraConfig() interface{}`
+
+GetExtraConfig returns the ExtraConfig field if non-nil, zero value otherwise.
+
+### GetExtraConfigOk
+
+`func (o *VirtualizationVmwareVirtualMachine) GetExtraConfigOk() (*interface{}, bool)`
+
+GetExtraConfigOk returns a tuple with the ExtraConfig field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetExtraConfig
+
+`func (o *VirtualizationVmwareVirtualMachine) SetExtraConfig(v interface{})`
+
+SetExtraConfig sets ExtraConfig field to given value.
+
+### HasExtraConfig
+
+`func (o *VirtualizationVmwareVirtualMachine) HasExtraConfig() bool`
+
+HasExtraConfig returns a boolean if a field has been set.
+
+### SetExtraConfigNil
+
+`func (o *VirtualizationVmwareVirtualMachine) SetExtraConfigNil(b bool)`
+
+ SetExtraConfigNil sets the value for ExtraConfig to be an explicit nil
+
+### UnsetExtraConfig
+`func (o *VirtualizationVmwareVirtualMachine) UnsetExtraConfig()`
+
+UnsetExtraConfig ensures that no value is present for ExtraConfig, not even an explicit nil
 ### GetFolder
 
 `func (o *VirtualizationVmwareVirtualMachine) GetFolder() string`
@@ -464,6 +581,31 @@ SetInstanceUuid sets InstanceUuid field to given value.
 
 HasInstanceUuid returns a boolean if a field has been set.
 
+### GetInventoryPath
+
+`func (o *VirtualizationVmwareVirtualMachine) GetInventoryPath() string`
+
+GetInventoryPath returns the InventoryPath field if non-nil, zero value otherwise.
+
+### GetInventoryPathOk
+
+`func (o *VirtualizationVmwareVirtualMachine) GetInventoryPathOk() (*string, bool)`
+
+GetInventoryPathOk returns a tuple with the InventoryPath field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetInventoryPath
+
+`func (o *VirtualizationVmwareVirtualMachine) SetInventoryPath(v string)`
+
+SetInventoryPath sets InventoryPath field to given value.
+
+### HasInventoryPath
+
+`func (o *VirtualizationVmwareVirtualMachine) HasInventoryPath() bool`
+
+HasInventoryPath returns a boolean if a field has been set.
+
 ### GetIsTemplate
 
 `func (o *VirtualizationVmwareVirtualMachine) GetIsTemplate() bool`
@@ -514,6 +656,16 @@ SetMacAddress sets MacAddress field to given value.
 
 HasMacAddress returns a boolean if a field has been set.
 
+### SetMacAddressNil
+
+`func (o *VirtualizationVmwareVirtualMachine) SetMacAddressNil(b bool)`
+
+ SetMacAddressNil sets the value for MacAddress to be an explicit nil
+
+### UnsetMacAddress
+`func (o *VirtualizationVmwareVirtualMachine) UnsetMacAddress()`
+
+UnsetMacAddress ensures that no value is present for MacAddress, not even an explicit nil
 ### GetMemShares
 
 `func (o *VirtualizationVmwareVirtualMachine) GetMemShares() VirtualizationVmwareVmMemoryShareInfo`
@@ -539,6 +691,16 @@ SetMemShares sets MemShares field to given value.
 
 HasMemShares returns a boolean if a field has been set.
 
+### SetMemSharesNil
+
+`func (o *VirtualizationVmwareVirtualMachine) SetMemSharesNil(b bool)`
+
+ SetMemSharesNil sets the value for MemShares to be an explicit nil
+
+### UnsetMemShares
+`func (o *VirtualizationVmwareVirtualMachine) UnsetMemShares()`
+
+UnsetMemShares ensures that no value is present for MemShares, not even an explicit nil
 ### GetMemoryHotAddEnabled
 
 `func (o *VirtualizationVmwareVirtualMachine) GetMemoryHotAddEnabled() bool`
@@ -614,6 +776,16 @@ SetPortGroups sets PortGroups field to given value.
 
 HasPortGroups returns a boolean if a field has been set.
 
+### SetPortGroupsNil
+
+`func (o *VirtualizationVmwareVirtualMachine) SetPortGroupsNil(b bool)`
+
+ SetPortGroupsNil sets the value for PortGroups to be an explicit nil
+
+### UnsetPortGroups
+`func (o *VirtualizationVmwareVirtualMachine) UnsetPortGroups()`
+
+UnsetPortGroups ensures that no value is present for PortGroups, not even an explicit nil
 ### GetProtectedVm
 
 `func (o *VirtualizationVmwareVirtualMachine) GetProtectedVm() bool`
@@ -664,6 +836,16 @@ SetRemoteDisplayInfo sets RemoteDisplayInfo field to given value.
 
 HasRemoteDisplayInfo returns a boolean if a field has been set.
 
+### SetRemoteDisplayInfoNil
+
+`func (o *VirtualizationVmwareVirtualMachine) SetRemoteDisplayInfoNil(b bool)`
+
+ SetRemoteDisplayInfoNil sets the value for RemoteDisplayInfo to be an explicit nil
+
+### UnsetRemoteDisplayInfo
+`func (o *VirtualizationVmwareVirtualMachine) UnsetRemoteDisplayInfo()`
+
+UnsetRemoteDisplayInfo ensures that no value is present for RemoteDisplayInfo, not even an explicit nil
 ### GetRemoteDisplayVncEnabled
 
 `func (o *VirtualizationVmwareVirtualMachine) GetRemoteDisplayVncEnabled() bool`
@@ -814,6 +996,76 @@ SetToolsVersion sets ToolsVersion field to given value.
 
 HasToolsVersion returns a boolean if a field has been set.
 
+### GetVirtualDisks
+
+`func (o *VirtualizationVmwareVirtualMachine) GetVirtualDisks() []int64`
+
+GetVirtualDisks returns the VirtualDisks field if non-nil, zero value otherwise.
+
+### GetVirtualDisksOk
+
+`func (o *VirtualizationVmwareVirtualMachine) GetVirtualDisksOk() (*[]int64, bool)`
+
+GetVirtualDisksOk returns a tuple with the VirtualDisks field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetVirtualDisks
+
+`func (o *VirtualizationVmwareVirtualMachine) SetVirtualDisks(v []int64)`
+
+SetVirtualDisks sets VirtualDisks field to given value.
+
+### HasVirtualDisks
+
+`func (o *VirtualizationVmwareVirtualMachine) HasVirtualDisks() bool`
+
+HasVirtualDisks returns a boolean if a field has been set.
+
+### SetVirtualDisksNil
+
+`func (o *VirtualizationVmwareVirtualMachine) SetVirtualDisksNil(b bool)`
+
+ SetVirtualDisksNil sets the value for VirtualDisks to be an explicit nil
+
+### UnsetVirtualDisks
+`func (o *VirtualizationVmwareVirtualMachine) UnsetVirtualDisks()`
+
+UnsetVirtualDisks ensures that no value is present for VirtualDisks, not even an explicit nil
+### GetVirtualNetworkInterfaces
+
+`func (o *VirtualizationVmwareVirtualMachine) GetVirtualNetworkInterfaces() []int64`
+
+GetVirtualNetworkInterfaces returns the VirtualNetworkInterfaces field if non-nil, zero value otherwise.
+
+### GetVirtualNetworkInterfacesOk
+
+`func (o *VirtualizationVmwareVirtualMachine) GetVirtualNetworkInterfacesOk() (*[]int64, bool)`
+
+GetVirtualNetworkInterfacesOk returns a tuple with the VirtualNetworkInterfaces field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetVirtualNetworkInterfaces
+
+`func (o *VirtualizationVmwareVirtualMachine) SetVirtualNetworkInterfaces(v []int64)`
+
+SetVirtualNetworkInterfaces sets VirtualNetworkInterfaces field to given value.
+
+### HasVirtualNetworkInterfaces
+
+`func (o *VirtualizationVmwareVirtualMachine) HasVirtualNetworkInterfaces() bool`
+
+HasVirtualNetworkInterfaces returns a boolean if a field has been set.
+
+### SetVirtualNetworkInterfacesNil
+
+`func (o *VirtualizationVmwareVirtualMachine) SetVirtualNetworkInterfacesNil(b bool)`
+
+ SetVirtualNetworkInterfacesNil sets the value for VirtualNetworkInterfaces to be an explicit nil
+
+### UnsetVirtualNetworkInterfaces
+`func (o *VirtualizationVmwareVirtualMachine) UnsetVirtualNetworkInterfaces()`
+
+UnsetVirtualNetworkInterfaces ensures that no value is present for VirtualNetworkInterfaces, not even an explicit nil
 ### GetVmDiskCount
 
 `func (o *VirtualizationVmwareVirtualMachine) GetVmDiskCount() int64`
@@ -1073,6 +1325,66 @@ SetHost sets Host field to given value.
 `func (o *VirtualizationVmwareVirtualMachine) HasHost() bool`
 
 HasHost returns a boolean if a field has been set.
+
+### GetNetworks
+
+`func (o *VirtualizationVmwareVirtualMachine) GetNetworks() []VirtualizationBaseNetworkRelationship`
+
+GetNetworks returns the Networks field if non-nil, zero value otherwise.
+
+### GetNetworksOk
+
+`func (o *VirtualizationVmwareVirtualMachine) GetNetworksOk() (*[]VirtualizationBaseNetworkRelationship, bool)`
+
+GetNetworksOk returns a tuple with the Networks field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetNetworks
+
+`func (o *VirtualizationVmwareVirtualMachine) SetNetworks(v []VirtualizationBaseNetworkRelationship)`
+
+SetNetworks sets Networks field to given value.
+
+### HasNetworks
+
+`func (o *VirtualizationVmwareVirtualMachine) HasNetworks() bool`
+
+HasNetworks returns a boolean if a field has been set.
+
+### SetNetworksNil
+
+`func (o *VirtualizationVmwareVirtualMachine) SetNetworksNil(b bool)`
+
+ SetNetworksNil sets the value for Networks to be an explicit nil
+
+### UnsetNetworks
+`func (o *VirtualizationVmwareVirtualMachine) UnsetNetworks()`
+
+UnsetNetworks ensures that no value is present for Networks, not even an explicit nil
+### GetParentFolder
+
+`func (o *VirtualizationVmwareVirtualMachine) GetParentFolder() VirtualizationVmwareFolderRelationship`
+
+GetParentFolder returns the ParentFolder field if non-nil, zero value otherwise.
+
+### GetParentFolderOk
+
+`func (o *VirtualizationVmwareVirtualMachine) GetParentFolderOk() (*VirtualizationVmwareFolderRelationship, bool)`
+
+GetParentFolderOk returns a tuple with the ParentFolder field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetParentFolder
+
+`func (o *VirtualizationVmwareVirtualMachine) SetParentFolder(v VirtualizationVmwareFolderRelationship)`
+
+SetParentFolder sets ParentFolder field to given value.
+
+### HasParentFolder
+
+`func (o *VirtualizationVmwareVirtualMachine) HasParentFolder() bool`
+
+HasParentFolder returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

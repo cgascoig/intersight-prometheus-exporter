@@ -4,16 +4,20 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**ClassId** | **string** | The fully-qualified name of the instantiated, concrete type. This property is used as a discriminator to identify the type of the payload when marshaling and unmarshaling data. The enum values provides the list of concrete types that can be instantiated from this abstract type. | 
+**ObjectType** | **string** | The fully-qualified name of the instantiated, concrete type. The value should be the same as the &#39;ClassId&#39; property. The enum values provides the list of concrete types that can be instantiated from this abstract type. | 
 **Model** | Pointer to **string** | This field identifies the model of the given component. | [optional] [readonly] 
+**Presence** | Pointer to **string** | This field identifies the presence (equipped) or absence of the given component. | [optional] [readonly] 
 **Revision** | Pointer to **string** | This field identifies the revision of the given component. | [optional] [readonly] 
 **Serial** | Pointer to **string** | This field identifies the serial of the given component. | [optional] [readonly] 
 **Vendor** | Pointer to **string** | This field identifies the vendor of the given component. | [optional] [readonly] 
+**PreviousFru** | Pointer to [**EquipmentFruRelationship**](equipment.Fru.Relationship.md) |  | [optional] 
 
 ## Methods
 
 ### NewEquipmentBase
 
-`func NewEquipmentBase() *EquipmentBase`
+`func NewEquipmentBase(classId string, objectType string, ) *EquipmentBase`
 
 NewEquipmentBase instantiates a new EquipmentBase object
 This constructor will assign default values to properties that have it defined,
@@ -27,6 +31,46 @@ will change when the set of required properties is changed
 NewEquipmentBaseWithDefaults instantiates a new EquipmentBase object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetClassId
+
+`func (o *EquipmentBase) GetClassId() string`
+
+GetClassId returns the ClassId field if non-nil, zero value otherwise.
+
+### GetClassIdOk
+
+`func (o *EquipmentBase) GetClassIdOk() (*string, bool)`
+
+GetClassIdOk returns a tuple with the ClassId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetClassId
+
+`func (o *EquipmentBase) SetClassId(v string)`
+
+SetClassId sets ClassId field to given value.
+
+
+### GetObjectType
+
+`func (o *EquipmentBase) GetObjectType() string`
+
+GetObjectType returns the ObjectType field if non-nil, zero value otherwise.
+
+### GetObjectTypeOk
+
+`func (o *EquipmentBase) GetObjectTypeOk() (*string, bool)`
+
+GetObjectTypeOk returns a tuple with the ObjectType field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetObjectType
+
+`func (o *EquipmentBase) SetObjectType(v string)`
+
+SetObjectType sets ObjectType field to given value.
+
 
 ### GetModel
 
@@ -52,6 +96,31 @@ SetModel sets Model field to given value.
 `func (o *EquipmentBase) HasModel() bool`
 
 HasModel returns a boolean if a field has been set.
+
+### GetPresence
+
+`func (o *EquipmentBase) GetPresence() string`
+
+GetPresence returns the Presence field if non-nil, zero value otherwise.
+
+### GetPresenceOk
+
+`func (o *EquipmentBase) GetPresenceOk() (*string, bool)`
+
+GetPresenceOk returns a tuple with the Presence field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPresence
+
+`func (o *EquipmentBase) SetPresence(v string)`
+
+SetPresence sets Presence field to given value.
+
+### HasPresence
+
+`func (o *EquipmentBase) HasPresence() bool`
+
+HasPresence returns a boolean if a field has been set.
 
 ### GetRevision
 
@@ -127,6 +196,31 @@ SetVendor sets Vendor field to given value.
 `func (o *EquipmentBase) HasVendor() bool`
 
 HasVendor returns a boolean if a field has been set.
+
+### GetPreviousFru
+
+`func (o *EquipmentBase) GetPreviousFru() EquipmentFruRelationship`
+
+GetPreviousFru returns the PreviousFru field if non-nil, zero value otherwise.
+
+### GetPreviousFruOk
+
+`func (o *EquipmentBase) GetPreviousFruOk() (*EquipmentFruRelationship, bool)`
+
+GetPreviousFruOk returns a tuple with the PreviousFru field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPreviousFru
+
+`func (o *EquipmentBase) SetPreviousFru(v EquipmentFruRelationship)`
+
+SetPreviousFru sets PreviousFru field to given value.
+
+### HasPreviousFru
+
+`func (o *EquipmentBase) HasPreviousFru() bool`
+
+HasPreviousFru returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

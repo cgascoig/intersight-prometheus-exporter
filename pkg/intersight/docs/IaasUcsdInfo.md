@@ -4,20 +4,22 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**ClassId** | **string** | The fully-qualified name of the instantiated, concrete type. This property is used as a discriminator to identify the type of the payload when marshaling and unmarshaling data. | [default to "iaas.UcsdInfo"]
+**ObjectType** | **string** | The fully-qualified name of the instantiated, concrete type. The value should be the same as the &#39;ClassId&#39; property. | [default to "iaas.UcsdInfo"]
 **DeviceId** | Pointer to **string** | Moid of the UCS Director device connector&#39;s asset.DeviceRegistration. | [optional] [readonly] 
 **Guid** | Pointer to **string** | Unique ID of UCS Director getting registerd with Intersight. | [optional] [readonly] 
 **HostName** | Pointer to **string** | The UCS Director hostname for management. | [optional] [readonly] 
 **Ip** | Pointer to **string** | The UCS Director IP address for management. | [optional] [readonly] 
-**LastBackup** | Pointer to [**time.Time**](time.Time.md) | Last successful backup created for this UCS Director appliance if backup is configured. | [optional] [readonly] 
+**LastBackup** | Pointer to **time.Time** | Last successful backup created for this UCS Director appliance if backup is configured. | [optional] [readonly] 
 **NodeType** | Pointer to **string** | NodeType specifies if UCS Director is deployed in Stand-alone or Multi Node. | [optional] [readonly] 
 **ProductName** | Pointer to **string** | The UCS Director product name. | [optional] [readonly] 
 **ProductVendor** | Pointer to **string** | The UCS Director product vendor. | [optional] [readonly] 
 **ProductVersion** | Pointer to **string** | The UCS Director product/platform version. | [optional] [readonly] 
 **Status** | Pointer to **string** | The UCS Director status. Possible values are Active, Inactive, Unknown. | [optional] [readonly] 
-**ConnectorPack** | Pointer to [**[]IaasConnectorPackRelationship**](iaas.ConnectorPack.Relationship.md) | An array of relationships to iaasConnectorPack resources. | [optional] [readonly] 
-**DeviceStatus** | Pointer to [**[]IaasDeviceStatusRelationship**](iaas.DeviceStatus.Relationship.md) | An array of relationships to iaasDeviceStatus resources. | [optional] [readonly] 
+**ConnectorPack** | Pointer to [**[]IaasConnectorPackRelationship**](IaasConnectorPackRelationship.md) | An array of relationships to iaasConnectorPack resources. | [optional] [readonly] 
+**DeviceStatus** | Pointer to [**[]IaasDeviceStatusRelationship**](IaasDeviceStatusRelationship.md) | An array of relationships to iaasDeviceStatus resources. | [optional] [readonly] 
 **LicenseInfo** | Pointer to [**IaasLicenseInfoRelationship**](iaas.LicenseInfo.Relationship.md) |  | [optional] 
-**MostRunTasks** | Pointer to [**[]IaasMostRunTasksRelationship**](iaas.MostRunTasks.Relationship.md) | An array of relationships to iaasMostRunTasks resources. | [optional] [readonly] 
+**MostRunTasks** | Pointer to [**[]IaasMostRunTasksRelationship**](IaasMostRunTasksRelationship.md) | An array of relationships to iaasMostRunTasks resources. | [optional] [readonly] 
 **RegisteredDevice** | Pointer to [**AssetDeviceRegistrationRelationship**](asset.DeviceRegistration.Relationship.md) |  | [optional] 
 **UcsdManagedInfra** | Pointer to [**IaasUcsdManagedInfraRelationship**](iaas.UcsdManagedInfra.Relationship.md) |  | [optional] 
 
@@ -25,7 +27,7 @@ Name | Type | Description | Notes
 
 ### NewIaasUcsdInfo
 
-`func NewIaasUcsdInfo() *IaasUcsdInfo`
+`func NewIaasUcsdInfo(classId string, objectType string, ) *IaasUcsdInfo`
 
 NewIaasUcsdInfo instantiates a new IaasUcsdInfo object
 This constructor will assign default values to properties that have it defined,
@@ -39,6 +41,46 @@ will change when the set of required properties is changed
 NewIaasUcsdInfoWithDefaults instantiates a new IaasUcsdInfo object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetClassId
+
+`func (o *IaasUcsdInfo) GetClassId() string`
+
+GetClassId returns the ClassId field if non-nil, zero value otherwise.
+
+### GetClassIdOk
+
+`func (o *IaasUcsdInfo) GetClassIdOk() (*string, bool)`
+
+GetClassIdOk returns a tuple with the ClassId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetClassId
+
+`func (o *IaasUcsdInfo) SetClassId(v string)`
+
+SetClassId sets ClassId field to given value.
+
+
+### GetObjectType
+
+`func (o *IaasUcsdInfo) GetObjectType() string`
+
+GetObjectType returns the ObjectType field if non-nil, zero value otherwise.
+
+### GetObjectTypeOk
+
+`func (o *IaasUcsdInfo) GetObjectTypeOk() (*string, bool)`
+
+GetObjectTypeOk returns a tuple with the ObjectType field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetObjectType
+
+`func (o *IaasUcsdInfo) SetObjectType(v string)`
+
+SetObjectType sets ObjectType field to given value.
+
 
 ### GetDeviceId
 

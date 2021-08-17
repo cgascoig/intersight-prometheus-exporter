@@ -4,14 +4,17 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Actions** | Pointer to [**[]TamAction**](tam.Action.md) |  | [optional] 
-**AdvisoryDetails** | Pointer to [**TamBaseAdvisoryDetails**](tam.BaseAdvisoryDetails.md) |  | [optional] 
+**ClassId** | **string** | The fully-qualified name of the instantiated, concrete type. This property is used as a discriminator to identify the type of the payload when marshaling and unmarshaling data. | [default to "tam.AdvisoryDefinition"]
+**ObjectType** | **string** | The fully-qualified name of the instantiated, concrete type. The value should be the same as the &#39;ClassId&#39; property. | [default to "tam.AdvisoryDefinition"]
+**Actions** | Pointer to [**[]TamAction**](TamAction.md) |  | [optional] 
+**AdvisoryDetails** | Pointer to [**NullableTamBaseAdvisoryDetails**](tam.BaseAdvisoryDetails.md) |  | [optional] 
 **AdvisoryId** | Pointer to **string** | Cisco generated identifier for the published security advisory. | [optional] 
-**ApiDataSources** | Pointer to [**[]TamApiDataSource**](tam.ApiDataSource.md) |  | [optional] 
-**DatePublished** | Pointer to [**time.Time**](time.Time.md) | Date when the security advisory was first published by Cisco. | [optional] 
-**DateUpdated** | Pointer to [**time.Time**](time.Time.md) | Date when the security advisory was last updated by Cisco. | [optional] 
+**ApiDataSources** | Pointer to [**[]TamApiDataSource**](TamApiDataSource.md) |  | [optional] 
+**DatePublished** | Pointer to **time.Time** | Date when the security advisory was first published by Cisco. | [optional] 
+**DateUpdated** | Pointer to **time.Time** | Date when the security advisory was last updated by Cisco. | [optional] 
 **ExternalUrl** | Pointer to **string** | A link to an external URL describing security Advisory in more details. | [optional] 
 **Recommendation** | Pointer to **string** | Recommended action to resolve the security advisory. | [optional] 
+**S3DataSources** | Pointer to [**[]TamS3DataSource**](TamS3DataSource.md) |  | [optional] 
 **Type** | Pointer to **string** | The type (field notice, security advisory etc.) of Intersight advisory. * &#x60;securityAdvisory&#x60; - Respresents the psirt alert type (https://tools.cisco.com/security/center/publicationListing.x). * &#x60;fieldNotice&#x60; - Respresents the field notice alert type (https://www.cisco.com/c/en/us/support/web/tsd-products-field-notice-summary.html). | [optional] [default to "securityAdvisory"]
 **Version** | Pointer to **string** | Cisco assigned advisory version after latest revision. | [optional] 
 **Workaround** | Pointer to **string** | Workarounds available for the advisory. | [optional] 
@@ -21,7 +24,7 @@ Name | Type | Description | Notes
 
 ### NewTamAdvisoryDefinitionAllOf
 
-`func NewTamAdvisoryDefinitionAllOf() *TamAdvisoryDefinitionAllOf`
+`func NewTamAdvisoryDefinitionAllOf(classId string, objectType string, ) *TamAdvisoryDefinitionAllOf`
 
 NewTamAdvisoryDefinitionAllOf instantiates a new TamAdvisoryDefinitionAllOf object
 This constructor will assign default values to properties that have it defined,
@@ -35,6 +38,46 @@ will change when the set of required properties is changed
 NewTamAdvisoryDefinitionAllOfWithDefaults instantiates a new TamAdvisoryDefinitionAllOf object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetClassId
+
+`func (o *TamAdvisoryDefinitionAllOf) GetClassId() string`
+
+GetClassId returns the ClassId field if non-nil, zero value otherwise.
+
+### GetClassIdOk
+
+`func (o *TamAdvisoryDefinitionAllOf) GetClassIdOk() (*string, bool)`
+
+GetClassIdOk returns a tuple with the ClassId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetClassId
+
+`func (o *TamAdvisoryDefinitionAllOf) SetClassId(v string)`
+
+SetClassId sets ClassId field to given value.
+
+
+### GetObjectType
+
+`func (o *TamAdvisoryDefinitionAllOf) GetObjectType() string`
+
+GetObjectType returns the ObjectType field if non-nil, zero value otherwise.
+
+### GetObjectTypeOk
+
+`func (o *TamAdvisoryDefinitionAllOf) GetObjectTypeOk() (*string, bool)`
+
+GetObjectTypeOk returns a tuple with the ObjectType field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetObjectType
+
+`func (o *TamAdvisoryDefinitionAllOf) SetObjectType(v string)`
+
+SetObjectType sets ObjectType field to given value.
+
 
 ### GetActions
 
@@ -61,6 +104,16 @@ SetActions sets Actions field to given value.
 
 HasActions returns a boolean if a field has been set.
 
+### SetActionsNil
+
+`func (o *TamAdvisoryDefinitionAllOf) SetActionsNil(b bool)`
+
+ SetActionsNil sets the value for Actions to be an explicit nil
+
+### UnsetActions
+`func (o *TamAdvisoryDefinitionAllOf) UnsetActions()`
+
+UnsetActions ensures that no value is present for Actions, not even an explicit nil
 ### GetAdvisoryDetails
 
 `func (o *TamAdvisoryDefinitionAllOf) GetAdvisoryDetails() TamBaseAdvisoryDetails`
@@ -86,6 +139,16 @@ SetAdvisoryDetails sets AdvisoryDetails field to given value.
 
 HasAdvisoryDetails returns a boolean if a field has been set.
 
+### SetAdvisoryDetailsNil
+
+`func (o *TamAdvisoryDefinitionAllOf) SetAdvisoryDetailsNil(b bool)`
+
+ SetAdvisoryDetailsNil sets the value for AdvisoryDetails to be an explicit nil
+
+### UnsetAdvisoryDetails
+`func (o *TamAdvisoryDefinitionAllOf) UnsetAdvisoryDetails()`
+
+UnsetAdvisoryDetails ensures that no value is present for AdvisoryDetails, not even an explicit nil
 ### GetAdvisoryId
 
 `func (o *TamAdvisoryDefinitionAllOf) GetAdvisoryId() string`
@@ -136,6 +199,16 @@ SetApiDataSources sets ApiDataSources field to given value.
 
 HasApiDataSources returns a boolean if a field has been set.
 
+### SetApiDataSourcesNil
+
+`func (o *TamAdvisoryDefinitionAllOf) SetApiDataSourcesNil(b bool)`
+
+ SetApiDataSourcesNil sets the value for ApiDataSources to be an explicit nil
+
+### UnsetApiDataSources
+`func (o *TamAdvisoryDefinitionAllOf) UnsetApiDataSources()`
+
+UnsetApiDataSources ensures that no value is present for ApiDataSources, not even an explicit nil
 ### GetDatePublished
 
 `func (o *TamAdvisoryDefinitionAllOf) GetDatePublished() time.Time`
@@ -236,6 +309,41 @@ SetRecommendation sets Recommendation field to given value.
 
 HasRecommendation returns a boolean if a field has been set.
 
+### GetS3DataSources
+
+`func (o *TamAdvisoryDefinitionAllOf) GetS3DataSources() []TamS3DataSource`
+
+GetS3DataSources returns the S3DataSources field if non-nil, zero value otherwise.
+
+### GetS3DataSourcesOk
+
+`func (o *TamAdvisoryDefinitionAllOf) GetS3DataSourcesOk() (*[]TamS3DataSource, bool)`
+
+GetS3DataSourcesOk returns a tuple with the S3DataSources field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetS3DataSources
+
+`func (o *TamAdvisoryDefinitionAllOf) SetS3DataSources(v []TamS3DataSource)`
+
+SetS3DataSources sets S3DataSources field to given value.
+
+### HasS3DataSources
+
+`func (o *TamAdvisoryDefinitionAllOf) HasS3DataSources() bool`
+
+HasS3DataSources returns a boolean if a field has been set.
+
+### SetS3DataSourcesNil
+
+`func (o *TamAdvisoryDefinitionAllOf) SetS3DataSourcesNil(b bool)`
+
+ SetS3DataSourcesNil sets the value for S3DataSources to be an explicit nil
+
+### UnsetS3DataSources
+`func (o *TamAdvisoryDefinitionAllOf) UnsetS3DataSources()`
+
+UnsetS3DataSources ensures that no value is present for S3DataSources, not even an explicit nil
 ### GetType
 
 `func (o *TamAdvisoryDefinitionAllOf) GetType() string`

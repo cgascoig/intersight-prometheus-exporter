@@ -4,21 +4,23 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**ClassId** | **string** | The fully-qualified name of the instantiated, concrete type. This property is used as a discriminator to identify the type of the payload when marshaling and unmarshaling data. The enum values provides the list of concrete types that can be instantiated from this abstract type. | 
+**ObjectType** | **string** | The fully-qualified name of the instantiated, concrete type. The value should be the same as the &#39;ClassId&#39; property. The enum values provides the list of concrete types that can be instantiated from this abstract type. | 
 **AffectedVersions** | Pointer to **string** | String contains the Release versions affected by this notice, seperated by comma. | [optional] 
-**AnnouncementDate** | Pointer to [**time.Time**](time.Time.md) | Date time of this notice Announced. | [optional] 
+**AnnouncementDate** | Pointer to **time.Time** | Date time of this notice Announced. | [optional] 
 **AnnouncementDateEpoch** | Pointer to **int64** | Epoch time of this notice Announced. | [optional] 
 **BulletinNo** | Pointer to **string** | The bulletinno of this software release end of life notice. | [optional] 
 **Description** | Pointer to **string** | The description of this software release end of life notice. | [optional] 
-**EndofNewServiceAttachmentDate** | Pointer to [**time.Time**](time.Time.md) | Date time of End of New service attachment . | [optional] 
+**EndofNewServiceAttachmentDate** | Pointer to **time.Time** | Date time of End of New service attachment . | [optional] 
 **EndofNewServiceAttachmentDateEpoch** | Pointer to **int64** | Epoch time of End of New service attachment . | [optional] 
-**EndofServiceContractRenewalDate** | Pointer to [**time.Time**](time.Time.md) | Date time of End of Renewal of service contract . | [optional] 
+**EndofServiceContractRenewalDate** | Pointer to **time.Time** | Date time of End of Renewal of service contract . | [optional] 
 **EndofServiceContractRenewalDateEpoch** | Pointer to **int64** | Epoch time of End of Renewal of service contract . | [optional] 
-**EndofSwMaintenanceDate** | Pointer to [**time.Time**](time.Time.md) | Date time of End of Maintenance. | [optional] 
+**EndofSwMaintenanceDate** | Pointer to **time.Time** | Date time of End of Maintenance. | [optional] 
 **EndofSwMaintenanceDateEpoch** | Pointer to **int64** | Epoch time of End of Maintenance. | [optional] 
 **Headline** | Pointer to **string** | The title of this software release end of life notice. | [optional] 
-**LastDateofSupport** | Pointer to [**time.Time**](time.Time.md) | Date time of Last day of Support . | [optional] 
+**LastDateofSupport** | Pointer to **time.Time** | Date time of Last day of Support . | [optional] 
 **LastDateofSupportEpoch** | Pointer to **int64** | Epoch time of Last day of Support . | [optional] 
-**LastShipDate** | Pointer to [**time.Time**](time.Time.md) | Date time of Lastship Date. | [optional] 
+**LastShipDate** | Pointer to **time.Time** | Date time of Lastship Date. | [optional] 
 **LastShipDateEpoch** | Pointer to **int64** | Epoch time of Lastship Date. | [optional] 
 **MigrationUrl** | Pointer to **string** | The URL of this migration notice. | [optional] 
 **SoftwareEolUrl** | Pointer to **string** | Software end of life notice URL link to the notice webpage. | [optional] 
@@ -27,7 +29,7 @@ Name | Type | Description | Notes
 
 ### NewNiaapiSoftwareEolAllOf
 
-`func NewNiaapiSoftwareEolAllOf() *NiaapiSoftwareEolAllOf`
+`func NewNiaapiSoftwareEolAllOf(classId string, objectType string, ) *NiaapiSoftwareEolAllOf`
 
 NewNiaapiSoftwareEolAllOf instantiates a new NiaapiSoftwareEolAllOf object
 This constructor will assign default values to properties that have it defined,
@@ -41,6 +43,46 @@ will change when the set of required properties is changed
 NewNiaapiSoftwareEolAllOfWithDefaults instantiates a new NiaapiSoftwareEolAllOf object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetClassId
+
+`func (o *NiaapiSoftwareEolAllOf) GetClassId() string`
+
+GetClassId returns the ClassId field if non-nil, zero value otherwise.
+
+### GetClassIdOk
+
+`func (o *NiaapiSoftwareEolAllOf) GetClassIdOk() (*string, bool)`
+
+GetClassIdOk returns a tuple with the ClassId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetClassId
+
+`func (o *NiaapiSoftwareEolAllOf) SetClassId(v string)`
+
+SetClassId sets ClassId field to given value.
+
+
+### GetObjectType
+
+`func (o *NiaapiSoftwareEolAllOf) GetObjectType() string`
+
+GetObjectType returns the ObjectType field if non-nil, zero value otherwise.
+
+### GetObjectTypeOk
+
+`func (o *NiaapiSoftwareEolAllOf) GetObjectTypeOk() (*string, bool)`
+
+GetObjectTypeOk returns a tuple with the ObjectType field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetObjectType
+
+`func (o *NiaapiSoftwareEolAllOf) SetObjectType(v string)`
+
+SetObjectType sets ObjectType field to given value.
+
 
 ### GetAffectedVersions
 

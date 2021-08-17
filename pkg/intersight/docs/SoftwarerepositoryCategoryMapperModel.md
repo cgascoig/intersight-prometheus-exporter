@@ -4,8 +4,11 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**ClassId** | **string** | The fully-qualified name of the instantiated, concrete type. This property is used as a discriminator to identify the type of the payload when marshaling and unmarshaling data. | [default to "softwarerepository.CategoryMapperModel"]
+**ObjectType** | **string** | The fully-qualified name of the instantiated, concrete type. The value should be the same as the &#39;ClassId&#39; property. | [default to "softwarerepository.CategoryMapperModel"]
 **Category** | Pointer to **string** | The category of the model series. | [optional] 
 **DistTag** | Pointer to **string** | The distributable tag value of the model series. | [optional] 
+**ImageType** | Pointer to **string** | The type of image based on the endpoint it can upgrade. For example, ucs-bundle-6400-infra.4.1.2a.bin can upgrade ucs managed fabric interconnects, so the image type is UCS Managed Fabric Interconnect. | [optional] 
 **RegexPattern** | Pointer to **string** | The regex that all images of this model follow. | [optional] 
 **SeriesId** | Pointer to **string** | Cisco hardware model series. | [optional] 
 **SupportedModels** | Pointer to **[]string** |  | [optional] 
@@ -14,7 +17,7 @@ Name | Type | Description | Notes
 
 ### NewSoftwarerepositoryCategoryMapperModel
 
-`func NewSoftwarerepositoryCategoryMapperModel() *SoftwarerepositoryCategoryMapperModel`
+`func NewSoftwarerepositoryCategoryMapperModel(classId string, objectType string, ) *SoftwarerepositoryCategoryMapperModel`
 
 NewSoftwarerepositoryCategoryMapperModel instantiates a new SoftwarerepositoryCategoryMapperModel object
 This constructor will assign default values to properties that have it defined,
@@ -28,6 +31,46 @@ will change when the set of required properties is changed
 NewSoftwarerepositoryCategoryMapperModelWithDefaults instantiates a new SoftwarerepositoryCategoryMapperModel object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetClassId
+
+`func (o *SoftwarerepositoryCategoryMapperModel) GetClassId() string`
+
+GetClassId returns the ClassId field if non-nil, zero value otherwise.
+
+### GetClassIdOk
+
+`func (o *SoftwarerepositoryCategoryMapperModel) GetClassIdOk() (*string, bool)`
+
+GetClassIdOk returns a tuple with the ClassId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetClassId
+
+`func (o *SoftwarerepositoryCategoryMapperModel) SetClassId(v string)`
+
+SetClassId sets ClassId field to given value.
+
+
+### GetObjectType
+
+`func (o *SoftwarerepositoryCategoryMapperModel) GetObjectType() string`
+
+GetObjectType returns the ObjectType field if non-nil, zero value otherwise.
+
+### GetObjectTypeOk
+
+`func (o *SoftwarerepositoryCategoryMapperModel) GetObjectTypeOk() (*string, bool)`
+
+GetObjectTypeOk returns a tuple with the ObjectType field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetObjectType
+
+`func (o *SoftwarerepositoryCategoryMapperModel) SetObjectType(v string)`
+
+SetObjectType sets ObjectType field to given value.
+
 
 ### GetCategory
 
@@ -78,6 +121,31 @@ SetDistTag sets DistTag field to given value.
 `func (o *SoftwarerepositoryCategoryMapperModel) HasDistTag() bool`
 
 HasDistTag returns a boolean if a field has been set.
+
+### GetImageType
+
+`func (o *SoftwarerepositoryCategoryMapperModel) GetImageType() string`
+
+GetImageType returns the ImageType field if non-nil, zero value otherwise.
+
+### GetImageTypeOk
+
+`func (o *SoftwarerepositoryCategoryMapperModel) GetImageTypeOk() (*string, bool)`
+
+GetImageTypeOk returns a tuple with the ImageType field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetImageType
+
+`func (o *SoftwarerepositoryCategoryMapperModel) SetImageType(v string)`
+
+SetImageType sets ImageType field to given value.
+
+### HasImageType
+
+`func (o *SoftwarerepositoryCategoryMapperModel) HasImageType() bool`
+
+HasImageType returns a boolean if a field has been set.
 
 ### GetRegexPattern
 
@@ -154,6 +222,16 @@ SetSupportedModels sets SupportedModels field to given value.
 
 HasSupportedModels returns a boolean if a field has been set.
 
+### SetSupportedModelsNil
+
+`func (o *SoftwarerepositoryCategoryMapperModel) SetSupportedModelsNil(b bool)`
+
+ SetSupportedModelsNil sets the value for SupportedModels to be an explicit nil
+
+### UnsetSupportedModels
+`func (o *SoftwarerepositoryCategoryMapperModel) UnsetSupportedModels()`
+
+UnsetSupportedModels ensures that no value is present for SupportedModels, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

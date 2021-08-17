@@ -4,24 +4,28 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**ClassId** | **string** | The fully-qualified name of the instantiated, concrete type. This property is used as a discriminator to identify the type of the payload when marshaling and unmarshaling data. | [default to "snmp.Policy"]
+**ObjectType** | **string** | The fully-qualified name of the instantiated, concrete type. The value should be the same as the &#39;ClassId&#39; property. | [default to "snmp.Policy"]
 **AccessCommunityString** | Pointer to **string** | The default SNMPv1, SNMPv2c community name or SNMPv3 username to include on any trap messages sent to the SNMP host. The name can be 18 characters long. | [optional] 
 **CommunityAccess** | Pointer to **string** | Controls access to the information in the inventory tables. Applicable only for SNMPv1 and SNMPv2c users. * &#x60;Disabled&#x60; - Blocks access to the information in the inventory tables. * &#x60;Limited&#x60; - Partial access to read the information in the inventory tables. * &#x60;Full&#x60; - Full access to read the information in the inventory tables. | [optional] [default to "Disabled"]
-**Enabled** | Pointer to **bool** | State of the SNMP Policy on the endpoint. If enabled, the endpoint sends SNMP traps to the designated host. | [optional] 
+**Enabled** | Pointer to **bool** | State of the SNMP Policy on the endpoint. If enabled, the endpoint sends SNMP traps to the designated host. | [optional] [default to true]
 **EngineId** | Pointer to **string** | User-defined unique identification of the static engine. | [optional] 
-**SnmpPort** | Pointer to **int64** | Port on which Cisco IMC SNMP agent runs. | [optional] 
-**SnmpTraps** | Pointer to [**[]SnmpTrap**](snmp.Trap.md) |  | [optional] 
-**SnmpUsers** | Pointer to [**[]SnmpUser**](snmp.User.md) |  | [optional] 
+**SnmpPort** | Pointer to **int64** | Port on which Cisco IMC SNMP agent runs. Enter a value between 1-65535. Reserved ports not allowed (22, 23, 80, 123, 389, 443, 623, 636, 2068, 3268, 3269). | [optional] [default to 161]
+**SnmpTraps** | Pointer to [**[]SnmpTrap**](SnmpTrap.md) |  | [optional] 
+**SnmpUsers** | Pointer to [**[]SnmpUser**](SnmpUser.md) |  | [optional] 
 **SysContact** | Pointer to **string** | Contact person responsible for the SNMP implementation. Enter a string up to 64 characters, such as an email address or a name and telephone number. | [optional] 
 **SysLocation** | Pointer to **string** | Location of host on which the SNMP agent (server) runs. | [optional] 
 **TrapCommunity** | Pointer to **string** | SNMP community group used for sending SNMP trap to other devices. Valid only for SNMPv2c users. | [optional] 
+**V2Enabled** | Pointer to **bool** | State of the SNMP v2c on the endpoint. If enabled, the endpoint sends SNMP v2c properties to the designated host. | [optional] [default to true]
+**V3Enabled** | Pointer to **bool** | State of the SNMP v3 on the endpoint. If enabled, the endpoint sends SNMP v3 properties to the designated host. | [optional] [default to true]
 **Organization** | Pointer to [**OrganizationOrganizationRelationship**](organization.Organization.Relationship.md) |  | [optional] 
-**Profiles** | Pointer to [**[]PolicyAbstractConfigProfileRelationship**](policy.AbstractConfigProfile.Relationship.md) | An array of relationships to policyAbstractConfigProfile resources. | [optional] 
+**Profiles** | Pointer to [**[]PolicyAbstractConfigProfileRelationship**](PolicyAbstractConfigProfileRelationship.md) | An array of relationships to policyAbstractConfigProfile resources. | [optional] 
 
 ## Methods
 
 ### NewSnmpPolicy
 
-`func NewSnmpPolicy() *SnmpPolicy`
+`func NewSnmpPolicy(classId string, objectType string, ) *SnmpPolicy`
 
 NewSnmpPolicy instantiates a new SnmpPolicy object
 This constructor will assign default values to properties that have it defined,
@@ -35,6 +39,46 @@ will change when the set of required properties is changed
 NewSnmpPolicyWithDefaults instantiates a new SnmpPolicy object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetClassId
+
+`func (o *SnmpPolicy) GetClassId() string`
+
+GetClassId returns the ClassId field if non-nil, zero value otherwise.
+
+### GetClassIdOk
+
+`func (o *SnmpPolicy) GetClassIdOk() (*string, bool)`
+
+GetClassIdOk returns a tuple with the ClassId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetClassId
+
+`func (o *SnmpPolicy) SetClassId(v string)`
+
+SetClassId sets ClassId field to given value.
+
+
+### GetObjectType
+
+`func (o *SnmpPolicy) GetObjectType() string`
+
+GetObjectType returns the ObjectType field if non-nil, zero value otherwise.
+
+### GetObjectTypeOk
+
+`func (o *SnmpPolicy) GetObjectTypeOk() (*string, bool)`
+
+GetObjectTypeOk returns a tuple with the ObjectType field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetObjectType
+
+`func (o *SnmpPolicy) SetObjectType(v string)`
+
+SetObjectType sets ObjectType field to given value.
+
 
 ### GetAccessCommunityString
 
@@ -186,6 +230,16 @@ SetSnmpTraps sets SnmpTraps field to given value.
 
 HasSnmpTraps returns a boolean if a field has been set.
 
+### SetSnmpTrapsNil
+
+`func (o *SnmpPolicy) SetSnmpTrapsNil(b bool)`
+
+ SetSnmpTrapsNil sets the value for SnmpTraps to be an explicit nil
+
+### UnsetSnmpTraps
+`func (o *SnmpPolicy) UnsetSnmpTraps()`
+
+UnsetSnmpTraps ensures that no value is present for SnmpTraps, not even an explicit nil
 ### GetSnmpUsers
 
 `func (o *SnmpPolicy) GetSnmpUsers() []SnmpUser`
@@ -211,6 +265,16 @@ SetSnmpUsers sets SnmpUsers field to given value.
 
 HasSnmpUsers returns a boolean if a field has been set.
 
+### SetSnmpUsersNil
+
+`func (o *SnmpPolicy) SetSnmpUsersNil(b bool)`
+
+ SetSnmpUsersNil sets the value for SnmpUsers to be an explicit nil
+
+### UnsetSnmpUsers
+`func (o *SnmpPolicy) UnsetSnmpUsers()`
+
+UnsetSnmpUsers ensures that no value is present for SnmpUsers, not even an explicit nil
 ### GetSysContact
 
 `func (o *SnmpPolicy) GetSysContact() string`
@@ -285,6 +349,56 @@ SetTrapCommunity sets TrapCommunity field to given value.
 `func (o *SnmpPolicy) HasTrapCommunity() bool`
 
 HasTrapCommunity returns a boolean if a field has been set.
+
+### GetV2Enabled
+
+`func (o *SnmpPolicy) GetV2Enabled() bool`
+
+GetV2Enabled returns the V2Enabled field if non-nil, zero value otherwise.
+
+### GetV2EnabledOk
+
+`func (o *SnmpPolicy) GetV2EnabledOk() (*bool, bool)`
+
+GetV2EnabledOk returns a tuple with the V2Enabled field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetV2Enabled
+
+`func (o *SnmpPolicy) SetV2Enabled(v bool)`
+
+SetV2Enabled sets V2Enabled field to given value.
+
+### HasV2Enabled
+
+`func (o *SnmpPolicy) HasV2Enabled() bool`
+
+HasV2Enabled returns a boolean if a field has been set.
+
+### GetV3Enabled
+
+`func (o *SnmpPolicy) GetV3Enabled() bool`
+
+GetV3Enabled returns the V3Enabled field if non-nil, zero value otherwise.
+
+### GetV3EnabledOk
+
+`func (o *SnmpPolicy) GetV3EnabledOk() (*bool, bool)`
+
+GetV3EnabledOk returns a tuple with the V3Enabled field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetV3Enabled
+
+`func (o *SnmpPolicy) SetV3Enabled(v bool)`
+
+SetV3Enabled sets V3Enabled field to given value.
+
+### HasV3Enabled
+
+`func (o *SnmpPolicy) HasV3Enabled() bool`
+
+HasV3Enabled returns a boolean if a field has been set.
 
 ### GetOrganization
 

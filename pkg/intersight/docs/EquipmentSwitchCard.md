@@ -4,26 +4,31 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**ClassId** | **string** | The fully-qualified name of the instantiated, concrete type. This property is used as a discriminator to identify the type of the payload when marshaling and unmarshaling data. | [default to "equipment.SwitchCard"]
+**ObjectType** | **string** | The fully-qualified name of the instantiated, concrete type. The value should be the same as the &#39;ClassId&#39; property. | [default to "equipment.SwitchCard"]
 **Description** | Pointer to **string** | Detailed description of this switch hardware. | [optional] [readonly] 
+**EthernetSwitchingMode** | Pointer to **string** | The user configured Ethernet switching mode for this switch (End-Host or Switch). * &#x60;end-host&#x60; - In end-host mode, the fabric interconnects appear to the upstream devices as end hosts with multiple links.In this mode, the switch does not run Spanning Tree Protocol and avoids loops by following a set of rules for traffic forwarding.In case of ethernet switching mode - Ethernet end-host mode is also known as Ethernet host virtualizer. * &#x60;switch&#x60; - In switch mode, the switch runs Spanning Tree Protocol to avoid loops, and broadcast and multicast packets are handled in the traditional way.This is the traditional switch mode. | [optional] [readonly] [default to "end-host"]
+**FcSwitchingMode** | Pointer to **string** | The user configured FC switching mode for this switch (End-Host or Switch). * &#x60;end-host&#x60; - In end-host mode, the fabric interconnects appear to the upstream devices as end hosts with multiple links.In this mode, the switch does not run Spanning Tree Protocol and avoids loops by following a set of rules for traffic forwarding.In case of ethernet switching mode - Ethernet end-host mode is also known as Ethernet host virtualizer. * &#x60;switch&#x60; - In switch mode, the switch runs Spanning Tree Protocol to avoid loops, and broadcast and multicast packets are handled in the traditional way.This is the traditional switch mode. | [optional] [readonly] [default to "end-host"]
 **NumPorts** | Pointer to **int64** | Number of ports present in this switch hardware. | [optional] [readonly] 
 **OutOfBandIpAddress** | Pointer to **string** | Field specifies this Switch&#39;s Out-of-band IP address. | [optional] [readonly] 
 **OutOfBandIpGateway** | Pointer to **string** | Field specifies this Switch&#39;s default gateway for the out-of-band management interface. | [optional] [readonly] 
-**Presence** | Pointer to **string** | Presence for this switch hardware. | [optional] [readonly] 
+**OutOfBandIpMask** | Pointer to **string** | Field specifies the Netmask for this Switch&#39;s Out-of-band IP address. | [optional] 
 **SlotId** | Pointer to **int64** | Slot identifier of the local Switch slot Interface. | [optional] [readonly] 
 **State** | Pointer to **string** | Operational state of the switch hardware. | [optional] [readonly] 
 **SwitchId** | Pointer to **string** | Switch Identifier that is local to a cluster. | [optional] [readonly] 
-**FcPortChannels** | Pointer to [**[]FcPortChannelRelationship**](fc.PortChannel.Relationship.md) | An array of relationships to fcPortChannel resources. | [optional] 
+**Thermal** | Pointer to **string** | The Thermal status of the fabric interconnect. * &#x60;unknown&#x60; - The default state of the sensor (in case no data is received). * &#x60;ok&#x60; - State of the sensor indicating the sensor&#39;s temperature range is okay. * &#x60;upper-non-recoverable&#x60; - State of the sensor indicating that the temperature is extremely high above normal range. * &#x60;upper-critical&#x60; - State of the sensor indicating that the temperature is above normal range. * &#x60;upper-non-critical&#x60; - State of the sensor indicating that the temperature is a little above the normal range. * &#x60;lower-non-critical&#x60; - State of the sensor indicating that the temperature is a little below the normal range. * &#x60;lower-critical&#x60; - State of the sensor indicating that the temperature is below normal range. * &#x60;lower-non-recoverable&#x60; - State of the sensor indicating that the temperature is extremely below normal range. | [optional] [default to "unknown"]
+**FcPortChannels** | Pointer to [**[]FcPortChannelRelationship**](FcPortChannelRelationship.md) | An array of relationships to fcPortChannel resources. | [optional] 
 **InventoryDeviceInfo** | Pointer to [**InventoryDeviceInfoRelationship**](inventory.DeviceInfo.Relationship.md) |  | [optional] 
 **NetworkElement** | Pointer to [**NetworkElementRelationship**](network.Element.Relationship.md) |  | [optional] 
-**PortChannels** | Pointer to [**[]EtherPortChannelRelationship**](ether.PortChannel.Relationship.md) | An array of relationships to etherPortChannel resources. | [optional] 
-**PortGroups** | Pointer to [**[]PortGroupRelationship**](port.Group.Relationship.md) | An array of relationships to portGroup resources. | [optional] [readonly] 
+**PortChannels** | Pointer to [**[]EtherPortChannelRelationship**](EtherPortChannelRelationship.md) | An array of relationships to etherPortChannel resources. | [optional] 
+**PortGroups** | Pointer to [**[]PortGroupRelationship**](PortGroupRelationship.md) | An array of relationships to portGroup resources. | [optional] [readonly] 
 **RegisteredDevice** | Pointer to [**AssetDeviceRegistrationRelationship**](asset.DeviceRegistration.Relationship.md) |  | [optional] 
 
 ## Methods
 
 ### NewEquipmentSwitchCard
 
-`func NewEquipmentSwitchCard() *EquipmentSwitchCard`
+`func NewEquipmentSwitchCard(classId string, objectType string, ) *EquipmentSwitchCard`
 
 NewEquipmentSwitchCard instantiates a new EquipmentSwitchCard object
 This constructor will assign default values to properties that have it defined,
@@ -37,6 +42,46 @@ will change when the set of required properties is changed
 NewEquipmentSwitchCardWithDefaults instantiates a new EquipmentSwitchCard object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetClassId
+
+`func (o *EquipmentSwitchCard) GetClassId() string`
+
+GetClassId returns the ClassId field if non-nil, zero value otherwise.
+
+### GetClassIdOk
+
+`func (o *EquipmentSwitchCard) GetClassIdOk() (*string, bool)`
+
+GetClassIdOk returns a tuple with the ClassId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetClassId
+
+`func (o *EquipmentSwitchCard) SetClassId(v string)`
+
+SetClassId sets ClassId field to given value.
+
+
+### GetObjectType
+
+`func (o *EquipmentSwitchCard) GetObjectType() string`
+
+GetObjectType returns the ObjectType field if non-nil, zero value otherwise.
+
+### GetObjectTypeOk
+
+`func (o *EquipmentSwitchCard) GetObjectTypeOk() (*string, bool)`
+
+GetObjectTypeOk returns a tuple with the ObjectType field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetObjectType
+
+`func (o *EquipmentSwitchCard) SetObjectType(v string)`
+
+SetObjectType sets ObjectType field to given value.
+
 
 ### GetDescription
 
@@ -62,6 +107,56 @@ SetDescription sets Description field to given value.
 `func (o *EquipmentSwitchCard) HasDescription() bool`
 
 HasDescription returns a boolean if a field has been set.
+
+### GetEthernetSwitchingMode
+
+`func (o *EquipmentSwitchCard) GetEthernetSwitchingMode() string`
+
+GetEthernetSwitchingMode returns the EthernetSwitchingMode field if non-nil, zero value otherwise.
+
+### GetEthernetSwitchingModeOk
+
+`func (o *EquipmentSwitchCard) GetEthernetSwitchingModeOk() (*string, bool)`
+
+GetEthernetSwitchingModeOk returns a tuple with the EthernetSwitchingMode field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetEthernetSwitchingMode
+
+`func (o *EquipmentSwitchCard) SetEthernetSwitchingMode(v string)`
+
+SetEthernetSwitchingMode sets EthernetSwitchingMode field to given value.
+
+### HasEthernetSwitchingMode
+
+`func (o *EquipmentSwitchCard) HasEthernetSwitchingMode() bool`
+
+HasEthernetSwitchingMode returns a boolean if a field has been set.
+
+### GetFcSwitchingMode
+
+`func (o *EquipmentSwitchCard) GetFcSwitchingMode() string`
+
+GetFcSwitchingMode returns the FcSwitchingMode field if non-nil, zero value otherwise.
+
+### GetFcSwitchingModeOk
+
+`func (o *EquipmentSwitchCard) GetFcSwitchingModeOk() (*string, bool)`
+
+GetFcSwitchingModeOk returns a tuple with the FcSwitchingMode field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetFcSwitchingMode
+
+`func (o *EquipmentSwitchCard) SetFcSwitchingMode(v string)`
+
+SetFcSwitchingMode sets FcSwitchingMode field to given value.
+
+### HasFcSwitchingMode
+
+`func (o *EquipmentSwitchCard) HasFcSwitchingMode() bool`
+
+HasFcSwitchingMode returns a boolean if a field has been set.
 
 ### GetNumPorts
 
@@ -138,30 +233,30 @@ SetOutOfBandIpGateway sets OutOfBandIpGateway field to given value.
 
 HasOutOfBandIpGateway returns a boolean if a field has been set.
 
-### GetPresence
+### GetOutOfBandIpMask
 
-`func (o *EquipmentSwitchCard) GetPresence() string`
+`func (o *EquipmentSwitchCard) GetOutOfBandIpMask() string`
 
-GetPresence returns the Presence field if non-nil, zero value otherwise.
+GetOutOfBandIpMask returns the OutOfBandIpMask field if non-nil, zero value otherwise.
 
-### GetPresenceOk
+### GetOutOfBandIpMaskOk
 
-`func (o *EquipmentSwitchCard) GetPresenceOk() (*string, bool)`
+`func (o *EquipmentSwitchCard) GetOutOfBandIpMaskOk() (*string, bool)`
 
-GetPresenceOk returns a tuple with the Presence field if it's non-nil, zero value otherwise
+GetOutOfBandIpMaskOk returns a tuple with the OutOfBandIpMask field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetPresence
+### SetOutOfBandIpMask
 
-`func (o *EquipmentSwitchCard) SetPresence(v string)`
+`func (o *EquipmentSwitchCard) SetOutOfBandIpMask(v string)`
 
-SetPresence sets Presence field to given value.
+SetOutOfBandIpMask sets OutOfBandIpMask field to given value.
 
-### HasPresence
+### HasOutOfBandIpMask
 
-`func (o *EquipmentSwitchCard) HasPresence() bool`
+`func (o *EquipmentSwitchCard) HasOutOfBandIpMask() bool`
 
-HasPresence returns a boolean if a field has been set.
+HasOutOfBandIpMask returns a boolean if a field has been set.
 
 ### GetSlotId
 
@@ -237,6 +332,31 @@ SetSwitchId sets SwitchId field to given value.
 `func (o *EquipmentSwitchCard) HasSwitchId() bool`
 
 HasSwitchId returns a boolean if a field has been set.
+
+### GetThermal
+
+`func (o *EquipmentSwitchCard) GetThermal() string`
+
+GetThermal returns the Thermal field if non-nil, zero value otherwise.
+
+### GetThermalOk
+
+`func (o *EquipmentSwitchCard) GetThermalOk() (*string, bool)`
+
+GetThermalOk returns a tuple with the Thermal field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetThermal
+
+`func (o *EquipmentSwitchCard) SetThermal(v string)`
+
+SetThermal sets Thermal field to given value.
+
+### HasThermal
+
+`func (o *EquipmentSwitchCard) HasThermal() bool`
+
+HasThermal returns a boolean if a field has been set.
 
 ### GetFcPortChannels
 

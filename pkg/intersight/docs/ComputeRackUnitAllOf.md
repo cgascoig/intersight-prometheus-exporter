@@ -4,36 +4,40 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**ClassId** | **string** | The fully-qualified name of the instantiated, concrete type. This property is used as a discriminator to identify the type of the payload when marshaling and unmarshaling data. | [default to "compute.RackUnit"]
+**ObjectType** | **string** | The fully-qualified name of the instantiated, concrete type. The value should be the same as the &#39;ClassId&#39; property. | [default to "compute.RackUnit"]
 **ConnectionStatus** | Pointer to **string** | Connectivity Status of RackUnit to Switch - A or B or AB. | [optional] [readonly] 
 **ServerId** | Pointer to **int64** | RackUnit ID that uniquely identifies the server. | [optional] [readonly] 
 **TopologyScanStatus** | Pointer to **string** | To maintain the Topology workflow run status. | [optional] 
-**Adapters** | Pointer to [**[]AdapterUnitRelationship**](adapter.Unit.Relationship.md) | An array of relationships to adapterUnit resources. | [optional] [readonly] 
+**Adapters** | Pointer to [**[]AdapterUnitRelationship**](AdapterUnitRelationship.md) | An array of relationships to adapterUnit resources. | [optional] [readonly] 
 **BiosBootmode** | Pointer to [**BiosBootModeRelationship**](bios.BootMode.Relationship.md) |  | [optional] 
-**Biosunits** | Pointer to [**[]BiosUnitRelationship**](bios.Unit.Relationship.md) | An array of relationships to biosUnit resources. | [optional] [readonly] 
+**BiosTokenSettings** | Pointer to [**BiosTokenSettingsRelationship**](bios.TokenSettings.Relationship.md) |  | [optional] 
+**BiosVfSelectMemoryRasConfiguration** | Pointer to [**BiosVfSelectMemoryRasConfigurationRelationship**](bios.VfSelectMemoryRasConfiguration.Relationship.md) |  | [optional] 
+**Biosunits** | Pointer to [**[]BiosUnitRelationship**](BiosUnitRelationship.md) | An array of relationships to biosUnit resources. | [optional] [readonly] 
 **Bmc** | Pointer to [**ManagementControllerRelationship**](management.Controller.Relationship.md) |  | [optional] 
 **Board** | Pointer to [**ComputeBoardRelationship**](compute.Board.Relationship.md) |  | [optional] 
 **BootDeviceBootmode** | Pointer to [**BootDeviceBootModeRelationship**](boot.DeviceBootMode.Relationship.md) |  | [optional] 
-**Fanmodules** | Pointer to [**[]EquipmentFanModuleRelationship**](equipment.FanModule.Relationship.md) | An array of relationships to equipmentFanModule resources. | [optional] [readonly] 
-**GenericInventoryHolders** | Pointer to [**[]InventoryGenericInventoryHolderRelationship**](inventory.GenericInventoryHolder.Relationship.md) | An array of relationships to inventoryGenericInventoryHolder resources. | [optional] [readonly] 
-**GraphicsCards** | Pointer to [**[]GraphicsCardRelationship**](graphics.Card.Relationship.md) | An array of relationships to graphicsCard resources. | [optional] 
+**Fanmodules** | Pointer to [**[]EquipmentFanModuleRelationship**](EquipmentFanModuleRelationship.md) | An array of relationships to equipmentFanModule resources. | [optional] [readonly] 
+**GenericInventoryHolders** | Pointer to [**[]InventoryGenericInventoryHolderRelationship**](InventoryGenericInventoryHolderRelationship.md) | An array of relationships to inventoryGenericInventoryHolder resources. | [optional] [readonly] 
+**GraphicsCards** | Pointer to [**[]GraphicsCardRelationship**](GraphicsCardRelationship.md) | An array of relationships to graphicsCard resources. | [optional] 
 **InventoryDeviceInfo** | Pointer to [**InventoryDeviceInfoRelationship**](inventory.DeviceInfo.Relationship.md) |  | [optional] 
 **LocatorLed** | Pointer to [**EquipmentLocatorLedRelationship**](equipment.LocatorLed.Relationship.md) |  | [optional] 
-**MemoryArrays** | Pointer to [**[]MemoryArrayRelationship**](memory.Array.Relationship.md) | An array of relationships to memoryArray resources. | [optional] 
-**PciDevices** | Pointer to [**[]PciDeviceRelationship**](pci.Device.Relationship.md) | An array of relationships to pciDevice resources. | [optional] [readonly] 
-**Processors** | Pointer to [**[]ProcessorUnitRelationship**](processor.Unit.Relationship.md) | An array of relationships to processorUnit resources. | [optional] 
-**Psus** | Pointer to [**[]EquipmentPsuRelationship**](equipment.Psu.Relationship.md) | An array of relationships to equipmentPsu resources. | [optional] [readonly] 
+**MemoryArrays** | Pointer to [**[]MemoryArrayRelationship**](MemoryArrayRelationship.md) | An array of relationships to memoryArray resources. | [optional] 
+**PciDevices** | Pointer to [**[]PciDeviceRelationship**](PciDeviceRelationship.md) | An array of relationships to pciDevice resources. | [optional] [readonly] 
+**Processors** | Pointer to [**[]ProcessorUnitRelationship**](ProcessorUnitRelationship.md) | An array of relationships to processorUnit resources. | [optional] 
+**Psus** | Pointer to [**[]EquipmentPsuRelationship**](EquipmentPsuRelationship.md) | An array of relationships to equipmentPsu resources. | [optional] [readonly] 
 **RackEnclosureSlot** | Pointer to [**EquipmentRackEnclosureSlotRelationship**](equipment.RackEnclosureSlot.Relationship.md) |  | [optional] 
 **RegisteredDevice** | Pointer to [**AssetDeviceRegistrationRelationship**](asset.DeviceRegistration.Relationship.md) |  | [optional] 
-**SasExpanders** | Pointer to [**[]StorageSasExpanderRelationship**](storage.SasExpander.Relationship.md) | An array of relationships to storageSasExpander resources. | [optional] 
-**StorageControllers** | Pointer to [**[]StorageControllerRelationship**](storage.Controller.Relationship.md) | An array of relationships to storageController resources. | [optional] 
-**StorageEnclosures** | Pointer to [**[]StorageEnclosureRelationship**](storage.Enclosure.Relationship.md) | An array of relationships to storageEnclosure resources. | [optional] [readonly] 
+**SasExpanders** | Pointer to [**[]StorageSasExpanderRelationship**](StorageSasExpanderRelationship.md) | An array of relationships to storageSasExpander resources. | [optional] 
+**StorageControllers** | Pointer to [**[]StorageControllerRelationship**](StorageControllerRelationship.md) | An array of relationships to storageController resources. | [optional] 
+**StorageEnclosures** | Pointer to [**[]StorageEnclosureRelationship**](StorageEnclosureRelationship.md) | An array of relationships to storageEnclosure resources. | [optional] [readonly] 
 **TopSystem** | Pointer to [**TopSystemRelationship**](top.System.Relationship.md) |  | [optional] 
 
 ## Methods
 
 ### NewComputeRackUnitAllOf
 
-`func NewComputeRackUnitAllOf() *ComputeRackUnitAllOf`
+`func NewComputeRackUnitAllOf(classId string, objectType string, ) *ComputeRackUnitAllOf`
 
 NewComputeRackUnitAllOf instantiates a new ComputeRackUnitAllOf object
 This constructor will assign default values to properties that have it defined,
@@ -47,6 +51,46 @@ will change when the set of required properties is changed
 NewComputeRackUnitAllOfWithDefaults instantiates a new ComputeRackUnitAllOf object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetClassId
+
+`func (o *ComputeRackUnitAllOf) GetClassId() string`
+
+GetClassId returns the ClassId field if non-nil, zero value otherwise.
+
+### GetClassIdOk
+
+`func (o *ComputeRackUnitAllOf) GetClassIdOk() (*string, bool)`
+
+GetClassIdOk returns a tuple with the ClassId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetClassId
+
+`func (o *ComputeRackUnitAllOf) SetClassId(v string)`
+
+SetClassId sets ClassId field to given value.
+
+
+### GetObjectType
+
+`func (o *ComputeRackUnitAllOf) GetObjectType() string`
+
+GetObjectType returns the ObjectType field if non-nil, zero value otherwise.
+
+### GetObjectTypeOk
+
+`func (o *ComputeRackUnitAllOf) GetObjectTypeOk() (*string, bool)`
+
+GetObjectTypeOk returns a tuple with the ObjectType field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetObjectType
+
+`func (o *ComputeRackUnitAllOf) SetObjectType(v string)`
+
+SetObjectType sets ObjectType field to given value.
+
 
 ### GetConnectionStatus
 
@@ -182,6 +226,56 @@ SetBiosBootmode sets BiosBootmode field to given value.
 `func (o *ComputeRackUnitAllOf) HasBiosBootmode() bool`
 
 HasBiosBootmode returns a boolean if a field has been set.
+
+### GetBiosTokenSettings
+
+`func (o *ComputeRackUnitAllOf) GetBiosTokenSettings() BiosTokenSettingsRelationship`
+
+GetBiosTokenSettings returns the BiosTokenSettings field if non-nil, zero value otherwise.
+
+### GetBiosTokenSettingsOk
+
+`func (o *ComputeRackUnitAllOf) GetBiosTokenSettingsOk() (*BiosTokenSettingsRelationship, bool)`
+
+GetBiosTokenSettingsOk returns a tuple with the BiosTokenSettings field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetBiosTokenSettings
+
+`func (o *ComputeRackUnitAllOf) SetBiosTokenSettings(v BiosTokenSettingsRelationship)`
+
+SetBiosTokenSettings sets BiosTokenSettings field to given value.
+
+### HasBiosTokenSettings
+
+`func (o *ComputeRackUnitAllOf) HasBiosTokenSettings() bool`
+
+HasBiosTokenSettings returns a boolean if a field has been set.
+
+### GetBiosVfSelectMemoryRasConfiguration
+
+`func (o *ComputeRackUnitAllOf) GetBiosVfSelectMemoryRasConfiguration() BiosVfSelectMemoryRasConfigurationRelationship`
+
+GetBiosVfSelectMemoryRasConfiguration returns the BiosVfSelectMemoryRasConfiguration field if non-nil, zero value otherwise.
+
+### GetBiosVfSelectMemoryRasConfigurationOk
+
+`func (o *ComputeRackUnitAllOf) GetBiosVfSelectMemoryRasConfigurationOk() (*BiosVfSelectMemoryRasConfigurationRelationship, bool)`
+
+GetBiosVfSelectMemoryRasConfigurationOk returns a tuple with the BiosVfSelectMemoryRasConfiguration field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetBiosVfSelectMemoryRasConfiguration
+
+`func (o *ComputeRackUnitAllOf) SetBiosVfSelectMemoryRasConfiguration(v BiosVfSelectMemoryRasConfigurationRelationship)`
+
+SetBiosVfSelectMemoryRasConfiguration sets BiosVfSelectMemoryRasConfiguration field to given value.
+
+### HasBiosVfSelectMemoryRasConfiguration
+
+`func (o *ComputeRackUnitAllOf) HasBiosVfSelectMemoryRasConfiguration() bool`
+
+HasBiosVfSelectMemoryRasConfiguration returns a boolean if a field has been set.
 
 ### GetBiosunits
 

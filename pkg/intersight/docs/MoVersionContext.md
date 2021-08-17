@@ -4,9 +4,11 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**InterestedMos** | Pointer to [**[]MoMoRef**](mo.MoRef.md) |  | [optional] 
+**ClassId** | **string** | The fully-qualified name of the instantiated, concrete type. This property is used as a discriminator to identify the type of the payload when marshaling and unmarshaling data. | [default to "mo.VersionContext"]
+**ObjectType** | **string** | The fully-qualified name of the instantiated, concrete type. The value should be the same as the &#39;ClassId&#39; property. | [default to "mo.VersionContext"]
+**InterestedMos** | Pointer to [**[]MoMoRef**](MoMoRef.md) |  | [optional] 
 **RefMo** | Pointer to [**MoMoRef**](mo.MoRef.md) |  | [optional] 
-**Timestamp** | Pointer to [**time.Time**](time.Time.md) | The time this versioned Managed Object was created. | [optional] [readonly] 
+**Timestamp** | Pointer to **time.Time** | The time this versioned Managed Object was created. | [optional] [readonly] 
 **Version** | Pointer to **string** | The version of the Managed Object, e.g. an incrementing number or a hash id. | [optional] [readonly] 
 **VersionType** | Pointer to **string** | Specifies type of version. Currently the only supported value is \&quot;Configured\&quot; that is used to keep track of snapshots of policies and profiles that are intended to be configured to target endpoints. * &#x60;Modified&#x60; - Version created every time an object is modified. * &#x60;Configured&#x60; - Version created every time an object is configured to the service profile. * &#x60;Deployed&#x60; - Version created for objects related to a service profile when it is deployed. | [optional] [readonly] [default to "Modified"]
 
@@ -14,7 +16,7 @@ Name | Type | Description | Notes
 
 ### NewMoVersionContext
 
-`func NewMoVersionContext() *MoVersionContext`
+`func NewMoVersionContext(classId string, objectType string, ) *MoVersionContext`
 
 NewMoVersionContext instantiates a new MoVersionContext object
 This constructor will assign default values to properties that have it defined,
@@ -28,6 +30,46 @@ will change when the set of required properties is changed
 NewMoVersionContextWithDefaults instantiates a new MoVersionContext object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetClassId
+
+`func (o *MoVersionContext) GetClassId() string`
+
+GetClassId returns the ClassId field if non-nil, zero value otherwise.
+
+### GetClassIdOk
+
+`func (o *MoVersionContext) GetClassIdOk() (*string, bool)`
+
+GetClassIdOk returns a tuple with the ClassId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetClassId
+
+`func (o *MoVersionContext) SetClassId(v string)`
+
+SetClassId sets ClassId field to given value.
+
+
+### GetObjectType
+
+`func (o *MoVersionContext) GetObjectType() string`
+
+GetObjectType returns the ObjectType field if non-nil, zero value otherwise.
+
+### GetObjectTypeOk
+
+`func (o *MoVersionContext) GetObjectTypeOk() (*string, bool)`
+
+GetObjectTypeOk returns a tuple with the ObjectType field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetObjectType
+
+`func (o *MoVersionContext) SetObjectType(v string)`
+
+SetObjectType sets ObjectType field to given value.
+
 
 ### GetInterestedMos
 
@@ -54,6 +96,16 @@ SetInterestedMos sets InterestedMos field to given value.
 
 HasInterestedMos returns a boolean if a field has been set.
 
+### SetInterestedMosNil
+
+`func (o *MoVersionContext) SetInterestedMosNil(b bool)`
+
+ SetInterestedMosNil sets the value for InterestedMos to be an explicit nil
+
+### UnsetInterestedMos
+`func (o *MoVersionContext) UnsetInterestedMos()`
+
+UnsetInterestedMos ensures that no value is present for InterestedMos, not even an explicit nil
 ### GetRefMo
 
 `func (o *MoVersionContext) GetRefMo() MoMoRef`
