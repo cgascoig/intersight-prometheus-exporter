@@ -11,6 +11,8 @@ endif
 .RECIPEPREFIX = >
 
 GO_MODULE := github.com/cgascoig/intersight-metrics
+DOCKER_IMAGE_ID := ghcr.io/cgascoig/intersight-prometheus-exporter
+
 GO_CMD ?= go
 GO_BUILD_CMD := $(GO_CMD) build -v 
 GO_BUILD_FLAGS := -ldflags "-X main.commit=`git rev-parse HEAD`"
@@ -43,11 +45,15 @@ containers-push: tmp/.prom-intersight-metrics-docker-image-push.sentinel
 
 tmp/.prom-intersight-metrics-docker-image.sentinel: build/prom-intersight-metrics-linux_amd64 Dockerfile
 > mkdir -p $(@D)
-> image_id="cgascoig/prom-intersight-metrics:latest"
-> docker build . -t "$${image_id}"
+> docker build . -t "$(DOCKER_IMAGE_ID):latest"
 > touch $@
 
 tmp/.prom-intersight-metrics-docker-image-push.sentinel: tmp/.prom-intersight-metrics-docker-image.sentinel
-> image_id="cgascoig/prom-intersight-metrics:latest"
+> # Check if there are any uncommitted changes
+> if [[ -n $$(git status --porcelain) ]]; then echo "repo is dirty"; exit 1; fi
+> image_id="$(DOCKER_IMAGE_ID):$$(git rev-parse HEAD)"
+> echo "Tagging image $${image_id}"
+> docker tag "$(DOCKER_IMAGE_ID):latest" "$(DOCKER_IMAGE_ID):latest"
+> echo "Pushing image $${image_id}"
 > docker push "$${image_id}"
 > touch $@
