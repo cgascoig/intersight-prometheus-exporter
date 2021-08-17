@@ -8,12 +8,10 @@ import (
 )
 
 var (
-	keyID   = "59c84e4a16267c0001c23428/59cc595416267c0001a0dfc7/5ea26d577564612d3025b892"
-	keyFile = "/Users/cgascoig/dev/api-keys/intersight-cgascoig-20200423.pem"
-
 	// command line flags
-	configFileName string
-	verbose        bool
+	sourceConfigFileName string
+	sourceConfigURL      string
+	verbose              bool
 )
 
 func main() {
@@ -24,7 +22,11 @@ func main() {
 		logrus.Debug("Debug logging enabled")
 	}
 
-	im := ismetrics.NewIntersightMetrics(configFileName, verbose)
+	if sourceConfigFileName == "" && sourceConfigURL == "" {
+		logrus.Fatal("One of --source-file or --source-url is required")
+	}
+
+	im := ismetrics.NewIntersightMetrics(sourceConfigFileName, sourceConfigURL, verbose)
 
 	im.Start()
 
@@ -32,6 +34,7 @@ func main() {
 }
 
 func init() {
-	pflag.StringVarP(&configFileName, "config", "c", "", "Configuration file")
-	pflag.Bool(&verbose, "verbose", "v", false, "Verbose logging")
+	pflag.StringVar(&sourceConfigFileName, "source-file", "", "JSON file containing Intersight source configurations")
+	pflag.StringVar(&sourceConfigURL, "source-url", "", "URL to retrieve Intersight source configurations")
+	pflag.BoolVarP(&verbose, "verbose", "v", false, "Verbose logging")
 }

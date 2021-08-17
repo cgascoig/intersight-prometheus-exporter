@@ -1,6 +1,8 @@
 package ismetrics
 
 import (
+	"context"
+
 	"github.com/cgascoig/intersight-metrics/pkg/intersight"
 	"github.com/prometheus/client_golang/prometheus"
 	"github.com/sirupsen/logrus"
@@ -17,14 +19,14 @@ type DruidCollector struct {
 	metrics    []*DruidMetric
 	labelNames []string
 
-	druidAggRequest intersight.TelemetryDruidAggregateRequest
+	druidGroupByRequest intersight.TelemetryDruidGroupByRequest
 }
 
-func NewDruidCollector(name string, druidAggRequest intersight.TelemetryDruidAggregateRequest, labelNames []string) *DruidCollector {
+func NewDruidCollector(name string, druidGroupByRequest intersight.TelemetryDruidGroupByRequest, labelNames []string) *DruidCollector {
 	return &DruidCollector{
-		name:            name,
-		labelNames:      labelNames,
-		druidAggRequest: druidAggRequest,
+		name:                name,
+		labelNames:          labelNames,
+		druidGroupByRequest: druidGroupByRequest,
 	}
 }
 
@@ -43,12 +45,13 @@ func (c *DruidCollector) Describe(ch chan<- *prometheus.Desc) {
 	}
 }
 
-func (c *DruidCollector) Collect(im *IntersightMetrics, ch chan<- prometheus.Metric) {
+func (c *DruidCollector) Collect(im *IntersightMetrics, ctx context.Context, ch chan<- prometheus.Metric) {
 	logrus.Info("Requesting time series data for ", c.name)
 
-	req := im.client.TelemetryApi.QueryTelemetryTimeSeries(im.ctx)
+	// req := im.client.TelemetryApi÷\.QueryTelemetryTimeSeries(im.ctx)
+	req := im.client.TelemetryApi.QueryTelemetryGroupBy(ctx)
 
-	req = req.TelemetryDruidAggregateRequest(c.druidAggRequest)
+	req = req.TelemetryDruidGroupByRequest(c.druidGroupByRequest)
 
 	res, _, err := req.Execute()
 	if err != nil {
@@ -56,30 +59,18 @@ func (c *DruidCollector) Collect(im *IntersightMetrics, ch chan<- prometheus.Met
 	}
 
 	// Go through all the results and make sure we're finding the latest one for each dn/device_id pair
-	var results = map[string]intersight.TelemetryDruidIntervalResult{}
+	var results = map[string]intersight.TelemetryDruidGroupByResult{}
 
 checkIRs:
 	for _, ir := range res {
-		var event map[string]interface{}
-		var ok bool
-
 		if ir.Timestamp == nil {
 			logrus.Warn("Skipping interval result without timestamp")
 			continue
 		}
 
-		if _, ok := ir.AdditionalProperties["event"]; !ok {
-			logrus.Warn("Skipping interval result without event")
-			continue
-		}
-
-		if event, ok = ir.AdditionalProperties["event"].(map[string]interface{}); !ok {
-			logrus.Warn("Skipping interval result with invalid event type")
-			continue
-		}
-
 		// Check that the IR has the required dimensions/labelNames
 		key := ""
+		event := *ir.Event
 		for _, labelName := range c.labelNames {
 			if d, ok := event[labelName]; !ok {
 				logrus.Warn("Skipping interval result without dimension ", labelName)
@@ -105,7 +96,7 @@ checkIRs:
 
 rangeResults:
 	for _, ir := range results {
-		event, _ := ir.AdditionalProperties["event"].(map[string]interface{})
+		event := *ir.Event
 		for _, metric := range c.metrics {
 			var metricVal float64
 			var labels []string
