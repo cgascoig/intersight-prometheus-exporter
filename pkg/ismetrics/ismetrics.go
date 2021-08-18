@@ -131,13 +131,13 @@ func (im *IntersightMetrics) Collect(ch chan<- prometheus.Metric) {
 	if im.sourceConfigURL != "" {
 		scl, err = GetSourceConfigListFromURL(im.sourceConfigURL)
 		if err != nil {
-			logrus.Error("Unable to get source configuration from URL: %v", err)
+			logrus.Errorf("Unable to get source configuration from URL: %v", err)
 			return
 		}
 	} else if im.sourceConfigFileName != "" {
 		scl, err = GetSourceConfigListFromFile(im.sourceConfigFileName)
 		if err != nil {
-			logrus.Error("Unable to get source configuration from file: %v", err)
+			logrus.Errorf("Unable to get source configuration from file: %v", err)
 			return
 		}
 	} else {
