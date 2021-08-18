@@ -3,7 +3,7 @@ package main
 import (
 	"github.com/ogier/pflag"
 
-	"github.com/cgascoig/intersight-metrics/pkg/ismetrics"
+	"github.com/cgascoig/intersight-prometheus-exporter/pkg/ismetrics"
 	"github.com/sirupsen/logrus"
 )
 

@@ -6,7 +6,7 @@ import (
 	"net/http"
 	"sync"
 
-	"github.com/cgascoig/intersight-metrics/pkg/intersight"
+	"github.com/cgascoig/intersight-prometheus-exporter/pkg/intersight"
 	"github.com/prometheus/client_golang/prometheus"
 	"github.com/prometheus/client_golang/prometheus/promhttp"
 	"github.com/sirupsen/logrus"

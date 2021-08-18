@@ -1,5 +1,5 @@
 FROM alpine:3.14
 
-COPY build/prom-intersight-metrics-linux_amd64 /prom-intersight-metrics
+COPY build/intersight-prometheus-exporter-linux_amd64 /intersight-prometheus-exporter
 
-ENTRYPOINT [ "/prom-intersight-metrics" ]
+ENTRYPOINT [ "/intersight-prometheus-exporter" ]

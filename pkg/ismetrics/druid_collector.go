@@ -3,7 +3,7 @@ package ismetrics
 import (
 	"context"
 
-	"github.com/cgascoig/intersight-metrics/pkg/intersight"
+	"github.com/cgascoig/intersight-prometheus-exporter/pkg/intersight"
 	"github.com/prometheus/client_golang/prometheus"
 	"github.com/sirupsen/logrus"
 )
