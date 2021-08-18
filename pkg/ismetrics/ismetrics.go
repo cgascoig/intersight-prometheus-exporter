@@ -109,7 +109,10 @@ func getContextForSource(sc SourceConfig) (context.Context, error) {
 		SigningAlgorithm: intersight.HttpSigningAlgorithmRsaPKCS1v15,
 	}
 
-	authConfig.SetPrivateKey(sc.GetKeyData())
+	err := authConfig.SetPrivateKey(sc.GetKeyData())
+	if err != nil {
+		return nil, fmt.Errorf("Unable to set private key: %v", err)
+	}
 
 	authCtx, err := authConfig.ContextWithValue(context.Background())
 	if err != nil {
@@ -145,7 +148,7 @@ func (im *IntersightMetrics) Collect(ch chan<- prometheus.Metric) {
 	}
 
 	for _, sc := range scl {
-		logrus.Info("Starting collection for ", sc)
+		logrus.Infof("Starting collection for %s", sc)
 		ctx, err := getContextForSource(sc)
 		if err != nil {
 			logrus.Errorf("Error getting request context with authentication: %v", err)

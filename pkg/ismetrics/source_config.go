@@ -68,6 +68,6 @@ func (sc *SourceConfig) GetKeyData() string {
 	return ""
 }
 
-func (sc *SourceConfig) String() string {
+func (sc SourceConfig) String() string {
 	return sc.KeyID
 }
