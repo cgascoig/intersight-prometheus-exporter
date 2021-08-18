@@ -2,6 +2,7 @@ package ismetrics
 
 import (
 	"context"
+	"time"
 
 	"github.com/cgascoig/intersight-prometheus-exporter/pkg/intersight"
 	"github.com/prometheus/client_golang/prometheus"
@@ -47,6 +48,8 @@ func (c *DruidCollector) Describe(ch chan<- *prometheus.Desc) {
 
 func (c *DruidCollector) Collect(im *IntersightMetrics, ctx context.Context, ch chan<- prometheus.Metric) {
 	logrus.Info("Requesting time series data for ", c.name)
+
+	c.druidGroupByRequest.Intervals = []string{getIntervalString(time.Now(), time.Duration(15)*time.Minute)}
 
 	// req := im.client.TelemetryApi÷\.QueryTelemetryTimeSeries(im.ctx)
 	req := im.client.TelemetryApi.QueryTelemetryGroupBy(ctx)
