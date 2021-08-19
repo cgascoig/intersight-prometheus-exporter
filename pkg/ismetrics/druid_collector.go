@@ -51,7 +51,6 @@ func (c *DruidCollector) Collect(im *IntersightMetrics, ctx context.Context, ch 
 
 	c.druidGroupByRequest.Intervals = []string{getIntervalString(time.Now(), time.Duration(15)*time.Minute)}
 
-	// req := im.client.TelemetryApi÷\.QueryTelemetryTimeSeries(im.ctx)
 	req := im.client.TelemetryApi.QueryTelemetryGroupBy(ctx)
 
 	req = req.TelemetryDruidGroupByRequest(c.druidGroupByRequest)

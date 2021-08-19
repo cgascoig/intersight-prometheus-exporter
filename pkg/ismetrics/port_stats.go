@@ -76,6 +76,5 @@ func init() {
 
 	c := NewDruidCollector("ucs_ether_port_stat", druidGroupByRequest, []string{"deviceId", "port"})
 	c.RegisterMetric("intersight_port_tx_rate", "Port transmit rate (bps)", "bps")
-	// c.RegisterMetric("intersight_port_rx_rate", "Port receive rate (bps)", "sumWriteBytes")
 	RegisterCollector(c)
 }
